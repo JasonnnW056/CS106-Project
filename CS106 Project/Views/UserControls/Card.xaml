@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="CS106_Project.Views.UserControls.Card"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CS106_Project.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border
+    Background="White"
+    CornerRadius="16"
+    BorderBrush="Gray"
+    BorderThickness="1"
+    Width="350"
+    Height="Auto">
+
+        <Border.Effect>
+            <DropShadowEffect Color="Black" Opacity="0.08" ShadowDepth="1" BlurRadius="12"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" BorderThickness="0.5" BorderBrush="Black" Width="150" Height="170" Margin="0 30 0 30">
+                <Image Source="/Images/DoctorProfile.jpg"></Image>
+            </Border>
+
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="SemiBold"></TextBlock>
+                <TextBlock Text="{Binding Specialty}" Margin="0 5 0 0" Foreground="Gray" TextAlignment="Center"></TextBlock>
+                <TextBlock Text="Availability" Margin="0 15 0 0" TextAlignment="Center"></TextBlock>
+                <TextBlock Text="{Binding Availability}" Margin="0 5 0 0" TextAlignment="Center"></TextBlock>
+            </StackPanel>
+
+            <Border Grid.Row="2" Margin="0 15 0 30" BorderBrush="Black" CornerRadius="16" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Content="Book Appointment"  Padding="12,8"  Width="Auto" Height="35" Background="Transparent" BorderThickness="0"></Button>
+            </Border>
+
+        </Grid>
+    </Border>
+</UserControl>
