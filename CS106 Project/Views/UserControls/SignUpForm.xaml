@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
 
-        <StackPanel x:Name="SignUpContainer" Background="AntiqueWhite" Width="300" Height="Auto" MaxHeight="500">
+        <StackPanel x:Name="SignUpContainer" Width="300" Background="White" Height="Auto" MaxHeight="500">
             <Label Content="Sign Up" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0 20 0 20"></Label>
 
 

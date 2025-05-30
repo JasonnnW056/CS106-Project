@@ -1,0 +1,28 @@
+﻿<Page x:Class="CS106_Project.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CS106_Project.Pages"
+      xmlns:components="clr-namespace:CS106_Project.Views.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Fill="Red"></Rectangle>
+        <StackPanel VerticalAlignment="Center">
+            
+            <TextBlock Text="Login" HorizontalAlignment="Center"  FontSize="25" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Login to book appointments with our trusted-partnered doctor"></TextBlock>
+           
+        </StackPanel>
+
+        <components:LoginForm Grid.Column="2"></components:LoginForm>
+    </Grid>
+</Page>
