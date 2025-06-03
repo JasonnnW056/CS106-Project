@@ -5,23 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CS106_Project.Views.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="1280">
     <UserControl.Resources>
         <Style x:Key="NavButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="20,10"/>
-            <Setter Property="Margin" Value="10 0 10 0"/>
+            <Setter Property="Margin" Value="45,0"/>
             <Setter Property="Cursor" Value="Hand"/>
-
+            <Setter Property="FontSize" Value="18"/>
         </Style>
     </UserControl.Resources>
 
-    <Border Background="White" BorderBrush="Gray" BorderThickness="0 0 0 1" Height="60">
-        <Grid ShowGridLines="False" >
+    <Border Background="White" BorderBrush="Gray" BorderThickness="0 0 0 1" Height="80">
+        <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="2.5*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
 
                 <ColumnDefinition Width="*"></ColumnDefinition>
 
@@ -29,22 +29,22 @@
 
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                 <Image Source="/Images/Logo.jpg" Width="40" Margin="5 0 0 0"></Image>
-                <TextBlock Text="MyDoctors" Padding="10 0 10 0" VerticalAlignment="Center" ></TextBlock>
+                <TextBlock Text="MyDoctors" Padding="10 0 10 0" VerticalAlignment="Center" FontSize="18"></TextBlock>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <Button Style="{StaticResource NavButtonStyle}" Content="Home" Margin="10 0 10 0" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
-                <Button Content="Our Doctors" Margin="10 0 10 0" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
-                <Button Content="Appointments" Margin="10 0 10 0" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
+                <Button Style="{StaticResource NavButtonStyle}" Content="Home" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
+                <Button Style="{StaticResource NavButtonStyle}" Content="Our Doctors"  HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
+                <Button Style="{StaticResource NavButtonStyle}" Content="Appointments"  HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
 
-                <Image Source="/Images/SearchIcon.png" Width="20" Margin="10 0 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+                <Image Source="/Images/SearchIcon.png" Width="30" Margin="10 0 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
 
             </StackPanel>
 
             <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="16">
-                    <Button BorderThickness="0" Background="Transparent" Content="Login" Padding="20,10" ></Button>
+                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="16" Margin="20,0">
+                    <Button BorderThickness="0" Background="Transparent" Content="Login" Padding="35,10" FontSize="18" ></Button>
                 </Border>
 
             </StackPanel>

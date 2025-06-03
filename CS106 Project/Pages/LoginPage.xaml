@@ -6,23 +6,38 @@
       xmlns:local="clr-namespace:CS106_Project.Pages"
       xmlns:components="clr-namespace:CS106_Project.Views.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"    
       Title="LoginPage">
 
+    
     <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <Rectangle Fill="Red"></Rectangle>
-        <StackPanel VerticalAlignment="Center">
+        <components:HeaderMenu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  ></components:HeaderMenu>
+
+        <Rectangle Grid.Row="1" Fill="Red"></Rectangle>
+        <StackPanel x:Name="LoginText" Grid.Row="1" Visibility="Visible" VerticalAlignment="Center">
             
             <TextBlock Text="Login" HorizontalAlignment="Center"  FontSize="25" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
             <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Login to book appointments with our trusted-partnered doctor"></TextBlock>
            
         </StackPanel>
 
-        <components:LoginForm Grid.Column="2"></components:LoginForm>
+        <StackPanel x:Name="SignUpText" Grid.Row="1" Visibility="Collapsed" VerticalAlignment="Center">
+
+            <TextBlock Text="Sign Up" HorizontalAlignment="Center"  FontSize="25" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Sign Up to book appointments with our trusted-partnered doctor"></TextBlock>
+
+        </StackPanel>
+
+        <components:LoginAndSignUp Grid.Row="1" x:Name="LoginSignUpForm" Grid.Column="2"></components:LoginAndSignUp>
     </Grid>
 </Page>

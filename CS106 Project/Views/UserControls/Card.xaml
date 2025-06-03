@@ -12,7 +12,8 @@
     BorderBrush="Gray"
     BorderThickness="1"
     Width="350"
-    Height="Auto">
+    Height="Auto"
+    >
 
         <Border.Effect>
             <DropShadowEffect Color="Black" Opacity="0.08" ShadowDepth="1" BlurRadius="12"/>
@@ -25,19 +26,19 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Border Grid.Row="0" BorderThickness="0.5" BorderBrush="Black" Width="150" Height="170" Margin="0 30 0 30">
+            <Border Grid.Row="0" BorderThickness="0.5" BorderBrush="Black" Width="150" Height="170" Margin="0 30 0 30" >
                 <Image Source="/Images/DoctorProfile.jpg"></Image>
             </Border>
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                 <TextBlock Text="{Binding Name}" FontSize="18" FontWeight="SemiBold"></TextBlock>
                 <TextBlock Text="{Binding Specialty}" Margin="0 5 0 0" Foreground="Gray" TextAlignment="Center"></TextBlock>
-                <TextBlock Text="Availability" Margin="0 15 0 0" TextAlignment="Center"></TextBlock>
+                <TextBlock Text="Availability" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
                 <TextBlock Text="{Binding Availability}" Margin="0 5 0 0" TextAlignment="Center"></TextBlock>
             </StackPanel>
 
             <Border Grid.Row="2" Margin="0 15 0 30" BorderBrush="Black" CornerRadius="16" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Content="Book Appointment"  Padding="12,8"  Width="Auto" Height="35" Background="Transparent" BorderThickness="0"></Button>
+                <Button Content="Book Appointment"  Padding="15,8"  Width="Auto" Height="35" Background="Transparent" BorderThickness="0"></Button>
             </Border>
 
         </Grid>

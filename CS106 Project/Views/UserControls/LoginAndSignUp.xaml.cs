@@ -16,31 +16,38 @@ using DnsClient;
 
 namespace CS106_Project.Views.UserControls
 {
-    /// <summary>
-    /// Interaction logic for LoginAndSignUp.xaml
-    /// </summary>
+    /// <summary>  
+    /// Interaction logic for LoginAndSignUp.xaml  
+    /// </summary>  
     public partial class LoginAndSignUp : UserControl
     {
+        public event EventHandler? SwitchToLoginOccurred;
+        public event EventHandler? SwitchToSignupOccurred;
+
         private LoginForm Login = new LoginForm();
         private SignUpForm SignUp = new SignUpForm();
+
         public LoginAndSignUp()
         {
             InitializeComponent();
 
-            //Adding events
+            // Adding events  
             Login.SwitchToSignup += (s, e) => ShowSignup();
             SignUp.SwitchToLogin += (s, e) => ShowLogin();
 
             ShowLogin();
         }
+
         private void ShowLogin()
         {
             ContentHolder.Content = Login;
+            SwitchToLoginOccurred?.Invoke(this, EventArgs.Empty);
         }
 
         private void ShowSignup()
         {
             ContentHolder.Content = SignUp;
+            SwitchToSignupOccurred?.Invoke(this, EventArgs.Empty);
         }
     }
 }

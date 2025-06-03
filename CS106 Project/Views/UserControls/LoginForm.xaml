@@ -20,7 +20,7 @@
             <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Width="240" Height="30" Margin="0 20 0 0" Click="OnLogin" ></Button>
 
             <TextBlock Margin="30 5 0 0" HorizontalAlignment="Left" MouseLeftButtonDown="OnSwitchingToSignUp">
-         <Underline >Do not have an account yet?</Underline>
+                <Underline >Do not have an account yet?</Underline>
             </TextBlock>
         </StackPanel>
     </Grid>

@@ -24,8 +24,8 @@
             <TextBlock x:Name="ErrorText" Visibility="Collapsed" TextWrapping="Wrap" Foreground="Red" Text="" HorizontalAlignment="Left" Margin="30 10 0 0"></TextBlock>
             <Button x:Name="SignUpButton" Content="Sign Up" HorizontalAlignment="Center" Width="240" Height="30" Margin="0 20 0 0" Click="OnSignUp"></Button>
 
-            <TextBlock Margin="30 5 0 0" HorizontalAlignment="Left" MouseLeftButtonDown="OnSwitchingToLogin">
-            <Underline >Already have an account?</Underline>
+            <TextBlock  Margin="30 5 0 0" HorizontalAlignment="Left" MouseLeftButtonDown="OnSwitchingToLogin">
+                <Underline >Already have an account?</Underline>
             </TextBlock>
         </StackPanel>
 

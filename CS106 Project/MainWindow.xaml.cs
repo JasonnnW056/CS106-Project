@@ -23,28 +23,28 @@ namespace CS106_Project
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new Pages.DoctorList());
+            //new Connection();
 
-            new Connection();
+            //var Collection = Connection.DB.GetCollection<Doctors>("doctors");
 
-            var Collection = Connection.DB.GetCollection<Doctors>("doctors");
+            //var Filter = Builders<Doctors>.Filter.Empty;
 
-            var Filter = Builders<Doctors>.Filter.Empty;
+            //var Result = Collection.Find(Filter).ToList();
 
-            var Result = Collection.Find(Filter).ToList();
-
-            //if (Result.CountDocuments() > 0)
+            //if (Result.Count() > 0)
             //{
             //    MessageBox.Show("Connected");
             //}
 
-            foreach (var item in Result)
-            {
-                Card DoctorCard = new Card();
-                var doctor = new Doctors(item.Name, item.Specialty, item.Availability);
+            //foreach (var item in Result)
+            //{
+            //    Card DoctorCard = new Card();
+            //    var doctor = new Doctors(item.Name, item.Specialty, item.Availability);
 
-                DoctorCard.DataContext = doctor;
-                CardWrapper.Children.Add(DoctorCard);
-            }
+            //    DoctorCard.DataContext = doctor;
+            //    CardWrapper.Children.Add(DoctorCard);
+            //}
         }
     }
 }
