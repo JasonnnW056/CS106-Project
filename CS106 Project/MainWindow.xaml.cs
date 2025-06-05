@@ -23,7 +23,14 @@ namespace CS106_Project
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.DoctorList());
+
+            //int[] allowedHours = { 9, 11, 13, 15, 17 }; // 24-hour format
+            //foreach (int hour in allowedHours)
+            //{
+            //    HourPicker.Items.Add(hour.ToString("D2") + ":00");
+            //}
+
+            //MainFrame.Navigate(new Pages.DoctorList());
             //new Connection();
 
             //var Collection = Connection.DB.GetCollection<Doctors>("doctors");
@@ -46,5 +53,31 @@ namespace CS106_Project
             //    CardWrapper.Children.Add(DoctorCard);
             //}
         }
+        //private void Window_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    // Only allow booking at specific hours
+        //    int[] allowedHours = { 9, 11, 13, 15, 17 }; // 24-hour format
+        //    foreach (int hour in allowedHours)
+        //    {
+        //        HourPicker.Items.Add(hour.ToString("D2") + ":00");
+        //    }
+        //}
+
+        //private void Submit_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (BookingDatePicker.SelectedDate.HasValue && HourPicker.SelectedItem != null)
+        //    {
+        //        DateTime date = BookingDatePicker.SelectedDate.Value;
+        //        string hourText = HourPicker.SelectedItem.ToString().Split(':')[0];
+        //        int hour = int.Parse(hourText);
+
+        //        DateTime bookingTime = new DateTime(date.Year, date.Month, date.Day, hour, 0, 0);
+        //        MessageBox.Show($"Booking confirmed at: {bookingTime}");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Please select both date and hour.");
+        //    }
+        //}
     }
 }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CS106_Project"
+        xmlns:components="clr-namespace:CS106_Project.Views.UserControls"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="720" Width="1280">
@@ -11,6 +12,18 @@
         <!--<ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="300">
             <WrapPanel  x:Name="CardWrapper"></WrapPanel>
         </ScrollViewer>-->
-        <Frame x:Name="MainFrame"/>
+        <!--<Frame x:Name="MainFrame"/>-->
+
+        <!--<StackPanel Margin="20">
+            <DatePicker x:Name="BookingDatePicker" />
+
+            <TextBlock Text="Select Hour:" Margin="0,10,0,0"/>
+            <ComboBox x:Name="HourPicker" Width="100" />
+
+            <Button Content="Book" Click="Submit_Click" Margin="0,10,0,0"/>
+        </StackPanel>-->
+
+        <components:BookingTimePicker></components:BookingTimePicker>
+        
     </Grid>
 </Window>
