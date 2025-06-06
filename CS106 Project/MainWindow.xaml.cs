@@ -30,7 +30,7 @@ namespace CS106_Project
             //    HourPicker.Items.Add(hour.ToString("D2") + ":00");
             //}
 
-            //MainFrame.Navigate(new Pages.DoctorList());
+            MainFrame.Navigate(new Pages.BookingPage());
             //new Connection();
 
             //var Collection = Connection.DB.GetCollection<Doctors>("doctors");

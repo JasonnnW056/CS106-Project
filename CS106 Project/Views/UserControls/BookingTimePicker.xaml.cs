@@ -91,7 +91,7 @@ namespace CS106_Project.Views.UserControls
             //    }
             //}
 
-            string startTimeText = "11:00";
+            string startTimeText = "06:00";
             string endTimeText = "15:30";
 
             TimeSpan startTime = TimeSpan.Parse(startTimeText);

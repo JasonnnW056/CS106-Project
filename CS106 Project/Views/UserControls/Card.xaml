@@ -38,7 +38,7 @@
             </StackPanel>
 
             <Border Grid.Row="2" Margin="0 15 0 30" BorderBrush="Black" CornerRadius="16" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <Button Content="Book Appointment"  Padding="15,8"  Width="Auto" Height="35" Background="Transparent" BorderThickness="0"></Button>
+                <Button Content="Book Appointment"  Padding="15,8"  Width="Auto" Height="35" Background="Transparent" BorderThickness="0" Click="OnBook"></Button>
             </Border>
 
         </Grid>

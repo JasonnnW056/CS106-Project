@@ -12,17 +12,39 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CS106_Project.Models;
 
 namespace CS106_Project.Views.UserControls
 {
-    /// <summary>
-    /// Interaction logic for BookingForm.xaml
-    /// </summary>
+    /// <summary>  
+    /// Interaction logic for BookingForm.xaml  
+    /// </summary>  
     public partial class BookingForm : UserControl
     {
         public BookingForm()
         {
             InitializeComponent();
+        }
+
+        private void OnBooking(object sender, RoutedEventArgs e)
+        {
+            string firstName = FirstNameBox.Text;
+            string lastName = LastNameBox.Text;
+            string phoneNumber = PhoneNumberBox.Text;
+            string email = EmailBox.Text;
+            string type = TypeBox.Text;
+
+            DateTime? bookingDate = TimeBox.DateBox.SelectedDate;
+            if (bookingDate.HasValue)
+            {
+                bookingDate = bookingDate.Value;
+                 
+            }
+
+            //Might be empty
+            string illnessDescription = IllnessBox.Text;
+
+            //var UserData = new UserBookingData(firstName, lastName, phoneNumber, email, type, bookingDate, illnessDescription);
         }
     }
 }

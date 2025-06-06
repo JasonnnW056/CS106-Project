@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CS106_Project.Views.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="750" d:DesignWidth="800">
+             d:DesignHeight="850" d:DesignWidth="800">
     <Border 
     Background="White"
     BorderBrush="Gray"
@@ -18,32 +18,32 @@
             </Grid.RowDefinitions>
 
 
-            <TextBlock Grid.Row="0" Text="Appointment Booking Form" FontSize="18" HorizontalAlignment="Center" Padding="0,25" FontWeight="SemiBold"></TextBlock>
+            <TextBlock Grid.Row="0" Text="Appointment Booking Form" FontSize="24" HorizontalAlignment="Center" Padding="0,40" FontWeight="SemiBold"></TextBlock>
 
             <StackPanel Grid.Row="1" Orientation="Vertical">
                 <StackPanel Margin="20,0">
-                    <TextBlock Text="First Name*" Margin="0 0 0 10" FontSize="14"></TextBlock>
-                    <TextBox Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>
+                    <TextBlock Text="First Name*" Margin="0 0 0 10" FontSize="16"></TextBlock>
+                    <TextBox x:Name="FirstNameBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="20,0">
-                    <TextBlock Text="Last Name*" Margin="0 0 0 10" FontSize="14"></TextBlock>
-                    <TextBox Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>
+                    <TextBlock Text="Last Name*" Margin="0 0 0 10" FontSize="16"></TextBlock>
+                    <TextBox x:Name="LastNameBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="20,0">
-                    <TextBlock Text="Phone Number*" Margin="0 0 0 10" FontSize="14"></TextBlock>
-                    <TextBox Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>
+                    <TextBlock Text="Phone Number*" Margin="0 0 0 10" FontSize="16"></TextBlock>
+                    <TextBox x:Name="PhoneNumberBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="20,0">
-                    <TextBlock Text="Email*" Margin="0 0 0 10" FontSize="14"></TextBlock>
-                    <TextBox Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>
+                    <TextBlock Text="Email*" Margin="0 0 0 10" FontSize="16"></TextBlock>
+                    <TextBox x:Name="EmailBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="20,0">
-                    <TextBlock Text="Type of Appointment*" Margin="0 0 0 10" FontSize="14"></TextBlock>
-                    <ComboBox Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12">
+                    <TextBlock Text="Type of Appointment*" Margin="0 0 0 10" FontSize="16"></TextBlock>
+                    <ComboBox x:Name="TypeBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16">
                         <ComboBoxItem Content="Consultation"/>
                         <ComboBoxItem Content="Follow Up"/>
                         <ComboBoxItem Content="Procedure"/>
@@ -51,20 +51,21 @@
                 </StackPanel>
 
                 <StackPanel Margin="20,0">
-                    <TextBlock Text="Date*" Margin="0 0 0 10" FontSize="14"></TextBlock>
-                    <TextBox Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>
+                    <!--<TextBlock Text="Date*" Margin="0 0 0 10" FontSize="14"></TextBlock>
+                    <TextBox Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>-->
+                    <local:BookingTimePicker x:Name="TimeBox"></local:BookingTimePicker>
                 </StackPanel>
 
                 <StackPanel Margin="20,0">
-                    <TextBlock Text="Illness Description" Margin="0 0 0 10" FontSize="14"></TextBlock>
-                    <TextBox Height="80" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>
+                    <TextBlock Text="Illness Description" Margin="0 0 0 10" FontSize="16"></TextBlock>
+                    <TextBox x:Name="IllnessBox" Height="80" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>
                 </StackPanel>
 
 
 
             </StackPanel>
 
-            <Button Grid.Row="2" Content="Book Appointment" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="20,10" Margin="0 15 0 0"></Button>
+            <Button x:Name="BookButton" Grid.Row="2" Content="Book Appointment" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,10" Margin="0 15 0 50" Click="OnBooking"></Button>
         </Grid>
     </Border>
 </UserControl>
