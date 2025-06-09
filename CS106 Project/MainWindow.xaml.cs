@@ -12,6 +12,7 @@ using CS106_Project.Classes;
 using CS106_Project.Views.UserControls;
 using CS106_Project.Models;
 using MongoDB.Driver;
+using CS106_Project.Pages;
 
 namespace CS106_Project
 {
@@ -29,8 +30,8 @@ namespace CS106_Project
             //{
             //    HourPicker.Items.Add(hour.ToString("D2") + ":00");
             //}
-
-            MainFrame.Navigate(new Pages.BookingPage());
+            
+            MainFrame.Navigate(new Pages.DoctorList());
             //new Connection();
 
             //var Collection = Connection.DB.GetCollection<Doctors>("doctors");

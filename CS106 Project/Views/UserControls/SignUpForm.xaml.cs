@@ -18,6 +18,7 @@ using CS106_Project.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
+
 namespace CS106_Project.Views.UserControls
 {
     /// <summary>
@@ -47,21 +48,21 @@ namespace CS106_Project.Views.UserControls
 
             List<string> Errors = new List<string>();
 
-            if (!UserNameValidation(Username))
+            if (!Validations.UserNameValidation(Username))
             {
                 Errors.Add("* Username must be 3-20 characters, letters, numbers, and underscores only!");
                 UsernameInput.Clear();
                 UsernameInput.Focus(); //Rework this
             }
 
-            if (!EmailValidation(Email))
+            if (!Validations.EmailValidation(Email))
             {
                 Errors.Add("* Invalid email format!");
                 EmailInput.Clear();
                 EmailInput.Focus(); //Rework this
             }
 
-            if (!PasswordValidation(Password))
+            if (!Validations.PasswordValidation(Password))
             {
                 Errors.Add("* Password should have at least 8 characters, 1 uppercase, 1 lowercase, 1 digit!");
                 PasswordInput.Clear();
@@ -94,7 +95,7 @@ namespace CS106_Project.Views.UserControls
 
         }
 
-        private bool UserNameValidation(string Username)
+        /*private bool UserNameValidation(string Username)
         {
             // 3-20 characters, letters, numbers, and underscores only
             string UsernamePattern = @"^[a-zA-Z0-9_]{3,20}$";
@@ -132,7 +133,7 @@ namespace CS106_Project.Views.UserControls
             }
 
             return Regex.IsMatch(Password, PasswordPattern);
-        }
+        }*/
 
         private void OnSwitchingToLogin(object sender, MouseButtonEventArgs e)
         {

@@ -24,11 +24,13 @@
                 <StackPanel Margin="20,0">
                     <TextBlock Text="First Name*" Margin="0 0 0 10" FontSize="16"></TextBlock>
                     <TextBox x:Name="FirstNameBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
+                    <Label x:Name="FirstNameError" Content="" Foreground="Red" FontSize="12" Visibility="Collapsed" />
                 </StackPanel>
 
                 <StackPanel Margin="20,0">
                     <TextBlock Text="Last Name*" Margin="0 0 0 10" FontSize="16"></TextBlock>
                     <TextBox x:Name="LastNameBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
+                    
                 </StackPanel>
 
                 <StackPanel Margin="20,0">

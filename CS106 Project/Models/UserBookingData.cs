@@ -11,7 +11,7 @@ using MongoDB.Driver;
 namespace CS106_Project.Models
 {
     [BsonIgnoreExtraElements]
-    internal class UserBookingData
+    public class UserBookingData
     {
         [BsonId]
         public ObjectId Id { get; set; }

@@ -21,13 +21,26 @@ namespace CS106_Project.Models
         public string Specialty { get; set; }
 
         [BsonElement("availability")]
-        public string Availability { get; set; }
+        public Availability Availability { get; set; }
 
-        public Doctors(string name, string specialty, string availability)
+        public Doctors(string name, string specialty, string start_time, string end_time)
         {
             this.Name = name;
             this.Specialty = specialty;
-            this.Availability = availability;
+            this.Availability = new Availability   
+            {
+                StartTime = start_time,
+                EndTime = end_time
+            };
         }
-    } 
+    }
+    [BsonIgnoreExtraElements]
+    public class Availability
+    {
+        [BsonElement("start_time")]
+        public string StartTime { get; set; }
+
+        [BsonElement("end_time")]
+        public string EndTime { get; set; }
+    }
 }

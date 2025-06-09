@@ -24,6 +24,8 @@ namespace CS106_Project.Views.UserControls
     /// </summary>
     public partial class BookingTimePicker : UserControl
     {
+
+       
         public BookingTimePicker()
         {
             InitializeComponent();
@@ -91,7 +93,7 @@ namespace CS106_Project.Views.UserControls
             //    }
             //}
 
-            string startTimeText = "06:00";
+            string startTimeText = "06:00"; // ubah ke masing masing doctor
             string endTimeText = "15:30";
 
             TimeSpan startTime = TimeSpan.Parse(startTimeText);
@@ -122,6 +124,30 @@ namespace CS106_Project.Views.UserControls
                     DateBox.BlackoutDates.Add(new CalendarDateRange(date));
                 }
             }
+        }
+
+        public DateTime? CombineDate()
+        {
+            if (DateBox.SelectedDate.HasValue && TimePicker.SelectedItem != null)
+            {
+                string? selectedItem = TimePicker.SelectedItem?.ToString();
+                if (selectedItem != null)
+                {
+                    string hourText = selectedItem.Split(":")[0];
+                    string minuteText = selectedItem.Split(":")[1];
+                    int hour = int.Parse(hourText);
+                    int minute = int.Parse(minuteText);
+                    
+                    DateTime date = DateBox.SelectedDate.Value;
+
+                    DateTime combinedDateTime = new DateTime(date.Year, date.Month, date.Day, hour, minute, 0);
+
+                    return combinedDateTime;
+                }
+
+                
+            }
+            return null;
         }
     }
 }

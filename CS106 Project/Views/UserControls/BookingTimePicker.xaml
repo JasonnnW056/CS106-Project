@@ -10,11 +10,13 @@
     <Grid>
         <!--PreviewMouseLeftButtonUp="OnDatePickerClick"-->
         <StackPanel Background="White">
-            <TextBlock Text="Choose your appointment date:" FontSize="16" Margin="0 0 0 12"></TextBlock>
+            <TextBlock Text="Choose your appointment date:*" FontSize="16" Margin="0 0 0 12"></TextBlock>
             <DatePicker x:Name="DateBox" Height="40" FontSize="16" Margin="0 0 0 12" VerticalContentAlignment="Center"></DatePicker>
 
-            <TextBlock Text="Choose your appointment time:" FontSize="16" Margin="0 0 0 12" ></TextBlock>
+            <TextBlock Text="Choose your appointment time:*" FontSize="16" Margin="0 0 0 12" ></TextBlock>
             <ComboBox x:Name="TimePicker" Height="40" FontSize="16" Margin="0 0 0 12" VerticalContentAlignment="Center"></ComboBox>
+
+            <!--<Button Content="Click" Click="CombineDate"></Button>-->
         </StackPanel>
     </Grid>
 </UserControl>

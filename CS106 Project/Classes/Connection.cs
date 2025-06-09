@@ -34,6 +34,7 @@ namespace CS106_Project.Classes
             }
         }
 
+
         public void SetDatabase()
         {
             if (Client is MongoClient)

@@ -27,6 +27,8 @@ namespace CS106_Project.Pages
         public DoctorList()
         {
             InitializeComponent();
+
+
             new Connection();
 
             var Collection = Connection.DB.GetCollection<Doctors>("doctors");
@@ -35,15 +37,19 @@ namespace CS106_Project.Pages
 
             var Result = Collection.Find(Filter).ToList();
 
-            //if (Result.Count() > 0)
-            //{
-            //    MessageBox.Show("Connected");
-            //}
-
+            if (Result.Count() > 0)
+            {
+                MessageBox.Show("Connected");
+            }
+            else
+            {
+                MessageBox.Show("Nah");
+            }
+                
             foreach (var item in Result)
             {
                 Card DoctorCard = new Card();
-                var doctor = new Doctors(item.Name, item.Specialty, item.Availability);
+                var doctor = new Doctors(item.Name, item.Specialty, item.Availability.StartTime, item.Availability.EndTime);
 
                 DoctorCard.DataContext = doctor;
                 DoctorCard.Margin = new Thickness(20);

@@ -20,7 +20,7 @@
 
         <ScrollViewer Grid.Row="1">
             <StackPanel >
-                <components:BookingForm Width="800" Margin="0 50 0 100"></components:BookingForm>
+                <components:BookingForm x:Name="BookingFormControl" Width="800" Margin="0 50 0 100"></components:BookingForm>
             </StackPanel>
         </ScrollViewer>
         

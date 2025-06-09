@@ -45,7 +45,7 @@ namespace CS106_Project.Views.UserControls
 
 
             //To check if its email or not
-            if (!EmailValidation(Email))
+            if (!Validations.EmailValidation(Email))
             {
                 MessageText.Visibility = Visibility.Visible;
                 MessageText.Text = "Invalid email!";
@@ -112,7 +112,7 @@ namespace CS106_Project.Views.UserControls
                }*/
 
         }
-        private bool EmailValidation(string Email)
+        /*private bool EmailValidation(string Email)
         {
             //Must contain '@'
             string EmailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
@@ -124,7 +124,7 @@ namespace CS106_Project.Views.UserControls
             }
 
             return Regex.IsMatch(Email, EmailPattern);
-        }
+        }*/
 
         private void OnSwitchingToSignUp(object sender, MouseButtonEventArgs e)
         {

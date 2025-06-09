@@ -22,10 +22,10 @@
 
         <ScrollViewer Grid.Row="1">
             <StackPanel>
-                
-                <WrapPanel HorizontalAlignment="Center" x:Name="CardWrapper" ></WrapPanel>
 
-                <Rectangle x:Name="Footer" VerticalAlignment="Bottom" Fill="SeaGreen" Height="100" Grid.Row="1"></Rectangle> 
+                <TextBox Text="Blah"></TextBox>
+                <WrapPanel HorizontalAlignment="Center" x:Name="CardWrapper" ></WrapPanel>
+                <Rectangle x:Name="Footer" Fill="SeaGreen" Height="100"/>
             </StackPanel>
            
         </ScrollViewer>
