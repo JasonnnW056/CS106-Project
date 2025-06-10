@@ -15,6 +15,8 @@
     <None Remove="Images\SearchIcon.png" />
     <None Remove="Views\UserControls\0mz1yovp.bas~" />
     <None Remove="Views\UserControls\BookingForm.xaml.cs~RF6d223bed.TMP" />
+    <None Remove="Views\UserControls\BookingTimePicker.xaml.cs~RF71dc29ee.TMP" />
+    <None Remove="Views\UserControls\HeaderMenu.xaml.cs~RF72617a88.TMP" />
   </ItemGroup>
 
   <ItemGroup>

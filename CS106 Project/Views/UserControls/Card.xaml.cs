@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CS106_Project.Classes;
 using CS106_Project.Models;
 using CS106_Project.Pages;
 
@@ -22,6 +23,7 @@ namespace CS106_Project.Views.UserControls
     /// </summary>  
     public partial class Card : UserControl
     {
+        //public EventHandler<Doctors>? DoctorDataSent;
         public Card()
         {
             InitializeComponent();
@@ -40,7 +42,9 @@ namespace CS106_Project.Views.UserControls
                 if (navigationService != null)
                 {
                     navigationService.Navigate(bookingPage);
+                    
                 }
+                
                 
             }
         }

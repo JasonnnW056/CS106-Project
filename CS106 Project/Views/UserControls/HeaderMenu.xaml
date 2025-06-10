@@ -35,16 +35,16 @@
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <Button Style="{StaticResource NavButtonStyle}" Content="Home" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
-                <Button Style="{StaticResource NavButtonStyle}" Content="Our Doctors"  HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
-                <Button Style="{StaticResource NavButtonStyle}" Content="Appointments"  HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
+                <Button Style="{StaticResource NavButtonStyle}" Content="Our Doctors" IsEnabled="False" x:Name="OurDoctorsButton" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
+                <Button Style="{StaticResource NavButtonStyle}" Content="Appointments" IsEnabled="False" x:Name="AppointmentsButton"  HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
 
-                <Image Source="/Images/SearchIcon.png" Width="30" Margin="10 0 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" ></Image>
+                <Image Source="/Images/SearchIcon.png" x:Name="SearchButton" Width="30" Margin="10 0 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" ></Image>
 
             </StackPanel>
 
             <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Border BorderBrush="Black" BorderThickness="1" CornerRadius="16" Margin="20,0">
-                    <Button BorderThickness="0" Background="Transparent" Content="Login" Padding="35,10" FontSize="18" ></Button>
+                    <Button x:Name="LoginButton" BorderThickness="0" Background="Transparent" Content="Login" Padding="35,10" FontSize="18" ></Button>
                 </Border>
 
             </StackPanel>

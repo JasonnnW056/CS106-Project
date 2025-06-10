@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CS106_Project.Classes;
 using CS106_Project.Models;
+using CS106_Project.Pages;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -48,19 +49,14 @@ namespace CS106_Project.Views.UserControls
             if (!Validations.EmailValidation(Email))
             {
                 MessageText.Visibility = Visibility.Visible;
-                MessageText.Text = "Invalid email!";
+                MessageText.Text = "Invalid email or password!";
                 EmailInput.Clear();
                 PasswordInput.Clear();
                 EmailInput.Focus(); //Rework this
                 return;
             }
 
-            if (string.IsNullOrEmpty(Password))
-            {
-                MessageText.Visibility = Visibility.Visible;
-                MessageText.Text = "Please input your password!";
-                return;
-            }
+            
 
 
             //Checking Login Details
@@ -74,6 +70,7 @@ namespace CS106_Project.Views.UserControls
             //To check if the email is existed
             var EmailChecker = Collection.Find(EmailFilter).ToList();
 
+
             if (EmailChecker.Any())
             {
                 foreach (var item in EmailChecker)
@@ -85,6 +82,17 @@ namespace CS106_Project.Views.UserControls
                     {
                         MessageText.Visibility = Visibility.Visible;
                         MessageText.Text = "Login Successfully!";
+                        LoginManager.Login(item.Name);
+                        MessageBox.Show(LoginManager.CurrentUser);
+
+                        //Check ini naviagtion
+                        var mainWindow = Application.Current.MainWindow;
+                        var mainFrame = mainWindow.FindName("MainFrame") as Frame;
+
+                        if (mainFrame != null)
+                        {
+                            mainFrame.Navigate(new DoctorList());
+                        }
                     }
                     else
                     {

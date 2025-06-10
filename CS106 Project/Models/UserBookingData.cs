@@ -10,31 +10,31 @@ using MongoDB.Driver;
 
 namespace CS106_Project.Models
 {
-    [BsonIgnoreExtraElements]
+   
     public class UserBookingData
     {
-        [BsonId]
+        /*[BsonId]
         public ObjectId Id { get; set; }
 
-        [BsonElement("first_name")]
+        [BsonElement("first_name")]*/
         public string FirstName { get; set; }
 
-        [BsonElement("last_name")]
+        /*[BsonElement("last_name")]*/
         public string LastName { get; set; }
 
-        [BsonElement("phone_number")]
+        //[BsonElement("phone_number")]
         public string PhoneNumber { get; set; }
 
-        [BsonElement("email")]
+      /*  [BsonElement("email")]*/
         public string Email { get; set; }
 
-        [BsonElement("type")]
+        /*[BsonElement("type")]*/
         public string Type { get; set; }
 
-        [BsonElement("date")]
+      /*  [BsonElement("date")]*/
         public DateTime Date { get; set; }
 
-        [BsonElement("illness_description")]
+        /*[BsonElement("illness_description")]*/
         public string IllnessDescription { get; set; }
 
         public UserBookingData(string first, string last, string phone, string email, string type, DateTime date, string illness)

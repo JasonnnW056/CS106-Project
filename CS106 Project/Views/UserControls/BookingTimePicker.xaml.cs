@@ -24,18 +24,42 @@ namespace CS106_Project.Views.UserControls
     /// </summary>
     public partial class BookingTimePicker : UserControl
     {
+        //private Doctors? Doctor;
 
-       
+        /*private string? startTimeText = DoctorData.StartingTime;
+        private string? endTimeText = DoctorData.EndingTime;*/
+
+        //public Doctors? DoctorsData
+        //{
+        //    get => Doctor;
+
+        //    set
+        //    {
+        //        Doctor = value;
+        //        if (Doctor != null)
+        //        {
+        //            SetDoctorName(Doctor);
+        //        }
+        //    }
+        //}
+
+
         public BookingTimePicker()
         {
+            //SetDoctorName();
+
             InitializeComponent();
 
-            new Connection();
+            /*AddTimeOption();*/
 
-            var Collection = Connection.DB.GetCollection<Doctors>("doctors");
-
-            AddTimeOption();
             BlackOutDates();
+
+            BookingContext.DoctorChanged += OnDoctorChanged;
+
+        }
+        private void OnDoctorChanged(object? sender, Doctors doctor)
+        {
+            AddTimeOption(doctor);
         }
 
         //private void OnDatePickerClick(object sender, MouseButtonEventArgs e)
@@ -49,10 +73,22 @@ namespace CS106_Project.Views.UserControls
         //    }
         //}
 
-        private void AddTimeOption()
+        //private void SetDoctorName()
+        //{
+        //    if (DoctorData.CurrentDoctor != null)
+        //    {
+        //        startTimeText = DoctorData.CurrentDoctor.Availability.StartTime;
+        //        endTimeText = DoctorData.CurrentDoctor.Availability.EndTime;
+        //    }
+        //}
+
+        private async void AddTimeOption(Doctors d)
         {
-            //string StartTimeText = "11:00";
-            //string EndTimeText = "15:30";
+            string startTimeText = d.Availability.StartTime;
+            string endTimeText = d.Availability.EndTime;
+
+            MessageBox.Show(startTimeText);
+            MessageBox.Show(endTimeText);
 
             //string StartHourText = StartTimeText.Split(':')[0];
             //string StartMinuteText = StartTimeText.Split(":")[1];
@@ -93,8 +129,7 @@ namespace CS106_Project.Views.UserControls
             //    }
             //}
 
-            string startTimeText = "06:00"; // ubah ke masing masing doctor
-            string endTimeText = "15:30";
+
 
             TimeSpan startTime = TimeSpan.Parse(startTimeText);
             TimeSpan endTime = TimeSpan.Parse(endTimeText);

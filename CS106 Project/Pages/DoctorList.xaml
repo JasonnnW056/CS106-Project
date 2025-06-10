@@ -23,7 +23,6 @@
         <ScrollViewer Grid.Row="1">
             <StackPanel>
 
-                <TextBox Text="Blah"></TextBox>
                 <WrapPanel HorizontalAlignment="Center" x:Name="CardWrapper" ></WrapPanel>
                 <Rectangle x:Name="Footer" Fill="SeaGreen" Height="100"/>
             </StackPanel>

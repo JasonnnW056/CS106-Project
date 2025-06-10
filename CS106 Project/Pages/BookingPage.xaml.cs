@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,31 +24,44 @@ namespace CS106_Project.Pages
     /// </summary>  
     public partial class BookingPage : Page
     {
-        private Doctors DoctorData;
-        private readonly IMongoCollection<UserBookingData> Collection;
+        private Doctors? DoctorData;
+        private readonly IMongoCollection<AppointmentDetails> Collection;
 
         private string DoctorName = string.Empty;
         private string DoctorSpecialty = string.Empty;
+
+        //private string FirstName = string.Empty;
+        //private string LastName = string.Empty;
+        //private string PhoneNumber = string.Empty;
+        //private string Email = string.Empty;
+        //private string Type = string.Empty;
+        //private DateTime AppointmentDate = DateTime.MinValue;
+        //private string IllnessDescription = string.Empty;
+        
 
         public BookingPage(Doctors doctorData)
         { 
             InitializeComponent();
 
-            Collection = Connection.DB.GetCollection<UserBookingData>("appointments");
-            var Filter = Builders<UserBookingData>.Filter.Empty;
+            DoctorData = doctorData;
+            BookingContext.CurrentDoctor = DoctorData;
+
+            Collection = Connection.DB.GetCollection<AppointmentDetails>("appointments");
+            var Filter = Builders<AppointmentDetails>.Filter.Empty;
             var Result = Collection.Find(Filter).ToList();
 
-            if (Result.Count() > 0)
-            {
-                MessageBox.Show("Connected");
-            }
-            else
-            {
-                MessageBox.Show("Nah");
-            }
+            //if (Result.Count() > 0)
+            //{
+            //    MessageBox.Show("Connected");
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Nah");
+            //}
+
 
            
-            DoctorData = doctorData;
+            
             LoadBookedDoctorData();
 
             BookingFormControl.DataSent += InsertDBBookingInformation;
@@ -61,9 +75,24 @@ namespace CS106_Project.Pages
             MessageBox.Show(DoctorName);
         }
 
+        /*private void LoadPatientData(object? sender, UserBookingData e)
+        {
+            string FirstName = e.FirstName;
+            string LastName = e.LastName;
+            string PhoneNumber = e.PhoneNumber;
+            string Email = e.Email;
+            string Type = e.Type;
+            DateTime AppointmentDate = e.Date;
+            string IllnessDescription = e.IllnessDescription;
+        }*/
+
         private void InsertDBBookingInformation(object? sender, UserBookingData e)
         {
-            Collection.InsertOne(e);
+            Collection.InsertOne(
+
+                new AppointmentDetails(e.FirstName, e.LastName, e.PhoneNumber, e.Email, DoctorName, DoctorSpecialty, e.Type, e.Date, e.IllnessDescription)
+
+            );
         }
     }
 }

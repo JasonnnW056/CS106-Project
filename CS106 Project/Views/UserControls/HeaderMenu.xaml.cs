@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CS106_Project.Classes;
 
 namespace CS106_Project.Views.UserControls
 {
@@ -23,6 +24,19 @@ namespace CS106_Project.Views.UserControls
         public HeaderMenu()
         {
             InitializeComponent();
+            UpdateUI();
+           
+        }
+
+        public void UpdateUI()
+        {
+            if (LoginManager.IsLoggedIn)
+            {
+                LoginButton.Content = LoginManager.CurrentUser;
+                OurDoctorsButton.IsEnabled = true;
+                AppointmentsButton.IsEnabled = true;
+                SearchButton.IsEnabled = true;
+            }
         }
     }
 }

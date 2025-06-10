@@ -27,6 +27,8 @@ namespace CS106_Project.Views.UserControls
         public BookingForm()
         {
             InitializeComponent();
+
+            
         }
 
         private void OnBooking(object sender, RoutedEventArgs e)
@@ -38,8 +40,8 @@ namespace CS106_Project.Views.UserControls
             string type = TypeBox.Text;
 
         
-            DateTime bookingDate = DateTime.MinValue;
-            DateTime? bookingDateNullable = TimeBox.CombineDate();
+            DateTime appointmentDate = DateTime.MinValue;
+            DateTime? appointmentDateNullable = TimeBox.CombineDate();
 
             if (!Validations.NameValidation(firstName))
             {
@@ -64,21 +66,23 @@ namespace CS106_Project.Views.UserControls
 
             
            
-            if (bookingDateNullable != null)
+            if (appointmentDateNullable != null)
             {
-                bookingDate = bookingDateNullable.Value;
+                appointmentDate = appointmentDateNullable.Value;
             }
             else
             {
                 MessageBox.Show("Date is null");
                 return; // Exit the method if bookingDate is invalid  
+
+
                 //change into bool checking for error
             }
 
             // Might be empty  
             string illnessDescription = IllnessBox.Text;
 
-            var UserData = new UserBookingData(firstName, lastName, phoneNumber, email, type, bookingDate, illnessDescription);
+            var UserData = new UserBookingData(firstName, lastName, phoneNumber, email, type, appointmentDate, illnessDescription);
 
             MessageBox.Show(UserData.Date.ToString());
 

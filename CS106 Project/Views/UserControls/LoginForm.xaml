@@ -7,19 +7,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel x:Name="LoginContainer" Background="White" Width="300" Height="400" >
-            <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="0 20 0 20"></Label>
- <!--disable the horizontal aliignment and play with the margin-->
-            <Label Content="Email" HorizontalAlignment="Left" Margin="25 10 0 0"></Label>
-            <TextBox x:Name="EmailInput" HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="240" Height="30"></TextBox>
+        <StackPanel x:Name="LoginContainer" Background="White"  >
+            <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Margin="0 30 0 15"></Label>
 
-            <Label Content="Password" HorizontalAlignment="Left" Margin="25 10 0 0"></Label>
-            <PasswordBox x:Name="PasswordInput" HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="240" Height="30"></PasswordBox>
+            <Label Content="Email" HorizontalAlignment="Left" Margin="25 10 0 0" FontSize="20"></Label>
+            <TextBox x:Name="EmailInput"  VerticalContentAlignment="Center"  Height="40" Margin="30 10 25 0" FontSize="18"></TextBox>
 
-            <TextBlock x:Name="MessageText" Visibility="Collapsed" TextWrapping="Wrap" Foreground="Red" Text="" HorizontalAlignment="Left" Margin="30 10 0 0"></TextBlock>
-            <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Width="240" Height="30" Margin="0 20 0 0" Click="OnLogin" ></Button>
+            <Label Content="Password" HorizontalAlignment="Left" Margin="25 10 0 0" FontSize="20"></Label>
+            <PasswordBox x:Name="PasswordInput"  VerticalContentAlignment="Center"  Margin="30 10 25 0" Height="40" FontSize="18"></PasswordBox>
 
-            <TextBlock Margin="30 5 0 0" HorizontalAlignment="Left" MouseLeftButtonDown="OnSwitchingToSignUp">
+            <TextBlock x:Name="MessageText" Visibility="Collapsed" TextWrapping="Wrap" Foreground="Red" Text="" HorizontalAlignment="Left" Margin="30 10 0 0" FontSize="18"></TextBlock>
+            <Button x:Name="LoginButton" Content="Login" FontSize="18"  Height="40"  Margin="30 30 25 0" Click="OnLogin" ></Button>
+
+            <TextBlock Margin="30 10 0 0" HorizontalAlignment="Left" FontSize="18" MouseLeftButtonDown="OnSwitchingToSignUp">
                 <Underline >Do not have an account yet?</Underline>
             </TextBlock>
         </StackPanel>

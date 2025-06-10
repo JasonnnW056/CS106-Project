@@ -24,20 +24,20 @@
         <components:HeaderMenu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  ></components:HeaderMenu>
 
         <Rectangle Grid.Row="1" Fill="Red"></Rectangle>
-        <StackPanel x:Name="LoginText" Grid.Row="1" Visibility="Visible" VerticalAlignment="Center">
+        <StackPanel x:Name="LoginText" Grid.Row="1" Visibility="Visible" VerticalAlignment="Center" Width="350">
             
-            <TextBlock Text="Login" HorizontalAlignment="Center"  FontSize="25" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Login to book appointments with our trusted-partnered doctor"></TextBlock>
+            <TextBlock Text="Login" HorizontalAlignment="Center"  FontSize="30" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="18" Text="Login to book appointments with our trusted-partnered doctor"></TextBlock>
            
         </StackPanel>
 
-        <StackPanel x:Name="SignUpText" Grid.Row="1" Visibility="Collapsed" VerticalAlignment="Center">
+        <StackPanel x:Name="SignUpText" Grid.Row="1" Visibility="Collapsed" VerticalAlignment="Center" Width="350">
 
-            <TextBlock Text="Sign Up" HorizontalAlignment="Center"  FontSize="25" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Sign Up to book appointments with our trusted-partnered doctor"></TextBlock>
+            <TextBlock Text="Sign Up" HorizontalAlignment="Center" FontSize="30" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="18" Text="Sign Up to book appointments with our trusted-partnered doctor"></TextBlock>
 
         </StackPanel>
 
-        <components:LoginAndSignUp Grid.Row="1" x:Name="LoginSignUpForm" Grid.Column="2"></components:LoginAndSignUp>
+        <components:LoginAndSignUp Grid.Row ="1" x:Name="LoginSignUpForm" VerticalAlignment="Top" Grid.Column="2" Width="500" Margin=" 0 45 0 0"></components:LoginAndSignUp>
     </Grid>
 </Page>
