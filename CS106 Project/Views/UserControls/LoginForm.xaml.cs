@@ -82,8 +82,9 @@ namespace CS106_Project.Views.UserControls
                     {
                         MessageText.Visibility = Visibility.Visible;
                         MessageText.Text = "Login Successfully!";
-                        LoginManager.Login(item.Name);
+                        LoginManager.Login(item.Name, item.Id);
                         MessageBox.Show(LoginManager.CurrentUser);
+                        MessageBox.Show(LoginManager.UserID);
 
                         //Check ini naviagtion
                         var mainWindow = Application.Current.MainWindow;

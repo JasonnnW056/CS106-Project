@@ -11,16 +11,20 @@ namespace CS106_Project.Classes
         public static bool IsLoggedIn { get; private set; }
         public static string CurrentUser { get; private set; }
 
-        public static void Login (string username)
+        public static string UserID { get; private set; }
+
+        public static void Login (string username, string userID)
         {
             IsLoggedIn = true;
             CurrentUser = username;
+            UserID = userID;
         }
 
-        public static void Logout(string username)
+        public static void Logout()
         {
             IsLoggedIn = false;
-            CurrentUser = null;
+            CurrentUser = string.Empty;
+            UserID = string.Empty;
         }
     }
 }

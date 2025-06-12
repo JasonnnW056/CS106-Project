@@ -50,18 +50,18 @@ namespace CS106_Project.Pages
             var Filter = Builders<AppointmentDetails>.Filter.Empty;
             var Result = Collection.Find(Filter).ToList();
 
-            //if (Result.Count() > 0)
-            //{
-            //    MessageBox.Show("Connected");
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Nah");
-            //}
+            if (Result.Count() > 0)
+            {
+                MessageBox.Show("Connected apointmentdetails");
+            }
+            else
+            {
+                MessageBox.Show("Nah");
+            }
 
 
-           
-            
+
+
             LoadBookedDoctorData();
 
             BookingFormControl.DataSent += InsertDBBookingInformation;
@@ -90,7 +90,7 @@ namespace CS106_Project.Pages
         {
             Collection.InsertOne(
 
-                new AppointmentDetails(e.FirstName, e.LastName, e.PhoneNumber, e.Email, DoctorName, DoctorSpecialty, e.Type, e.Date, e.IllnessDescription)
+                new AppointmentDetails(LoginManager.UserID ,e.FirstName, e.LastName, e.PhoneNumber, e.Email, DoctorName, DoctorSpecialty, e.Type, e.Date, e.IllnessDescription)
 
             );
         }

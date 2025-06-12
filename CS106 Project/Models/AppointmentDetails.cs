@@ -13,7 +13,11 @@ namespace CS106_Project.Models
     public class AppointmentDetails
     {
         [BsonId]
-        public ObjectId Id { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string UserId { get; set; }
 
         [BsonElement("patient_details")]
         public PatientDetails PatientDetails { get; set; }
@@ -24,6 +28,9 @@ namespace CS106_Project.Models
         [BsonElement("type_of_appointment")]
         public string TypeOfAppointment { get; set; }
 
+        [BsonElement("status")]
+        public string Status { get; set; }
+
         [BsonElement("illness_description")]
         public string IllnessDescription { get; set; }
 
@@ -32,8 +39,9 @@ namespace CS106_Project.Models
 
        
 
-        public AppointmentDetails(string first, string last, string phone, string email, string doctorName, string doctorSpecialty, string type, DateTime date, string illness)
+        public AppointmentDetails(string userID, string first, string last, string phone, string email, string doctorName, string doctorSpecialty, string type, DateTime date, string illness)
         {
+            this.UserId = userID;
             this.PatientDetails = new PatientDetails
             {
                 FirstName = first,
@@ -49,6 +57,8 @@ namespace CS106_Project.Models
             };
 
             this.TypeOfAppointment = type;
+
+            this.Status = "Scheduled";
 
             this.IllnessDescription = illness;
 

@@ -13,6 +13,7 @@
     <None Remove="Images\DoctorProfile.jpg" />
     <None Remove="Images\Logo.jpg" />
     <None Remove="Images\SearchIcon.png" />
+    <None Remove="Pages\AppointmentPage.xaml~RF7c2c3455.TMP" />
     <None Remove="Views\UserControls\0mz1yovp.bas~" />
     <None Remove="Views\UserControls\BookingForm.xaml.cs~RF6d223bed.TMP" />
     <None Remove="Views\UserControls\BookingTimePicker.xaml.cs~RF71dc29ee.TMP" />
