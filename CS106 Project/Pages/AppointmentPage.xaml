@@ -4,30 +4,48 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CS106_Project.Pages"
+      xmlns:components="clr-namespace:CS106_Project.Views.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="AppointmentPage">
 
     
 
-        <Grid ShowGridLines="True" Background="LightGray" Height="Auto">
+        <Grid  Height="Auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
+            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
 
-            <Label Grid.Column="0" Content="Date" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" ></Label>
-            <Label Grid.Column="1" Content="DoctorName" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-            <Label Grid.Column="2" Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center"></Label >
-            <Label Grid.Column="3" Content="Status" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="4" x:Name="AppointmentContainer">
+        <components:HeaderMenu Grid.ColumnSpan="4" />
+
+<!--Bikin kayak children lalu bkinnya diluar loop data contextya diubbah-->
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="1" Background="LightGray">
+            <Label  Content="Date" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" ></Label>
+        </Border>
+
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1" Background="LightGray">
+            <Label  Content="DoctorName" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" Grid.Row="1" Background="LightGray">
+            <Label  Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center"></Label >
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="3" Grid.Row="1" Background="LightGray">
+           <Label  Content="Status" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        </Border>
+
+        
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="4" Width="1000"  x:Name="AppointmentContainer">
             
         </StackPanel>
         </Grid>

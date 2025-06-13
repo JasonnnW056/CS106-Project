@@ -49,7 +49,9 @@ namespace CS106_Project.Pages
             foreach (var item in Result) { 
                 var Appointment = new AppointmentListCard();
 
-                var AppointmentCard = new AppointmentCard(item.AppointmentDate, item.DoctorDetails.Name, item.TypeOfAppointment, item.Status);
+                var Date = item.AppointmentDate.ToLocalTime();
+
+                var AppointmentCard = new AppointmentCard(Date, item.DoctorDetails.Name, item.TypeOfAppointment, item.Status);
                 Appointment.DataContext = AppointmentCard;
 
                 AppointmentContainer.Children.Add(Appointment);

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CS106_Project.Pages"
       xmlns:components="clr-namespace:CS106_Project.Views.UserControls"
       mc:Ignorable="d" 
-      d:DesignHeight="1000" d:DesignWidth="1280"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="BookingPage">
 
     <Grid>

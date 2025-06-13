@@ -16,15 +16,24 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
+
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"/>
+
             </Grid.RowDefinitions>
+
+
 
             <Label Grid.Column="0" Content="Date" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" ></Label>
             <Label Grid.Column="1" Content="DoctorName" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <Label Grid.Column="2" Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center"></Label >
             <Label Grid.Column="3" Content="Status" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="4" x:Name="AppointmentContainer">
+
+            </StackPanel>
         </Grid>
 
     </Border>
