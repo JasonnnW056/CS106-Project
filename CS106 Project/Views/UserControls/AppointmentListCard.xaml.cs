@@ -20,9 +20,44 @@ namespace CS106_Project.Views.UserControls
     /// </summary>
     public partial class AppointmentListCard : UserControl
     {
+        //public EventHandler UpdateDatabase;
         public AppointmentListCard()
         {
             InitializeComponent();
+            
+        }
+
+        private void OnStackPanelMouseEnter(object sender, MouseEventArgs e)
+        {
+            // Check if booking status is cancelled - if so, don't show cancel button
+            if (BookingStatus.Content.ToString().ToUpper() != "CANCELLED" && BookingStatus.Content.ToString() != "Status")
+            {
+                CancelButtonBorder.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void OnStackPanelMouseLeave(object sender, MouseEventArgs e)
+        {
+            // Only hide if it's currently visible
+            if (CancelButtonBorder.Visibility == Visibility.Visible)
+            {
+                CancelButtonBorder.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void OnStatusClicked(object sender, MouseButtonEventArgs e)
+        {
+            // Only allow click if not cancelled
+            if (BookingStatus.Content.ToString().ToUpper() != "CANCELLED")
+            {
+                CancelButtonBorder.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void OnCancelButtonClicked(object sender, RoutedEventArgs e)
+        {
+            BookingStatus.Content = "CANCELLED";
+            CancelButtonBorder.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -38,5 +38,10 @@ namespace CS106_Project.Views.UserControls
                 SearchButton.IsEnabled = true;
             }
         }
+
+        private void OnSearchBarClicked(object sender, MouseButtonEventArgs e)
+        {
+            SearchBar.Visibility = Visibility.Visible;
+        }
     }
 }

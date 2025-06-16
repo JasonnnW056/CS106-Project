@@ -15,6 +15,7 @@
 
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
 
+        <!--<components:HeaderMenu/>-->
         <!--<StackPanel Margin="20">
             <DatePicker x:Name="BookingDatePicker" />
 

@@ -16,6 +16,7 @@ using CS106_Project.Classes;
 using CS106_Project.Models;
 using CS106_Project.Views.UserControls;
 using MongoDB.Driver;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CS106_Project.Pages
 {
@@ -45,6 +46,15 @@ namespace CS106_Project.Pages
             {
                 MessageBox.Show("Nah");
             }
+
+
+
+            var FirstTable = new AppointmentListCard();
+            var FirstTableContent = new { Date = "Date", DoctorName =  "Doctor Name", Type = "Type", Status = "Status" };
+
+            FirstTable.DataContext = FirstTableContent;
+
+            AppointmentContainer.Children.Add(FirstTable);
 
             foreach (var item in Result) { 
                 var Appointment = new AppointmentListCard();

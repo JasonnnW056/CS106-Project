@@ -22,7 +22,15 @@
             <Label Grid.Column="0" Content="{Binding Date}" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
             <Label Grid.Column="1" Content="{Binding DoctorName}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
             <Label Grid.Column="2" Content="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label >
-            <Label Grid.Column="3" Content="{Binding Status}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+            MouseEnter="OnStackPanelMouseEnter" MouseLeave="OnStackPanelMouseLeave">
+                <Label x:Name="BookingStatus" Content="{Binding Status}" 
+           MouseLeftButtonDown="OnStatusClicked"></Label>
+                <Border x:Name="CancelButtonBorder" BorderBrush="Gray" BorderThickness="0.5" Padding="4 2 4 2" CornerRadius="8" Background="Red" Visibility="Collapsed">
+                    <Button x:Name="CancelButton" Content="CANCEL" BorderThickness="0" Background="Transparent" FontWeight="SemiBold" Click="OnCancelButtonClicked"></Button>
+                </Border>
+            </StackPanel>
+
         </Grid>
         
     </Border>

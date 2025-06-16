@@ -17,15 +17,20 @@
         </Style>
     </UserControl.Resources>
 
-    <Border Background="White" BorderBrush="Gray" BorderThickness="0 0 0 1" Height="80">
+    <Border Background="White" BorderBrush="Gray" BorderThickness="0 0 0 1">
         <Grid >
             <Grid.ColumnDefinitions>
+                
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
-
                 <ColumnDefinition Width="*"></ColumnDefinition>
 
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
 
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                 <Image Source="/Images/Logo.jpg" Width="40" Margin="5 0 0 0"></Image>
@@ -38,7 +43,7 @@
                 <Button Style="{StaticResource NavButtonStyle}" Content="Our Doctors" IsEnabled="False" x:Name="OurDoctorsButton" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
                 <Button Style="{StaticResource NavButtonStyle}" Content="Appointments" IsEnabled="False" x:Name="AppointmentsButton"  HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
 
-                <Image Source="/Images/SearchIcon.png" x:Name="SearchButton" Width="30" Margin="10 0 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" ></Image>
+                <Image Source="/Images/SearchIcon.png" x:Name="SearchButton" Width="30" Margin="10 0 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" MouseLeftButtonDown="OnSearchBarClicked" ></Image>
 
             </StackPanel>
 
@@ -48,6 +53,8 @@
                 </Border>
 
             </StackPanel>
+
+            <local:SearchBar x:Name="SearchBar" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Visible"/>
         </Grid>
 
 
