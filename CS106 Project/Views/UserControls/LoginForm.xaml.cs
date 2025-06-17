@@ -33,7 +33,7 @@ namespace CS106_Project.Views.UserControls
             InitializeComponent();
             new Connection();
 
-            Collection = Connection.DB.GetCollection<Users>("users");
+            Collection = Connection.DB.GetCollection<Users>("patients");
         }
         private void OnLogin(object sender, RoutedEventArgs e)
         {
@@ -82,7 +82,7 @@ namespace CS106_Project.Views.UserControls
                     {
                         MessageText.Visibility = Visibility.Visible;
                         MessageText.Text = "Login Successfully!";
-                        LoginManager.Login(item.Name, item.Id);
+                        LoginManager.Login(item.Username, item.Id);
                         MessageBox.Show(LoginManager.CurrentUser);
                         MessageBox.Show(LoginManager.UserID);
 
@@ -137,6 +137,9 @@ namespace CS106_Project.Views.UserControls
 
         private void OnSwitchingToSignUp(object sender, MouseButtonEventArgs e)
         {
+            EmailInput.Clear(); 
+            PasswordInput.Clear();
+            MessageText.Visibility= Visibility.Collapsed;
             SwitchToSignup?.Invoke(this, EventArgs.Empty);
         }
     }

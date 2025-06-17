@@ -34,13 +34,14 @@ namespace CS106_Project.Views.UserControls
             InitializeComponent();
             new Connection();
 
-            Collection = Connection.DB.GetCollection<Users>("users");
+            Collection = Connection.DB.GetCollection<Users>("patients");
         }
 
-        private void OnSignUp(object sender, RoutedEventArgs e)
+        private async void OnSignUp(object sender, RoutedEventArgs e)
         {
             string Username = UsernameInput.Text.Trim();
             string Email = EmailInput.Text.Trim();
+            string Phone = PhoneInput.Text.Trim();
             string Password = PasswordInput.Password;
 
             //Resetting Error Text Visibility
@@ -53,6 +54,13 @@ namespace CS106_Project.Views.UserControls
                 Errors.Add("* Username must be 3-20 characters, letters, numbers, and underscores only!");
                 UsernameInput.Clear();
                 UsernameInput.Focus(); //Rework this
+            }
+
+            if (!Validations.PhoneNumberValidation(Phone))
+            {
+                Errors.Add("* Phone Number should only contain number!");
+                EmailInput.Clear();
+                EmailInput.Focus(); //Rework this
             }
 
             if (!Validations.EmailValidation(Email))
@@ -88,9 +96,11 @@ namespace CS106_Project.Views.UserControls
             }
             else
             {
-                Collection.InsertOne(new Users(Username, Email, Password));
+                Collection.InsertOne(new Users(Username, Phone, Email, Password));
                 ErrorText.Visibility = Visibility.Visible;
                 ErrorText.Text = "Sign Up Successfully";
+                await Task.Delay(2000);
+                SwitchToLogin?.Invoke(this, EventArgs.Empty);
             }
 
         }
@@ -137,6 +147,12 @@ namespace CS106_Project.Views.UserControls
 
         private void OnSwitchingToLogin(object sender, MouseButtonEventArgs e)
         {
+            UsernameInput.Clear();
+            PhoneInput.Clear();
+            EmailInput.Clear();
+            PasswordInput.Clear();
+
+            ErrorText.Visibility = Visibility.Collapsed;
             SwitchToLogin?.Invoke(this, EventArgs.Empty);
         }
     }

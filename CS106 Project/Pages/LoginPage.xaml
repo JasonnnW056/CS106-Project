@@ -38,6 +38,9 @@
 
         </StackPanel>
 
-        <components:LoginAndSignUp Grid.Row ="1" x:Name="LoginSignUpForm" VerticalAlignment="Top" Grid.Column="2" Width="500" Margin=" 0 45 0 0"></components:LoginAndSignUp>
+        <ScrollViewer Grid.Row ="1" Grid.Column="2">
+            <components:LoginAndSignUp  x:Name="LoginSignUpForm" VerticalAlignment="Top"  Width="500" Margin=" 0 40 0 0"></components:LoginAndSignUp>
+        </ScrollViewer>
+        
     </Grid>
 </Page>

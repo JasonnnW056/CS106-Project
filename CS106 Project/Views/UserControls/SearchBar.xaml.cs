@@ -53,7 +53,7 @@ namespace CS106_Project.Views.UserControls
                     MessageBox.Show(Value); 
                     
                     var Keyword = SearchBox.Text.ToString();
-                    Console.WriteLine("blahblah");
+                   
                     MessageBox.Show(Keyword);
 
                     var mainWindow = Application.Current.MainWindow;

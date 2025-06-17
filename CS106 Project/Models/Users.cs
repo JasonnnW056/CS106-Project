@@ -15,12 +15,14 @@ namespace CS106_Project.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        [BsonElement("name")]
-        public string Name { get; set; }
+        [BsonElement("username")]
+        public string Username { get; set; }
+        
+        [BsonElement("phone_number")]
+        public string PhoneNumber { get; set; }
 
         [BsonElement("email")]
         public string Email { get; set; }
-
 
         [BsonElement("password")]
         public string Password { get; set; }
@@ -28,7 +30,7 @@ namespace CS106_Project.Models
 
 
 
-        public Users(string name, string email, string password)
+        public Users(string username, string phone, string email, string password)
         {
 
             //Hashing the password
@@ -37,7 +39,7 @@ namespace CS106_Project.Models
             //Lowercasing the user email before transferring to database
             email = email.ToLower();
 
-            this.Name = name; this.Email = email; this.Password = password;
+            this.Username = username; this.PhoneNumber = phone; this.Email = email; this.Password = password;
 
         }
     }

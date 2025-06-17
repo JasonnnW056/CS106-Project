@@ -11,7 +11,8 @@ namespace CS106_Project.Models
 {
     public class AppointmentCard
     {
-        
+        [BsonId]
+        public string Id { get; set; }  
         public DateTime Date { get; set; }
 
         public string DoctorName { get; set; }
@@ -20,7 +21,8 @@ namespace CS106_Project.Models
 
         public string Status { get; set; }
 
-        public AppointmentCard(DateTime date, string docctorName, string type, string status) { 
+        public AppointmentCard(string id, DateTime date, string docctorName, string type, string status) { 
+            this.Id = id;
             this.Date = date;
             this.DoctorName = docctorName;
             this.Type = type;

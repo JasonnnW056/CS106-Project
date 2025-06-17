@@ -15,6 +15,9 @@
             <Label Content="Username" HorizontalAlignment="Left" Margin="25 0 0 5" FontSize="20"></Label>
             <TextBox x:Name="UsernameInput"  VerticalContentAlignment="Center" Margin="30 10 25 0" Height="40" FontSize="18"></TextBox >
 
+            <Label Content="Phone Number" HorizontalAlignment="Left" Margin="25 10 0 5" FontSize="20"></Label>
+            <TextBox x:Name="PhoneInput"  VerticalContentAlignment="Center" Margin="30 10 25 0" Height="40" FontSize="18"></TextBox >
+
             <Label Content="Email" HorizontalAlignment="Left" Margin="25 10 0 0" FontSize="20"></Label>
             <TextBox x:Name="EmailInput"  VerticalContentAlignment="Center" Margin="30 10 25 0" Height="40" FontSize="18"></TextBox>
 
@@ -22,10 +25,10 @@
             <PasswordBox x:Name="PasswordInput"  VerticalContentAlignment="Center" Margin="30 10 25 0" Height="40" FontSize="18"></PasswordBox>
 
             <!--errortext cek-->
-            <TextBlock x:Name="ErrorText" Visibility="Collapsed" TextWrapping="Wrap" Foreground="Red" Text="" HorizontalAlignment="Left" Margin="30 10 0 0"></TextBlock>
+            <TextBlock x:Name="ErrorText" Visibility="Collapsed" FontSize="18" TextWrapping="Wrap" Foreground="Red" Text="" HorizontalAlignment="Left" Margin="30 10 0 0"></TextBlock>
             <Button x:Name="SignUpButton" Content="Sign Up"  Margin="30 40 25 0" Height="40" Click="OnSignUp" FontSize="18"></Button>
 
-            <TextBlock  Margin="30 10 0 0" HorizontalAlignment="Left" FontSize="18" MouseLeftButtonDown="OnSwitchingToLogin">
+            <TextBlock  Margin="30 10 0 75" HorizontalAlignment="Left" FontSize="18" MouseLeftButtonDown="OnSwitchingToLogin">
                 <Underline >Already have an account?</Underline>
             </TextBlock>
         </StackPanel>

@@ -12,7 +12,9 @@
   <ItemGroup>
     <None Remove="Images\DoctorProfile.jpg" />
     <None Remove="Images\Logo.jpg" />
+    <None Remove="Images\ProfilePageBackground.jpg" />
     <None Remove="Images\SearchIcon.png" />
+    <None Remove="Images\UserProfile.png" />
     <None Remove="Pages\AppointmentPage.xaml~RF7c2c3455.TMP" />
     <None Remove="Views\UserControls\0mz1yovp.bas~" />
     <None Remove="Views\UserControls\BookingForm.xaml.cs~RF6d223bed.TMP" />
@@ -32,7 +34,13 @@
     <Resource Include="Images\Logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\ProfilePageBackground.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\SearchIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\UserProfile.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
