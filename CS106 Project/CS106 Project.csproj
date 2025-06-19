@@ -11,7 +11,9 @@
 
   <ItemGroup>
     <None Remove="Images\DoctorProfile.jpg" />
+    <None Remove="Images\EditIcon.png" />
     <None Remove="Images\Logo.jpg" />
+    <None Remove="Images\PasswordIcon.png" />
     <None Remove="Images\ProfilePageBackground.jpg" />
     <None Remove="Images\SearchIcon.png" />
     <None Remove="Images\UserProfile.png" />
@@ -31,7 +33,13 @@
     <Resource Include="Images\DoctorProfile.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\EditIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Logo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\PasswordIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\ProfilePageBackground.jpg">
