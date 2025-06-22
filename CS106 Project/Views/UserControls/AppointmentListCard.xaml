@@ -7,7 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Border BorderBrush="Gray" BorderThickness="0.5">
-        
         <Grid ShowGridLines="True" Background="White" Height="Auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -19,19 +18,40 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Content="{Binding Date}" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
-            <Label Grid.Column="1" Content="{Binding DoctorName}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-            <Label Grid.Column="2" Content="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center"></Label >
+            <!-- Date column with click event for reschedule -->
+            <Label Grid.Column="0" Content="{Binding Date, StringFormat='yyyy-MM-dd HH:mm'}" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" 
+                   Background="Transparent" MouseLeftButtonDown="OnDateClicked" 
+                   ToolTip="Click to reschedule appointment">
+                <Label.Style>
+                    <Style TargetType="Label">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
+
+            <Label Grid.Column="1" Content="{Binding DoctorName}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="2" Content="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
-            MouseLeave="OnStackPanelMouseLeave">
+                        MouseLeave="OnStackPanelMouseLeave">
                 <Label x:Name="BookingStatus" Content="{Binding Status}" 
-           MouseLeftButtonDown="OnStatusClicked"></Label>
-                <Border x:Name="CancelButtonBorder" BorderBrush="Gray" BorderThickness="0.5" Padding="4 2 4 2" CornerRadius="8" Background="Red" Visibility="Collapsed">
-                    <Button x:Name="CancelButton" Content="CANCEL" BorderThickness="0" Background="Transparent" FontWeight="SemiBold" Click="OnCancelButtonClicked"></Button>
+                       MouseLeftButtonDown="OnStatusClicked"/>
+                <Border x:Name="CancelButtonBorder" BorderBrush="Gray" BorderThickness="0.5" 
+                        Padding="4 2 4 2" CornerRadius="8" Background="Red" Visibility="Collapsed">
+                    <Button x:Name="CancelButton" Content="CANCEL" BorderThickness="0" 
+                            Background="Transparent" FontWeight="SemiBold" Click="OnCancelButtonClicked"/>
+                </Border>
+                <Border x:Name="RescheduleButtonBorder" BorderBrush="Gray" BorderThickness="0.5" 
+                        Padding="4 2 4 2" CornerRadius="8" Background="Orange" Visibility="Collapsed" Margin="5,0,0,0">
+                    <Button x:Name="RescheduleButton" Content="RESCHEDULE" BorderThickness="0" 
+                            Background="Transparent" FontWeight="SemiBold" Click="OnRescheduleButtonClicked"/>
                 </Border>
             </StackPanel>
-
         </Grid>
-        
     </Border>
 </UserControl>

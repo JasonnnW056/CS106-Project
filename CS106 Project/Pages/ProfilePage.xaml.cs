@@ -102,7 +102,7 @@ namespace CS106_Project.Pages
             {
                 // 🚪 Actual logout logic here
                 MessageBox.Show("Logging out...");
-                Application.Current.Shutdown(); // or redirect to login page
+                
             }
         }
     }
