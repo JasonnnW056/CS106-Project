@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CS106_Project.Classes;
+using CS106_Project.Pages;
 
 namespace CS106_Project.Views.UserControls
 {
@@ -39,9 +40,33 @@ namespace CS106_Project.Views.UserControls
             }
         }
 
-        private void OnSearchBarClicked(object sender, MouseButtonEventArgs e)
+        public void OnSearchBarClicked(object sender, MouseButtonEventArgs e)
         {
-            SearchBar.Visibility = Visibility.Visible;
+            if (!SearchBar.IsVisible) {
+                SearchBar.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                SearchBar.Visibility -= Visibility.Collapsed;
+            }
+            
+        }
+
+        private void OnLoginClick(object sender, RoutedEventArgs e)
+        {
+            if (LoginManager.IsLoggedIn)
+            {
+                var ProfilePage = new ProfilePage();
+                var Navigation = NavigationService.GetNavigationService(this);
+                Navigation.Navigate(ProfilePage);
+            }
+        }
+
+        private void OnAppointmentClick(object sender, RoutedEventArgs e)
+        {
+            var AppointmentPage = new AppointmentPage();
+            var Navigation = NavigationService.GetNavigationService(this);
+            Navigation.Navigate(AppointmentPage);
         }
     }
 }

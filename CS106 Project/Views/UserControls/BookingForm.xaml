@@ -6,68 +6,96 @@
              xmlns:local="clr-namespace:CS106_Project.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="850" d:DesignWidth="800">
-    <Border 
-    Background="White"
-    BorderBrush="Gray"
-    BorderThickness="1">
-        <Grid>
+    <Border Background="White"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="15">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
+        </Border.Effect>
+
+        <Grid Margin="40">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
+            <!-- Header -->
+            <StackPanel Grid.Row="0" Margin="0,0,0,30">
+                <TextBlock Text="Appointment Booking Form" 
+                          FontFamily="Segoe UI"
+                          FontWeight="Bold"
+                          FontSize="28"
+                          Foreground="#C41E3A"
+                          HorizontalAlignment="Center" 
+                          Margin="0,0,0,10"/>
+                <Rectangle Height="3" 
+                          Width="60" 
+                          Fill="#C41E3A" 
+                          HorizontalAlignment="Center"/>
+            </StackPanel>
 
-            <TextBlock Grid.Row="0" Text="Appointment Booking Form" FontSize="24" HorizontalAlignment="Center" Padding="0,40" FontWeight="SemiBold"></TextBlock>
-
+            <!-- Form Fields -->
             <StackPanel Grid.Row="1" Orientation="Vertical">
-                <StackPanel Margin="20,0">
-                    <TextBlock Text="First Name*" Margin="0 0 0 10" FontSize="16"></TextBlock>
-                    <TextBox x:Name="FirstNameBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
-                    <Label x:Name="FirstNameError" Content="" Foreground="Red" FontSize="12" Visibility="Collapsed" />
+                <!-- First Name -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="First Name*" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBox x:Name="FirstNameBox" Style="{StaticResource FormInputStyle}"/>
+                    <Label x:Name="FirstNameError" Content="" Style="{StaticResource ErrorLabelStyle}" Visibility="Collapsed"/>
                 </StackPanel>
 
-                <StackPanel Margin="20,0">
-                    <TextBlock Text="Last Name*" Margin="0 0 0 10" FontSize="16"></TextBlock>
-                    <TextBox x:Name="LastNameBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
-                    
+                <!-- Last Name -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="Last Name*" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBox x:Name="LastNameBox" Style="{StaticResource FormInputStyle}"/>
                 </StackPanel>
 
-                <StackPanel Margin="20,0">
-                    <TextBlock Text="Phone Number*" Margin="0 0 0 10" FontSize="16"></TextBlock>
-                    <TextBox x:Name="PhoneNumberBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
+                <!-- Phone Number -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="Phone Number*" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBox x:Name="PhoneNumberBox" Style="{StaticResource FormInputStyle}"/>
                 </StackPanel>
 
-                <StackPanel Margin="20,0">
-                    <TextBlock Text="Email*" Margin="0 0 0 10" FontSize="16"></TextBlock>
-                    <TextBox x:Name="EmailBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16"></TextBox>
+                <!-- Email -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="Email Address*" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBox x:Name="EmailBox" Style="{StaticResource FormInputStyle}"/>
                 </StackPanel>
 
-                <StackPanel Margin="20,0">
-                    <TextBlock Text="Type of Appointment*" Margin="0 0 0 10" FontSize="16"></TextBlock>
-                    <ComboBox x:Name="TypeBox" Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12" VerticalContentAlignment="Center" FontSize="16">
-                        <ComboBoxItem Content="Consultation"/>
-                        <ComboBoxItem Content="Follow Up"/>
-                        <ComboBoxItem Content="Procedure"/>
+                <!-- Type of Appointment -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="Type of Appointment*" Style="{StaticResource FormLabelStyle}"/>
+                    <ComboBox x:Name="TypeBox" Style="{StaticResource FormComboBoxStyle}">
+                        <ComboBoxItem Content="Consultation" FontFamily="Segoe UI" FontSize="16"/>
+                        <ComboBoxItem Content="Follow Up" FontFamily="Segoe UI" FontSize="16"/>
+                        <ComboBoxItem Content="Procedure" FontFamily="Segoe UI" FontSize="16"/>
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel Margin="20,0">
-                    <!--<TextBlock Text="Date*" Margin="0 0 0 10" FontSize="14"></TextBlock>
-                    <TextBox Height="40" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>-->
-                    <local:BookingTimePicker x:Name="TimeBox"></local:BookingTimePicker>
+
+                <local:BookingTimePicker  x:Name="TimeBox" Margin="0,0,0,20"/>
+                    
+
+                <!-- Illness Description -->
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="IllnessDecription" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBox x:Name="IllnessBox" 
+                            Style="{StaticResource FormInputStyle}" Height="100" TextWrapping="Wrap"
+                            VerticalContentAlignment="Top" Padding="5,5"
+                            VerticalScrollBarVisibility="Auto"/>
                 </StackPanel>
-
-                <StackPanel Margin="20,0">
-                    <TextBlock Text="Illness Description" Margin="0 0 0 10" FontSize="16"></TextBlock>
-                    <TextBox x:Name="IllnessBox" Height="80" BorderBrush="Gray" BorderThickness="1" Background="#F7FAFC" Margin="0 0 0 12"></TextBox>
-                </StackPanel>
-
-
-
             </StackPanel>
 
-            <Button x:Name="BookButton" Grid.Row="2" Content="Book Appointment" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="30,10" Margin="0 15 0 50" Click="OnBooking"></Button>
+            <!-- Submit Button -->
+            <StackPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button x:Name="BookButton" 
+                       Content="Book Appointment" 
+                       Style="{StaticResource PrimaryButtonStyle}"
+                       Click="OnBooking"/>
+
+                
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>

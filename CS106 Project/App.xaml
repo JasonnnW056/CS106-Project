@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="/Themes/ButtonStyles.xaml"/>
                 <ResourceDictionary Source="/Themes/CardStyles.xaml"/>
                 <ResourceDictionary Source="/Themes/SearchBarStyles.xaml"/>
+                <ResourceDictionary Source="/Themes/BookingPageTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

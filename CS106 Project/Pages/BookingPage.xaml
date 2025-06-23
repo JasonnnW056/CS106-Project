@@ -8,21 +8,108 @@
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="BookingPage">
+    
+    <Grid Background="{StaticResource PageBackgroundBrush}">
+        <!-- Fixed Header - Always on top with Panel.ZIndex -->
+        <components:HeaderMenu  
+                              VerticalAlignment="Top"/>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-        
-        <components:HeaderMenu></components:HeaderMenu>
+        <!-- Main Content with top margin to account for fixed header -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                      Padding="0,80,17,0">
+            <StackPanel>
+                <!-- Title Only -->
+                    <TextBlock Grid.Row="0" 
+                              Text="Schedule Your Appointment" 
+                              Style="{StaticResource HeroTitleStyle}"
+                              Margin="0,40,0,40"/>
+  
+                <!-- Booking Form Container -->
+                <Grid HorizontalAlignment="Center" Margin="0,0,0,80">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
 
-        <ScrollViewer Grid.Row="1">
-            <StackPanel >
-                <components:BookingForm x:Name="BookingFormControl" Width="800" Margin="0 50 0 100"></components:BookingForm>
+                    <!-- Main Form -->
+                    <components:BookingForm x:Name="BookingFormControl" 
+                                          Grid.Column="0"
+                                          Width="800"/>
+
+                    <!-- Side Panel with Additional Info -->
+                    <Border Grid.Column="2" 
+                           Background="White"
+                           CornerRadius="15"
+                           Padding="25"
+                           BorderBrush="{StaticResource LightGray}"
+                           BorderThickness="1"
+                           VerticalAlignment="Top">
+                        <Border.Effect>
+                            <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="3" Opacity="0.1" BlurRadius="10"/>
+                        </Border.Effect>
+
+                        <StackPanel>
+                            <TextBlock Text="Need Help?" 
+                                      FontFamily="Segoe UI"
+                                      FontSize="18" 
+                                      FontWeight="SemiBold"
+                                      Foreground="{StaticResource CharcoalText}"
+                                      Margin="0,0,0,15"/>
+
+                            <TextBlock Text="Contact our support team if you need assistance with booking your appointment."
+                                      FontFamily="Segoe UI"
+                                      FontSize="14"
+                                      Foreground="{StaticResource MediumGray}"
+                                      TextWrapping="Wrap"
+                                      LineHeight="20"
+                                      Margin="0,0,0,20"/>
+
+                            <!-- Contact Info -->
+                            <StackPanel Margin="0,0,0,15">
+                                <TextBlock Text="📞 (555) 123-4567"
+                                          FontFamily="Segoe UI"
+                                          FontSize="14"
+                                          Foreground="{StaticResource CharcoalText}"
+                                          Margin="0,0,0,8"/>
+                                <TextBlock Text="✉️ support@clinic.com"
+                                          FontFamily="Segoe UI"
+                                          FontSize="14"
+                                          Foreground="{StaticResource CharcoalText}"
+                                          Margin="0,0,0,8"/>
+                                <TextBlock Text="🕒 Mon-Fri: 8AM-6PM"
+                                          FontFamily="Segoe UI"
+                                          FontSize="14"
+                                          Foreground="{StaticResource CharcoalText}"/>
+                            </StackPanel>
+
+                            <Rectangle Height="1" 
+                                      Fill="{StaticResource LightGray}" 
+                                      Margin="0,15,0,15"/>
+
+                            <!-- Emergency Notice -->
+                            <Border Background="{StaticResource SoftPink}"
+                                   CornerRadius="8"
+                                   Padding="15">
+                                <StackPanel>
+                                    <TextBlock Text="⚠️ Emergency?"
+                                              FontFamily="Segoe UI"
+                                              FontSize="14"
+                                              FontWeight="SemiBold"
+                                              Foreground="{StaticResource DeepBurgundy}"
+                                              Margin="0,0,0,5"/>
+                                    <TextBlock Text="For medical emergencies, please call 911 or visit your nearest emergency room."
+                                              FontFamily="Segoe UI"
+                                              FontSize="12"
+                                              Foreground="{StaticResource CharcoalText}"
+                                              TextWrapping="Wrap"
+                                              LineHeight="16"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+                </Grid>
             </StackPanel>
         </ScrollViewer>
-        
     </Grid>
 </Page>
