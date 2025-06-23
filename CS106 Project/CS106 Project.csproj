@@ -10,7 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\DoctorProfile.jpg" />
+    <None Remove="Images\Doctor.jpg" />
+    <None Remove="Images\DoctorIcon.jpg" />
+    <None Remove="Images\DoctorIcon2.jpg" />
+    <None Remove="Images\DoctorIcon2.png" />
     <None Remove="Images\EditIcon.png" />
     <None Remove="Images\Logo.jpg" />
     <None Remove="Images\PasswordIcon.png" />
@@ -30,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\DoctorProfile.jpg">
+    <Resource Include="Images\DoctorIcon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\EditIcon.png">

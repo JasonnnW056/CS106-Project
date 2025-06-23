@@ -18,25 +18,25 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- Date column with click event for reschedule -->
-            <Label Grid.Column="0" Content="{Binding Date, StringFormat='yyyy-MM-dd HH:mm'}" 
-                   HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" 
-                   Background="Transparent" MouseLeftButtonDown="OnDateClicked" 
-                   ToolTip="Click to reschedule appointment">
-                <Label.Style>
-                    <Style TargetType="Label">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightBlue"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Label.Style>
-            </Label>
+            <!-- Date column with edit icon on hover -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        MouseEnter="OnDateStackPanelMouseEnter" MouseLeave="OnDateStackPanelMouseLeave">
+                <Label x:Name="DateText" Content="{Binding Date, StringFormat='yyyy-MM-dd HH:mm'}" 
+                       VerticalAlignment="Center" Background="Transparent"/>
+
+                <!-- Edit Icon (initially hidden) -->
+                <Border x:Name="EditIconBorder" Background="LightBlue" CornerRadius="3" 
+                        Padding="3" Margin="5,0,0,0" Visibility="Collapsed" Cursor="Hand"
+                        MouseLeftButtonDown="OnEditIconClicked"
+                        ToolTip="Click to reschedule appointment">
+                    <Path x:Name="EditIcon" Fill="DarkBlue" 
+                          Data="M3,17.25V21h3.75L17.81,9.94l-3.75-3.75L3,17.25z M20.71,7.04c0.39-0.39,0.39-1.02,0-1.41l-2.34-2.34 c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75L20.71,7.04z"
+                          Width="12" Height="12" Stretch="Uniform"/>
+                </Border>
+            </StackPanel>
 
             <Label Grid.Column="1" Content="{Binding DoctorName}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Label Grid.Column="2" Content="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
                         MouseLeave="OnStackPanelMouseLeave">
                 <Label x:Name="BookingStatus" Content="{Binding Status}" 
@@ -45,11 +45,6 @@
                         Padding="4 2 4 2" CornerRadius="8" Background="Red" Visibility="Collapsed">
                     <Button x:Name="CancelButton" Content="CANCEL" BorderThickness="0" 
                             Background="Transparent" FontWeight="SemiBold" Click="OnCancelButtonClicked"/>
-                </Border>
-                <Border x:Name="RescheduleButtonBorder" BorderBrush="Gray" BorderThickness="0.5" 
-                        Padding="4 2 4 2" CornerRadius="8" Background="Orange" Visibility="Collapsed" Margin="5,0,0,0">
-                    <Button x:Name="RescheduleButton" Content="RESCHEDULE" BorderThickness="0" 
-                            Background="Transparent" FontWeight="SemiBold" Click="OnRescheduleButtonClicked"/>
                 </Border>
             </StackPanel>
         </Grid>

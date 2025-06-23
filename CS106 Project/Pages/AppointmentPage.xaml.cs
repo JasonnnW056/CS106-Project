@@ -87,7 +87,7 @@ namespace CS106_Project.Pages
                 var Update = Builders<AppointmentDetails>.Update.Set(a=>a.Status, "CANCELLED");
                 var UpdateResult = Collection.UpdateOne(IdFilter, Update);
 
-                MessageBox.Show("Updated");
+                
             }
         }
     }

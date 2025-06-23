@@ -6,57 +6,89 @@
              xmlns:local="clr-namespace:CS106_Project.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1280">
-    
-    <Border  BorderThickness="0 0.5 0 0.5" 
-             BorderBrush="Black" >
-        
-    <Grid >
-        <!-- Search by combo box -->
-        <StackPanel Background="White" Orientation="Horizontal" VerticalAlignment="Top" Height="60">
-            <TextBlock Text="Search by:" Margin="10 3 0 0" FontSize="18" VerticalAlignment="Center"/>
-            <ComboBox x:Name="SearchFilter" Width="100" Margin="10 0 0 0" FontSize="18" VerticalAlignment="Center" HorizontalContentAlignment="Center" >
-                <ComboBoxItem Content="Name" IsSelected="True"/>
-                <ComboBoxItem Content="Specialty"/>
-            </ComboBox>
-        </StackPanel>
 
-        <!-- Search box with rounded border -->
-        <Border CornerRadius="14" 
-            BorderThickness="0.5" 
-            BorderBrush="Black" 
-            Margin="210 13 50 0" 
-            VerticalAlignment="Top"
-            Height="33"
-            Background="White"  
-            Padding="5 0 0 0"
-            >
-            <Grid>
-                <TextBox x:Name="SearchBox"  
-                     BorderThickness="0"
-                     Background="Transparent"
-                     TextChanged="SearchBox_TextChanged"
-                     GotFocus="SearchBox_GotFocus"
-                     LostFocus="SearchBox_LostFocus"
-                     Padding="5,0"
-                     FontSize="18"
-                     VerticalContentAlignment="Center"/>
-                <TextBlock x:Name="PlaceholderText" 
-                       Text="Enter keywords..." 
-                       Foreground="Gray"
-                       FontStyle="Italic"
-                       IsHitTestVisible="False"
-                       Margin="5,0,0,0"
-                       VerticalAlignment="Center"
-                           FontSize="18"/>
-            </Grid>
-        </Border>
+    <Border Background="{StaticResource OffWhite}"
+            BorderThickness="0,1,0,1" 
+            BorderBrush="{StaticResource LightGray}">
 
-        <!-- Search icon -->
-        <Image Source="/Images/SearchIcon.png" 
-           Height="28" 
-           VerticalAlignment="Top" 
-           HorizontalAlignment="Right" 
-           Margin="0 15 13 0" MouseLeftButtonDown="OnSearch"/>
-    </Grid>
+        <Grid Margin="0,15,0,15">
+            <!-- Search Filter Section -->
+            <StackPanel Orientation="Horizontal" 
+                       VerticalAlignment="Center" 
+                       Margin="20,0,0,0">
+                <TextBlock Text="Search by:" 
+                          Style="{StaticResource SearchLabelStyle}"
+                          VerticalAlignment="Center"
+                          Margin="0,0,15,0"/>
+                <ComboBox x:Name="SearchFilter" 
+                         Style="{StaticResource SearchComboBoxStyle}"
+                         Width="120"
+                         VerticalAlignment="Center">
+                    <ComboBoxItem Content="Name" IsSelected="True"/>
+                    <ComboBoxItem Content="Specialty"/>
+                </ComboBox>
+            </StackPanel>
+
+            <!-- Search Input Section -->
+            <Border CornerRadius="25" 
+                    BorderThickness="2" 
+                    BorderBrush="{StaticResource MedicalCrimson}" 
+                    Margin="250,0,80,0" 
+                    Height="45"
+                    Background="White"
+                    VerticalAlignment="Center">
+                <Border.Effect>
+                    <DropShadowEffect Color="#C41E3A" Opacity="0.2" ShadowDepth="1" BlurRadius="4"/>
+                </Border.Effect>
+
+                <Grid>
+                    <TextBox x:Name="SearchBox"  
+                             Style="{StaticResource SearchTextBoxStyle}"
+                             TextChanged="SearchBox_TextChanged"
+                             GotFocus="SearchBox_GotFocus"
+                             LostFocus="SearchBox_LostFocus"/>
+
+                    <TextBlock x:Name="PlaceholderText" 
+                               Text="Enter doctor name or specialty..." 
+                               Foreground="{StaticResource MediumGray}"
+                               FontFamily="Segoe UI"
+                               FontSize="16"
+                               FontStyle="Italic"
+                               IsHitTestVisible="False"
+                               Margin="15,0,0,0"
+                               VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- Search Button -->
+            <Border Background="{StaticResource MedicalCrimson}"
+                    CornerRadius="20"
+                    Width="40" Height="40"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,0,20,0"
+                    Cursor="Hand"
+                    MouseLeftButtonDown="OnSearch">
+                <Border.Effect>
+                    <DropShadowEffect Color="#C41E3A" Opacity="0.3" ShadowDepth="2" BlurRadius="6"/>
+                </Border.Effect>
+
+                <Path Data="M21.707,20.293l-5.655-5.655c1.237-1.527,1.993-3.459,1.993-5.564c0-4.963-4.037-9-9-9s-9,4.037-9,9s4.037,9,9,9c2.105,0,4.037-0.756,5.564-1.993l5.655,5.655c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293C22.098,21.317,22.098,20.683,21.707,20.293z M3,9c0-3.309,2.691-6,6-6s6,2.691,6,6s-2.691,6-6,6S3,12.309,3,9z"
+                      Fill="White"
+                      Width="20" Height="20"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"/>
+
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF6B6B"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+        </Grid>
     </Border>
 </UserControl>

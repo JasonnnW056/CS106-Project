@@ -1,0 +1,57 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Color Resources -->
+    <SolidColorBrush x:Key="MedicalCrimson" Color="#C41E3A"/>
+    <SolidColorBrush x:Key="DeepBurgundy" Color="#8B1538"/>
+    <SolidColorBrush x:Key="CoralRed" Color="#FF6B6B"/>
+    <SolidColorBrush x:Key="SoftPink" Color="#FFE8ED"/>
+    <SolidColorBrush x:Key="CharcoalText" Color="#2D3748"/>
+    <SolidColorBrush x:Key="MediumGray" Color="#718096"/>
+    <SolidColorBrush x:Key="LightGray" Color="#E2E8F0"/>
+    <SolidColorBrush x:Key="OffWhite" Color="#FAFAFA"/>
+
+    <!-- Gradient Resources -->
+    <LinearGradientBrush x:Key="RedGradientBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#C41E3A" Offset="0"/>
+        <GradientStop Color="#8B1538" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="RedHoverGradientBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#FF6B6B" Offset="0"/>
+        <GradientStop Color="#C41E3A" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Typography Styles -->
+    <Style x:Key="DoctorNameStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource CharcoalText}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="SpecialtyStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{StaticResource MediumGray}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="AvailabilityLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{StaticResource DeepBurgundy}"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Brand Text Style -->
+    <Style x:Key="BrandTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource MedicalCrimson}"/>
+    </Style>
+
+</ResourceDictionary>

@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:CS106_Project"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/AppTheme.xaml"/>
+                <ResourceDictionary Source="/Themes/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Themes/CardStyles.xaml"/>
+                <ResourceDictionary Source="/Themes/SearchBarStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

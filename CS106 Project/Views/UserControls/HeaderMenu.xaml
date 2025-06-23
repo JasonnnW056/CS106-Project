@@ -17,46 +17,99 @@
         </Style>
     </UserControl.Resources>
 
-    <Border Background="White" BorderBrush="Gray" BorderThickness="0 0 0 1">
-        <Grid >
+    <Border Background="{StaticResource OffWhite}" 
+            BorderBrush="{StaticResource LightGray}" 
+            BorderThickness="0,0,0,2">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" Opacity="0.1" ShadowDepth="2" BlurRadius="8"/>
+        </Border.Effect>
+        
+        <Grid>
             <Grid.ColumnDefinitions>
-                
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
-
-            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                <Image Source="/Images/Logo.jpg" Width="40" Margin="5 0 0 0"></Image>
-                <TextBlock Text="MyDoctors" Padding="10 0 10 0" VerticalAlignment="Center" FontSize="18"></TextBlock>
-            </StackPanel>
-
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-
-                <Button Style="{StaticResource NavButtonStyle}" Content="Home" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
-                <Button Style="{StaticResource NavButtonStyle}" Content="Our Doctors" IsEnabled="False" x:Name="OurDoctorsButton" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
-                <Button Style="{StaticResource NavButtonStyle}" Content="Appointments" IsEnabled="False" x:Name="AppointmentsButton"  HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" Padding="20,10"></Button>
-
-                <Image Source="/Images/SearchIcon.png" x:Name="SearchButton" Width="30" Margin="10 0 10 0" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" MouseLeftButtonDown="OnSearchBarClicked" ></Image>
-
-            </StackPanel>
-
-            <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="16" Margin="20,0">
-                    <Button x:Name="LoginButton" BorderThickness="0" Background="Transparent" Content="Login" Padding="35,10" FontSize="18" ></Button>
+            
+            <!-- Logo Section -->
+            <StackPanel Grid.Column="0" 
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Center" 
+                       Orientation="Horizontal"
+                       Margin="0,0,20,0">
+                <Border Width="45" Height="45" 
+                        CornerRadius="22" 
+                        BorderBrush="{StaticResource MedicalCrimson}"
+                        BorderThickness="2"
+                        Margin="0,0,10,0">
+                    <Image Source="/Images/Logo.jpg" 
+                           Width="40" Height="40"
+                           Stretch="UniformToFill">
+                        <Image.Clip>
+                            <EllipseGeometry Center="20,20" RadiusX="18" RadiusY="18"/>
+                        </Image.Clip>
+                    </Image>
                 </Border>
-
+                <TextBlock Text="MyDoctors" 
+                          Style="{StaticResource BrandTextStyle}"
+                          VerticalAlignment="Center"/>
             </StackPanel>
-
-            <local:SearchBar x:Name="SearchBar" Grid.Row="1" Grid.ColumnSpan="3" Visibility="Visible"/>
+            
+            <!-- Navigation Section -->
+            <StackPanel Grid.Column="1" 
+                       Orientation="Horizontal" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center">
+                <Button Style="{StaticResource NavButtonStyle}" 
+                        Content="Home"/>
+                <Button Style="{StaticResource NavButtonStyle}" 
+                        Content="Our Doctors" 
+                        IsEnabled="False" 
+                        x:Name="OurDoctorsButton"/>
+                <Button Style="{StaticResource NavButtonStyle}" 
+                        Content="Appointments" 
+                        IsEnabled="False" 
+                        x:Name="AppointmentsButton"/>
+                
+                <!-- Search Icon with Hover Effect -->
+                <Border Background="Transparent" 
+                        CornerRadius="8" 
+                        Padding="10"
+                        Margin="10,0"
+                        x:Name="SearchIconBorder">
+                    <!--<Image Source="/Images/SearchIcon.png" 
+                           />-->
+                    <Path x:Name="SearchButton" 
+                           Width="26" Height="28"
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" 
+                           IsEnabled="False" 
+                           MouseLeftButtonDown="OnSearchBarClicked"
+                           Cursor="Hand" Fill="{StaticResource MedicalCrimson}" 
+                           Data="M21.707,20.293l-5.655-5.655c1.237-1.527,1.993-3.459,1.993-5.564c0-4.963-4.037-9-9-9s-9,4.037-9,9s4.037,9,9,9c2.105,0,4.037-0.756,5.564-1.993l5.655,5.655c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293C22.098,21.317,22.098,20.683,21.707,20.293z M3,9c0-3.309,2.691-6,6-6s6,2.691,6,6s-2.691,6-6,6S3,12.309,3,9z"/>
+                </Border>
+            </StackPanel>
+            
+            <!-- Login Section -->
+            <StackPanel Grid.Column="2" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Center"
+                       Margin="20,0,0,0">
+                <Button x:Name="LoginButton" 
+                        Style="{StaticResource LoginButtonStyle}"
+                        Content="Login" 
+                        Padding="30,12"/>
+            </StackPanel>
+            
+            <!-- Search Bar -->
+            <local:SearchBar x:Name="SearchBar" 
+                           Grid.Row="1" 
+                           Grid.ColumnSpan="3" 
+                           Visibility="Visible"/>
         </Grid>
-
-
     </Border>
 </UserControl>

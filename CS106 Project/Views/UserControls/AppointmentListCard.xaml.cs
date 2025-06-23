@@ -12,9 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CS106_Project.Classes;
 using CS106_Project.Models;
 using CS106_Project.Pages;
 using CS106_Project.Views.Windows;
+using MongoDB.Driver;
 
 namespace CS106_Project.Views.UserControls
 {
@@ -28,17 +30,33 @@ namespace CS106_Project.Views.UserControls
         public AppointmentListCard()
         {
             InitializeComponent();
-            
         }
 
-        //private void OnStackPanelMouseEnter(object sender, MouseEventArgs e)
-        //{
-        //    // Check if booking status is cancelled - if so, don't show cancel button
-        //    if (BookingStatus.Content.ToString().ToUpper() != "CANCELLED")
-        //    {
-        //        CancelButtonBorder.Visibility = Visibility.Visible;
-        //    }
-        //}
+        // New method for date stack panel mouse enter
+        private void OnDateStackPanelMouseEnter(object sender, MouseEventArgs e)
+        {
+            // Only show edit icon if status is not cancelled
+            if (BookingStatus.Content.ToString().ToUpper() != "CANCELLED" &&
+                BookingStatus.Content.ToString() != "Status")
+            {
+                EditIconBorder.Visibility = Visibility.Visible;
+            }
+        }
+
+        // New method for date stack panel mouse leave
+        private void OnDateStackPanelMouseLeave(object sender, MouseEventArgs e)
+        {
+            EditIconBorder.Visibility = Visibility.Collapsed;
+        }
+
+        // New method for edit icon click
+        private void OnEditIconClicked(object sender, MouseButtonEventArgs e)
+        {
+            if (DataContext is AppointmentCard appointment)
+            {
+                RescheduleAppointment(appointment);
+            }
+        }
 
         private void OnStackPanelMouseLeave(object sender, MouseEventArgs e)
         {
@@ -52,7 +70,7 @@ namespace CS106_Project.Views.UserControls
         private void OnStatusClicked(object sender, MouseButtonEventArgs e)
         {
             // Only allow click if not cancelled
-            if (BookingStatus.Content.ToString().ToUpper() != "CANCELLED" && BookingStatus.Content.ToString() != "Status")
+            if (BookingStatus.Content.ToString() != "CANCELLED" && BookingStatus.Content.ToString() != "Status")
             {
                 CancelButtonBorder.Visibility = Visibility.Visible;
             }
@@ -60,52 +78,23 @@ namespace CS106_Project.Views.UserControls
 
         private void OnCancelButtonClicked(object sender, RoutedEventArgs e)
         {
-            BookingStatus.Content = "CANCELLED";
-            CancelButtonBorder.Visibility = Visibility.Collapsed;
-
-            ParentPage?.UpdateDatabase(sender, e);
-        }
-        private void OnDateClicked(object sender, MouseButtonEventArgs e)
-        {
-            if (DataContext is AppointmentCard appointment)
-            {
-                RescheduleAppointment(appointment);
-            }
-        }
-
-        /*private void OnCancelButtonClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is AppointmentCard appointment)
-            {
-                MessageBoxResult result = MessageBox.Show(
-                    $"Are you sure you want to cancel the appointment with {appointment.DoctorName} on {appointment.Date:yyyy-MM-dd HH:mm}?",
+            MessageBoxResult result = MessageBox.Show(
+                    $"Are you sure you want to cancel the appointment?",
                     "Cancel Appointment",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question);
 
-                if (result == MessageBoxResult.Yes)
-                {
-                    appointment.Status = "Cancelled";
-                    // Update in database
-                    // await AppointmentService.UpdateAppointmentStatusAsync(appointment.Id, "Cancelled");
-                    MessageBox.Show("Appointment cancelled successfully.", "Success",
-                                  MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
 
-            CancelButtonBorder.Visibility = Visibility.Collapsed;
-            RescheduleButtonBorder.Visibility = Visibility.Collapsed;
-        }*/
-
-        private void OnRescheduleButtonClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is AppointmentCard appointment)
+            if (result == MessageBoxResult.Yes)
             {
-                RescheduleAppointment(appointment);
-            }
 
+                MessageBox.Show("Appointment cancelled successfully.", "Success",
+                              MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            BookingStatus.Content = "CANCELLED";
             CancelButtonBorder.Visibility = Visibility.Collapsed;
-            RescheduleButtonBorder.Visibility = Visibility.Collapsed;
+
+            ParentPage?.UpdateDatabase(sender, e);
         }
 
         private async void RescheduleAppointment(AppointmentCard appointment)
@@ -123,7 +112,7 @@ namespace CS106_Project.Views.UserControls
                     return;
                 }
 
-                RescheduleDialog dialog = new RescheduleDialog(doctorAvailability)
+                RescheduleDialog dialog = new RescheduleDialog(doctorAvailability, appointment)
                 {
                     Owner = Window.GetWindow(this)
                 };
@@ -134,9 +123,8 @@ namespace CS106_Project.Views.UserControls
                     DateTime newDate = dialog.SelectedDateTime.Value;
 
                     appointment.Date = newDate;
+                    DateText.Content = dialog.SelectedDateTime.Value;
 
-                    // Update in database
-                    // await AppointmentService.UpdateAppointmentDateAsync(appointment.Id, newDate);
 
                     MessageBox.Show(
                         $"Appointment with {appointment.DoctorName} rescheduled from {oldDate:yyyy-MM-dd HH:mm} to {newDate:yyyy-MM-dd HH:mm}",
@@ -152,18 +140,30 @@ namespace CS106_Project.Views.UserControls
             }
         }
 
-        // Method to get doctor availability - you'll need to implement this based on your service layer
-        private async System.Threading.Tasks.Task<Availability> GetDoctorAvailability(string doctorName)
+        private async Task<Availability> GetDoctorAvailability(string doctorName)
         {
-            // This should connect to your MongoDB and get the doctor's availability
-            // Example implementation:
-            /*
-            var doctorService = new DoctorService();
-            var doctor = await doctorService.GetDoctorByNameAsync(doctorName);
-            return doctor?.Availability;
-            */
+            new Connection();
+            var Collection = Connection.DB.GetCollection<Doctors>("doctors");
+            var Filter = Builders<Doctors>.Filter.Eq(d => d.Name, doctorName);
 
-            // For now, return a default availability (you should replace this)
+            var Result = Collection.Find(Filter).ToList();
+            if (Result.Any())
+            {
+                foreach (var Doctor in Result)
+                {
+                    return new Availability
+                    {
+                        StartTime = Doctor.Availability.StartTime,
+                        EndTime = Doctor.Availability.EndTime
+                    };
+                }
+            }
+            else
+            {
+                MessageBox.Show("Doctor Not Found!");
+            }
+
+            //If nothing found
             return new Availability
             {
                 StartTime = "09:00",

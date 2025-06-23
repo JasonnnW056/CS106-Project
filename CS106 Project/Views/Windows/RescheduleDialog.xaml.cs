@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CS106_Project.Classes;
 using CS106_Project.Models;
+using MongoDB.Driver;
 
 namespace CS106_Project.Views.Windows
 {
@@ -22,11 +24,13 @@ namespace CS106_Project.Views.Windows
     {
         public DateTime? SelectedDateTime { get; private set; }
         private readonly Availability _availability;
+        private readonly AppointmentCard _appointment;
 
-        public RescheduleDialog(Availability availability)
+        public RescheduleDialog(Availability availability, AppointmentCard appointment)
         {
             InitializeComponent();
             _availability = availability;
+            _appointment = appointment;
             DateBox.SelectedDate = DateTime.Today;
             LoadAvailableTimes();
         }
@@ -67,23 +71,39 @@ namespace CS106_Project.Views.Windows
                 {
                     TimePicker.SelectedIndex = 0;
                 }
+
+                BlackOutDates();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading available times: {ex.Message}", "Error",
-                              MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Error loading available times!");
             }
 
             ValidateSelection();
         }
+        private void BlackOutDates()
+        {
+            DateBox.DisplayDateStart = DateTime.Today;
+            DateBox.DisplayDateEnd = DateTime.Today.AddDays(60);
 
+            DateTime StartDate = DateTime.Today;
+            DateTime EndDate = DateTime.Today.AddDays(60);
+
+            for (DateTime date = StartDate; date <= EndDate; date = date.AddDays(1))
+            {
+                if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    DateBox.BlackoutDates.Add(new CalendarDateRange(date));
+                }
+            }
+        }
         private void UpdateSelectionSummary()
         {
             if (DateBox.SelectedDate.HasValue && TimePicker.SelectedItem != null)
             {
                 DateTime selectedDate = DateBox.SelectedDate.Value;
-                string selectedTime = TimePicker.SelectedItem.ToString();
-                SelectionSummary.Text = $"New appointment scheduled for:\n{selectedDate:dddd, MMMM dd, yyyy} at {selectedTime}";
+                string? selectedTime = TimePicker.SelectedItem.ToString();
+                SelectionSummary.Text = $"Appointment rescheduled for:\n{selectedDate:dddd, MMMM dd, yyyy} at {selectedTime}";
             }
             else
             {
@@ -103,13 +123,13 @@ namespace CS106_Project.Views.Windows
             SelectedDateTime = CombineDate();
             if (SelectedDateTime.HasValue)
             {
+                UpdateAppointmentDate(SelectedDateTime);
                 DialogResult = true;
                 Close();
             }
             else
             {
-                MessageBox.Show("Please select both date and time.", "Invalid Selection",
-                              MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please select both date and time.", "Invalid Selection");
             }
         }
 
@@ -137,6 +157,20 @@ namespace CS106_Project.Views.Windows
                 }
             }
             return null;
+        }
+
+        public void UpdateAppointmentDate(DateTime? NewAppointmentDate)
+        {
+            new Connection();
+            var Collection = Connection.DB.GetCollection<AppointmentDetails>("appointments");
+            var Filter = Builders<AppointmentDetails>.Filter.Eq(a=>a.Id, _appointment.Id);
+
+            var UpdateBuilder = Builders<AppointmentDetails>.Update.Set(a => a.AppointmentDate, NewAppointmentDate);
+            var UpdateResult = Collection.UpdateOne(Filter, UpdateBuilder);
+
+            if (UpdateResult.ModifiedCount != 0) {
+                MessageBox.Show("Updated Appointment Date Successfully!");
+            }
         }
     }
 }
