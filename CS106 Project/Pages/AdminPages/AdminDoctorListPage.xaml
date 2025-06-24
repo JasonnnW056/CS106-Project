@@ -67,7 +67,7 @@
                             <Button Content="Delete" 
                                   Style="{StaticResource DeleteButtonStyle}"
                                   
-                                  Tag="{Binding Id}" Click="OnDeleteDoctor"/>
+                                  Tag="{Binding Id}" Click="OnDeleteDoctors" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

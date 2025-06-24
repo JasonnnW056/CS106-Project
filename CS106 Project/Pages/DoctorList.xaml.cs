@@ -38,15 +38,12 @@ namespace CS106_Project.Pages
 
             var Result = Collection.Find(Filter).ToList();
 
-            if (Result.Count() > 0)
+            if (!Result.Any())
             {
-                MessageBox.Show("Connected");
+                NotFoundPage.Visibility = Visibility.Visible;
+                return;
             }
-            else
-            {
-                MessageBox.Show("Nah");
-            }
-            
+
             AddCard(Result);
             //foreach (var item in Result)
             //{
@@ -81,15 +78,12 @@ namespace CS106_Project.Pages
 
             var Result = Collection.Find(Filter).ToList();
 
-            if(Result.Count() > 0)
+            if (!Result.Any())
             {
-                AddCard(Result);
-            }else
-            {
-                //Edit ini
-                MessageBox.Show("Not Found Edit ini");
+                NotFoundPage.Visibility = Visibility.Visible;
+                return;
             }
-            
+            AddCard(Result);
         }
 
         public void AddCard(List<Doctors> Result)

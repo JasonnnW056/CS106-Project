@@ -12,20 +12,22 @@
 
 
     <Grid  Height="Auto">
-        
+
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            
+
 
         </Grid.RowDefinitions>
 
+        <!--Header Menu-->
         <components:HeaderMenu Grid.Row="0"/>
 
         <!--If not found-->
         <components:_404NotFound Grid.Row="1" x:Name="NotFoundPage" Panel.ZIndex="100" Visibility="Collapsed"/>
 
+        <!--Main Content-->
         <StackPanel Grid.Row="1" Margin="0,5"  x:Name="AppointmentContainer">
 
         </StackPanel>

@@ -50,16 +50,11 @@ namespace CS106_Project.Pages
             var Filter = Builders<AppointmentDetails>.Filter.Empty;
             var Result = Collection.Find(Filter).ToList();
 
-            if (Result.Count() > 0)
+            if (!Result.Any())
             {
-                MessageBox.Show("Connected apointmentdetails");
+                NotFoundPage.Visibility = Visibility.Visible;
+                return;
             }
-            else
-            {
-                MessageBox.Show("Nah");
-            }
-
-
 
 
             LoadBookedDoctorData();

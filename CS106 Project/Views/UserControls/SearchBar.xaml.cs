@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CS106_Project.Classes;
 using CS106_Project.Pages;
+using CS106_Project.Pages.AdminPages;
 
 namespace CS106_Project.Views.UserControls
 {
@@ -24,8 +26,27 @@ namespace CS106_Project.Views.UserControls
         public SearchBar()
         {
             InitializeComponent();
+            UpdateUIOnAdminLogin();
         }
 
+        private void UpdateUIOnAdminLogin()
+        {
+            if (LoginManager.IsAdmin && LoginManager.IsLoggedIn)
+            {
+                SearchLabel.Text = "Search";
+                PlaceholderText.Text = "Enter user name or doctor name...";
+                SearchFilter.Items.Clear();
+
+                var userItem = new ComboBoxItem { Content = "User" };
+                var doctorItem = new ComboBoxItem { Content = "Doctor" };
+
+                SearchFilter.Items.Add(userItem);
+                SearchFilter.Items.Add(doctorItem);
+
+                SearchFilter.SelectedIndex = 0;
+
+            }
+        }
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             PlaceholderText.Visibility = string.IsNullOrEmpty(SearchBox.Text) ?
@@ -45,26 +66,44 @@ namespace CS106_Project.Views.UserControls
 
         private void OnSearch(object sender, MouseButtonEventArgs e)
         {
+            
             if (SearchFilter.SelectedItem is ComboBoxItem selectedItem)
             {
                 string? Value = selectedItem.Content?.ToString();
                 if (Value != null && SearchBox.Text != null)
                 {
-                    MessageBox.Show(Value); 
-                    
                     var Keyword = SearchBox.Text.ToString();
                    
-                    MessageBox.Show(Keyword);
 
                     var mainWindow = Application.Current.MainWindow;
                     var mainFrame = mainWindow.FindName("MainFrame") as Frame;
 
+
                     if (mainFrame != null)
                     {
-                        mainFrame.NavigationService.Navigate(new DoctorList(Value, Keyword));
+                        if (LoginManager.IsAdmin)
+                        {
+                            MessageBox.Show(Value);
+                            //Admin Login
+                            if (Value == "User")
+                            {
+                                mainFrame.NavigationService.Navigate(new AdminUserListPage(Keyword));
+                            }
+                            else if (Value == "Doctor")
+                            {
+                                mainFrame.NavigationService.Navigate(new AdminDoctorListPage(Keyword));
+                            }
+
+                        }
+                        else
+                        {
+                            //User Login
+                            mainFrame.NavigationService.Navigate(new DoctorList(Value, Keyword));
+                        }
                     }
                 }
             }
+            
         }
     }
 }

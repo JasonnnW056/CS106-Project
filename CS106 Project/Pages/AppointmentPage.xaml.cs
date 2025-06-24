@@ -32,7 +32,7 @@ namespace CS106_Project.Pages
 
             new Connection();
 
-            string objectId = "6847c69a6753c87133539397";
+            string? objectId = LoginManager.UserID;
 
             Collection = Connection.DB.GetCollection<AppointmentDetails>("appointments");
             var Filter = Builders<AppointmentDetails>.Filter.Eq(a => a.UserId, objectId);

@@ -61,5 +61,13 @@ namespace CS106_Project.Pages
                 MessageBox.Show("Profile updated!");
             }
         }
+
+        private void OnCancelReset(object sender, RoutedEventArgs e)
+        {
+            var Navigation = NavigationService.GetNavigationService(this);
+            var ProfilePage = new ProfilePage();    
+
+            Navigation.Navigate(ProfilePage);
+        }
     }
 }

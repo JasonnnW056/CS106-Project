@@ -18,7 +18,11 @@
             
         </Grid.RowDefinitions>
 
+        <!--Header Menu-->
         <components:HeaderMenu/>
+
+        <!--If not found-->
+        <components:_404NotFound Grid.Row="1" x:Name="NotFoundPage" Panel.ZIndex="100" Visibility="Collapsed"/>
 
         <ScrollViewer Grid.Row="1">
             <StackPanel>

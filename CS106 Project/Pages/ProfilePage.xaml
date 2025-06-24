@@ -68,7 +68,7 @@
 
                     <Border Style="{StaticResource ActionButtonBorderStyle}">
                         <Button Style="{StaticResource ActionButtonStyle}"
-                                Content="Reset Password"/>
+                                Content="Reset Password" Click="OnResetClick"/>
                     </Border>
                 </StackPanel>
 

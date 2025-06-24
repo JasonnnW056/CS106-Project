@@ -10,9 +10,11 @@
       Title="BookingPage">
     
     <Grid Background="{StaticResource PageBackgroundBrush}">
-        <!-- Fixed Header - Always on top with Panel.ZIndex -->
-        <components:HeaderMenu  
-                              VerticalAlignment="Top"/>
+        
+        <!--Header Menu-->
+        <components:HeaderMenu VerticalAlignment="Top"/>
+        <!--If not found-->
+        <components:_404NotFound Grid.Row="1" x:Name="NotFoundPage" Panel.ZIndex="100" Visibility="Collapsed"/>
 
         <!-- Main Content with top margin to account for fixed header -->
         <ScrollViewer VerticalScrollBarVisibility="Auto" 

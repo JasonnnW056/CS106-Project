@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CS106_Project.Classes;
 using CS106_Project.Pages;
+using CS106_Project.Pages.AdminPages;
 
 namespace CS106_Project.Views.UserControls
 {
@@ -32,14 +33,44 @@ namespace CS106_Project.Views.UserControls
         public void UpdateUI()
         {
             if (LoginManager.IsLoggedIn)
-            {
+            { 
                 LoginButton.Content = LoginManager.CurrentUser;
-              /*  OurDoctorsButton.IsEnabled = true;*/
+                HomeButton.IsEnabled = true;
                 AppointmentsButton.IsEnabled = true;
-                SearchButton.IsEnabled = true;
+                SearchIconBorder.IsEnabled = true;
+
+                if (LoginManager.IsAdmin == false)
+                {
+                    //User Login
+                    OurSpecialtiesComboBox.IsEnabled = true;
+                    
+                }
+                else
+                {
+                    //Admin Login
+                    HomeButton.Content = "User List";
+                    AppointmentsButton.Content = "Doctor List";
+                    OurSpecialtiesComboBox.Visibility = Visibility.Collapsed;
+
+                    HomeButton.Click -= OnHomeButtonClick;
+                    HomeButton.Click += OnUserListClick;
+
+                    AppointmentsButton.Click -= OnAppointmentClick;
+                    AppointmentsButton.Click += OnDoctorListClick;
+
+                }
+               
             }
         }
 
+        //User Functionality
+        private void OnHomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            var DoctorPage = new DoctorList();
+
+            var Navigation = NavigationService.GetNavigationService(this);
+            Navigation.Navigate(DoctorPage);
+        }
         public void OnSearchBarClicked(object sender, MouseButtonEventArgs e)
         {
             if (!SearchBar.IsVisible) {
@@ -88,6 +119,22 @@ namespace CS106_Project.Views.UserControls
                     }
                 }
             }
+        }
+
+        //Admin Functionality
+        private void OnUserListClick(object sender, RoutedEventArgs e)
+        {
+            var UserListPage = new AdminUserListPage();
+
+            var Navigation = NavigationService.GetNavigationService(this);
+            Navigation.Navigate(UserListPage);
+        }
+        private void OnDoctorListClick(object sender, RoutedEventArgs e)
+        {
+            var DoctorListPage = new AdminDoctorListPage();
+
+            var Navigation = NavigationService.GetNavigationService(this);
+            Navigation.Navigate(DoctorListPage);
         }
     }
 }

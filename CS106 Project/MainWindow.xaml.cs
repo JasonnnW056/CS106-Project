@@ -30,8 +30,9 @@ namespace CS106_Project
             //{
             //    HourPicker.Items.Add(hour.ToString("D2") + ":00");
             //}
-            
-            MainFrame.Navigate(new Pages.AdminPages.AdminUserListPage());
+
+            /*MainFrame.Navigate(new Pages.AdminPages.AdminUserListPage());*/
+            MainFrame.Navigate(new Pages.LoginPage());
             //new Connection();
 
             //var Collection = Connection.DB.GetCollection<Doctors>("doctors");

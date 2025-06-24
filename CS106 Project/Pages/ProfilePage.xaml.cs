@@ -29,7 +29,7 @@ namespace CS106_Project.Pages
         {
             InitializeComponent();
 
-            string objectID = "6850e8e17b1f64e977350bdf";
+            string? objectID = LoginManager.UserID;
 
             new Connection(); //Can remove for all page just need to load at the mainwindow
 
@@ -104,6 +104,14 @@ namespace CS106_Project.Pages
                 MessageBox.Show("Logging out...");
                 
             }
+        }
+
+        private void OnResetClick(object sender, RoutedEventArgs e)
+        {
+            var Navigation = NavigationService.GetNavigationService(this);
+            var ResetPasswordPage = new ResetPasswordPage();
+
+            Navigation.Navigate(ResetPasswordPage);
         }
     }
 }

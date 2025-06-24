@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using CS106_Project.Classes;
 using CS106_Project.Models;
 using CS106_Project.Pages;
+using CS106_Project.Pages.AdminPages;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -74,24 +75,39 @@ namespace CS106_Project.Views.UserControls
                     if (PasswordChecker)
                     {
                         MessageText.Visibility = Visibility.Visible;
-                        MessageText.Content = "Login Successfully!"; // Fix: Use 'Content' instead of 'Text'  
-                        LoginManager.Login(item.Username, item.Id);
-                        MessageBox.Show(LoginManager.CurrentUser);
-                        MessageBox.Show(LoginManager.UserID);
-
+                        MessageText.Content = "Login Successfully!";
+                        
                         // Navigation  
                         var mainWindow = Application.Current.MainWindow;
                         var mainFrame = mainWindow.FindName("MainFrame") as Frame;
 
-                        if (mainFrame != null)
+                        //Checking if admin login or user login
+                        if (item.Email.Contains("@admin.mydoctors.com"))
                         {
-                            mainFrame.Navigate(new DoctorList());
+                            //Admin Login
+                            LoginManager.Login(item.Username, item.Id, true);
+                            mainFrame?.Navigate(new AdminUserListPage());
+                            MessageBox.Show("Admin Login");
                         }
+                        else
+                        {
+                            //User Login
+                            LoginManager.Login(item.Username, item.Id, false);
+                            mainFrame?.Navigate(new DoctorList());
+                            MessageBox.Show("User Login");
+                            
+                           
+                        }
+                           
+
+                        
+
+                        
                     }
                     else
                     {
                         MessageText.Visibility = Visibility.Visible;
-                        MessageText.Content = "Invalid login details!"; // Fix: Use 'Content' instead of 'Text'  
+                        MessageText.Content = "Invalid login details!";   
                     }
                 }
             }
@@ -101,19 +117,6 @@ namespace CS106_Project.Views.UserControls
                 MessageText.Content = "Email does not exist!"; // Fix: Use 'Content' instead of 'Text'  
             }
         }
-        /*private bool EmailValidation(string Email)
-        {
-            //Must contain '@'
-            string EmailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-
-
-            if (string.IsNullOrWhiteSpace(Email))
-            {
-                return false;
-            }
-
-            return Regex.IsMatch(Email, EmailPattern);
-        }*/
 
         private void OnSwitchingToSignUp(object sender, MouseButtonEventArgs e)
         {

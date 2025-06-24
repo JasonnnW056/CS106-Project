@@ -55,11 +55,13 @@
                        Orientation="Horizontal" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Center">
-                <Button Style="{StaticResource NavButtonStyle}" 
-                        Content="Home"/>
+                <Button x:Name="HomeButton"
+                        Style="{StaticResource NavButtonStyle}" 
+                        Content="Home" Click="OnHomeButtonClick"
+                        IsEnabled="False"/>
                         
                 <ComboBox x:Name="OurSpecialtiesComboBox"
-                          IsEnabled="True" 
+                          IsEnabled="False" 
                           Style="{StaticResource NavComboBoxStyle}"
                           ItemContainerStyle="{StaticResource NavComboBoxItemStyle}"
                           SelectedIndex="0" SelectionChanged="OnSelectSpecialty">
