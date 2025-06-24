@@ -5,33 +5,75 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CS106_Project.Views.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="1450" d:DesignWidth="800">
     <Grid>
+        <StackPanel x:Name="SignUpContainer" Background="Transparent" Margin="0,20,0,0">
 
-        <StackPanel x:Name="SignUpContainer"  Background="White">
-            <Label Content="Sign Up" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Margin="0 0 0 15"></Label>
+            <!-- Header Section -->
+            <Border Background="{StaticResource SoftPink}" CornerRadius="12" Padding="30,20" Margin="0,0,0,30">
+                <StackPanel>
+                    <TextBlock Text="Create Account" Style="{StaticResource HeroTitleStyle}" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Text="Join our healthcare community today" 
+                               Style="{StaticResource HeroSubtitleStyle}" 
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Form Fields -->
+            <StackPanel Margin="0,0,0,20">
+                <!-- Username Field -->
+                <TextBlock Text="Full Name" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox x:Name="UsernameInput" Style="{StaticResource FormInputStyle}" 
+                         Tag="Enter your full name"/>
+
+                <!-- Phone Field -->
+                <TextBlock Text="Phone Number" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox x:Name="PhoneInput" Style="{StaticResource FormInputStyle}" 
+                         Tag="Enter your phone number"/>
+
+                <!-- Email Field -->
+                <TextBlock Text="Email Address" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox x:Name="EmailInput" Style="{StaticResource FormInputStyle}" 
+                         Tag="Enter your email address"/>
+
+                <!-- Password Field -->
+                <TextBlock Text="Password" Style="{StaticResource FormLabelStyle}"/>
+                <PasswordBox x:Name="PasswordInput" Style="{StaticResource PasswordBoxStyle}"/>
 
 
-            <Label Content="Username" HorizontalAlignment="Left" Margin="25 0 0 5" FontSize="20"></Label>
-            <TextBox x:Name="UsernameInput"  VerticalContentAlignment="Center" Margin="30 10 25 0" Height="40" FontSize="18"></TextBox >
 
-            <Label Content="Phone Number" HorizontalAlignment="Left" Margin="25 10 0 5" FontSize="20"></Label>
-            <TextBox x:Name="PhoneInput"  VerticalContentAlignment="Center" Margin="30 10 25 0" Height="40" FontSize="18"></TextBox >
 
-            <Label Content="Email" HorizontalAlignment="Left" Margin="25 10 0 0" FontSize="20"></Label>
-            <TextBox x:Name="EmailInput"  VerticalContentAlignment="Center" Margin="30 10 25 0" Height="40" FontSize="18"></TextBox>
+                <!-- Error Message -->
+                <Label x:Name="ErrorText" 
+                       Visibility="Collapsed" 
+                       Style="{StaticResource ErrorLabelStyle}"
+                       Content=""/>
+            </StackPanel>
 
-            <Label Content="Password" HorizontalAlignment="Left" Margin="25 10 0 0" FontSize="20"></Label>
-            <PasswordBox x:Name="PasswordInput"  VerticalContentAlignment="Center" Margin="30 10 25 0" Height="40" FontSize="18"></PasswordBox>
+            <!-- Sign Up Button -->
+            <Button x:Name="SignUpButton" 
+                    Content="Create Account" 
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,10,0,30"
+                    Click="OnSignUp"/>
 
-            <!--errortext cek-->
-            <TextBlock x:Name="ErrorText" Visibility="Collapsed" FontSize="18" TextWrapping="Wrap" Foreground="Red" Text="" HorizontalAlignment="Left" Margin="30 10 0 0"></TextBlock>
-            <Button x:Name="SignUpButton" Content="Sign Up"  Margin="30 40 25 0" Height="40" Click="OnSignUp" FontSize="18"></Button>
-
-            <TextBlock  Margin="30 10 0 75" HorizontalAlignment="Left" FontSize="18" MouseLeftButtonDown="OnSwitchingToLogin">
-                <Underline >Already have an account?</Underline>
-            </TextBlock>
+            <!-- Switch to Login -->
+            <Border Background="{StaticResource OffWhite}" 
+                    CornerRadius="8" 
+                    Padding="20,15" 
+                    HorizontalAlignment="Center"
+                    Margin="0,0,0,20">
+                <TextBlock HorizontalAlignment="Center" 
+                           FontSize="16" 
+                           FontFamily="Segoe UI"
+                           MouseLeftButtonDown="OnSwitchingToLogin"
+                           Cursor="Hand">
+                    <Run Text="Already have an account? " Foreground="{StaticResource MediumGray}"/>
+                    <Run Text="Sign in here" Foreground="{StaticResource MedicalCrimson}" FontWeight="SemiBold" TextDecorations="Underline"/>
+                </TextBlock>
+            </Border>
         </StackPanel>
-
     </Grid>
 </UserControl>

@@ -6,18 +6,9 @@
              xmlns:local="clr-namespace:CS106_Project.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1280">
-    <UserControl.Resources>
-        <Style x:Key="NavButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="20,10"/>
-            <Setter Property="Margin" Value="45,0"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="FontSize" Value="18"/>
-        </Style>
-    </UserControl.Resources>
+    
 
-    <Border Background="{StaticResource OffWhite}" 
+     <Border Background="{StaticResource OffWhite}" 
             BorderBrush="{StaticResource LightGray}" 
             BorderThickness="0,0,0,2">
         <Border.Effect>
@@ -66,14 +57,26 @@
                        VerticalAlignment="Center">
                 <Button Style="{StaticResource NavButtonStyle}" 
                         Content="Home"/>
-                <Button Style="{StaticResource NavButtonStyle}" 
-                        Content="Our Doctors" 
-                        IsEnabled="False" 
-                        x:Name="OurDoctorsButton"/>
+                        
+                <ComboBox x:Name="OurSpecialtiesComboBox"
+                          IsEnabled="True" 
+                          Style="{StaticResource NavComboBoxStyle}"
+                          ItemContainerStyle="{StaticResource NavComboBoxItemStyle}"
+                          SelectedIndex="0" SelectionChanged="OnSelectSpecialty">
+                    <ComboBoxItem IsEnabled="False" IsSelected="True">Our Doctors' Specialties</ComboBoxItem>
+                    <ComboBoxItem>Cardiology</ComboBoxItem>
+                    <ComboBoxItem>Dermatology</ComboBoxItem>
+                    <ComboBoxItem>Pediatrics</ComboBoxItem>
+                    <ComboBoxItem>Orthopedics</ComboBoxItem>
+                    <ComboBoxItem>Neurology</ComboBoxItem>
+                    <ComboBoxItem>Gastroenterology</ComboBoxItem>
+                </ComboBox>
+                
                 <Button Style="{StaticResource NavButtonStyle}" 
                         Content="Appointments" 
                         IsEnabled="False" 
-                        x:Name="AppointmentsButton" Click="OnAppointmentClick"/>
+                        x:Name="AppointmentsButton" 
+                        Click="OnAppointmentClick"/>
                 
                 <!-- Search Icon with Hover Effect -->
                 <Border Background="Transparent" 
@@ -82,16 +85,24 @@
                         Margin="10,0"
                         x:Name="SearchIconBorder"
                         MouseLeftButtonDown="OnSearchBarClicked"
-                        Cursor="Hand">
+                        Cursor="Hand"
+                        IsEnabled="False">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource SoftPink}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
                    
                     <Path x:Name="SearchButton" 
-                           Width="26" Height="28"
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" 
-                           IsEnabled="False" 
-                           
-                            Fill="{StaticResource MedicalCrimson}" 
-                           Data="M21.707,20.293l-5.655-5.655c1.237-1.527,1.993-3.459,1.993-5.564c0-4.963-4.037-9-9-9s-9,4.037-9,9s4.037,9,9,9c2.105,0,4.037-0.756,5.564-1.993l5.655,5.655c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293C22.098,21.317,22.098,20.683,21.707,20.293z M3,9c0-3.309,2.691-6,6-6s6,2.691,6,6s-2.691,6-6,6S3,12.309,3,9z"/>
+                          Width="26" Height="28"
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center" 
+                          Fill="{StaticResource MedicalCrimson}" 
+                          Data="M21.707,20.293l-5.655-5.655c1.237-1.527,1.993-3.459,1.993-5.564c0-4.963-4.037-9-9-9s-9,4.037-9,9s4.037,9,9,9c2.105,0,4.037-0.756,5.564-1.993l5.655,5.655c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293C22.098,21.317,22.098,20.683,21.707,20.293z M3,9c0-3.309,2.691-6,6-6s6,2.691,6,6s-2.691,6-6,6S3,12.309,3,9z"/>
                 </Border>
             </StackPanel>
             
@@ -99,11 +110,12 @@
             <StackPanel Grid.Column="2" 
                        HorizontalAlignment="Left" 
                        VerticalAlignment="Center"
-                       Margin="20,0,0,0">
+                       Margin="50,0,0,0">
                 <Button x:Name="LoginButton" 
                         Style="{StaticResource LoginButtonStyle}"
                         Content="Login" 
-                        Padding="30,12" Click="OnLoginClick"/>
+                        Padding="30,12" 
+                        Click="OnLoginClick"/>
             </StackPanel>
             
             <!-- Search Bar -->

@@ -39,13 +39,10 @@ namespace CS106_Project.Pages
             var Result = Collection.Find(Filter).ToList();
 
 
-            if (Result.Count() > 0)
+            if (!Result.Any())
             {
-                MessageBox.Show("Connected");
-            }
-            else
-            {
-                MessageBox.Show("Nah");
+                NotFoundPage.Visibility = Visibility.Visible;
+                return;
             }
 
 

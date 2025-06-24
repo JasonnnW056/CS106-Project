@@ -34,7 +34,7 @@ namespace CS106_Project.Views.UserControls
             if (LoginManager.IsLoggedIn)
             {
                 LoginButton.Content = LoginManager.CurrentUser;
-                OurDoctorsButton.IsEnabled = true;
+              /*  OurDoctorsButton.IsEnabled = true;*/
                 AppointmentsButton.IsEnabled = true;
                 SearchButton.IsEnabled = true;
             }
@@ -67,6 +67,27 @@ namespace CS106_Project.Views.UserControls
             var AppointmentPage = new AppointmentPage();
             var Navigation = NavigationService.GetNavigationService(this);
             Navigation.Navigate(AppointmentPage);
+        }
+
+        private void OnSelectSpecialty(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox)
+            {
+                if (comboBox.SelectedItem is ComboBoxItem selectedItem)
+                {
+                    OurSpecialtiesComboBox.SelectedIndex = 0;
+                        
+                    string? specialty = selectedItem.Content?.ToString();
+                    if (specialty != null && specialty != "Our Doctors' Specialties")
+                    {
+                        MessageBox.Show(specialty);
+                        var DoctorPage = new DoctorList("specialty",specialty);
+
+                        var Navigation = NavigationService.GetNavigationService(this);
+                        Navigation.Navigate(DoctorPage);
+                    }
+                }
+            }
         }
     }
 }

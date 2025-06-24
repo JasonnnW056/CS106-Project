@@ -9,46 +9,27 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="AppointmentPage">
 
-    
 
-        <Grid  Height="Auto">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            
+
+    <Grid  Height="Auto">
+        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            
 
         </Grid.RowDefinitions>
 
-        <components:HeaderMenu Grid.ColumnSpan="4" />
+        <components:HeaderMenu Grid.Row="0"/>
 
-<!--Bikin kayak children lalu bkinnya diluar loop data contextya diubbah-->
-        <!--<Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Grid.Row="1" Background="LightGray">
-            <Label  Content="Date" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" ></Label>
-        </Border>
+        <!--If not found-->
+        <components:_404NotFound Grid.Row="1" x:Name="NotFoundPage" Panel.ZIndex="100" Visibility="Collapsed"/>
 
-        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Grid.Row="1" Background="LightGray">
-            <Label  Content="DoctorName" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-        </Border>
-        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" Grid.Row="1" Background="LightGray">
-            <Label  Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center"></Label >
-        </Border>
-        <Border BorderBrush="Black" BorderThickness="1" Grid.Column="3" Grid.Row="1" Background="LightGray">
-           <Label  Content="Status" HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
-        </Border>-->
+        <StackPanel Grid.Row="1" Margin="0,5"  x:Name="AppointmentContainer">
 
-
-
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="4" Width="1000" Margin="0,5"  x:Name="AppointmentContainer">
-            
         </StackPanel>
-        </Grid>
+    </Grid>
 
-    
+
 </Page>

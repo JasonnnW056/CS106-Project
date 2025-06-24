@@ -16,6 +16,7 @@
     <None Remove="Images\DoctorIcon2.png" />
     <None Remove="Images\EditIcon.png" />
     <None Remove="Images\Logo.jpg" />
+    <None Remove="Images\NotFoundIcon.jpg" />
     <None Remove="Images\PasswordIcon.png" />
     <None Remove="Images\ProfilePageBackground.jpg" />
     <None Remove="Images\SearchIcon.png" />
@@ -28,6 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\NotFoundIcon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="MongoDB.Driver" Version="3.4.0" />
   </ItemGroup>
@@ -36,16 +43,10 @@
     <Resource Include="Images\DoctorIcon.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\EditIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Images\Logo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\PasswordIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\ProfilePageBackground.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\SearchIcon.png">

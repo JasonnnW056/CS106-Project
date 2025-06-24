@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+
+
+    <!-- Label Styles -->
+    <Style x:Key="DateLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource CharcoalText}"/>
+    </Style>
+
+    <Style x:Key="DoctorLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource CharcoalText}"/>
+    </Style>
+
+    <Style x:Key="TypeLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{StaticResource MediumGray}"/>
+        <Setter Property="Background" Value="{StaticResource LightGray}"/>
+        <Setter Property="Padding" Value="12,6"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Label">
+                    <Border Background="{TemplateBinding Background}" 
+                            CornerRadius="12" 
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StatusLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Padding" Value="12,6"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Label">
+                    <Border x:Name="StatusBorder" 
+                            Background="#E8F5E8" 
+                            CornerRadius="15" 
+                            Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Status}" Value="Confirmed">
+                            <Setter TargetName="StatusBorder" Property="Background" Value="#E8F5E8"/>
+                            <Setter Property="Foreground" Value="#2E7D32"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}" Value="Pending">
+                            <Setter TargetName="StatusBorder" Property="Background" Value="{StaticResource SoftPink}"/>
+                            <Setter Property="Foreground" Value="{StaticResource MedicalCrimson}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}" Value="CANCELLED">
+                            <Setter TargetName="StatusBorder" Property="Background" Value="#FFEBEE"/>
+                            <Setter Property="Foreground" Value="#D32F2F"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}" Value="Completed">
+                            <Setter TargetName="StatusBorder" Property="Background" Value="#E3F2FD"/>
+                            <Setter Property="Foreground" Value="#1976D2"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

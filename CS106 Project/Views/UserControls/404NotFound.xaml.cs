@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CS106_Project.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for AppointmentTable.xaml
+    /// Interaction logic for _404NotFound.xaml
     /// </summary>
-    public partial class AppointmentTable : UserControl
+    public partial class _404NotFound : UserControl
     {
-        public AppointmentTable()
+        public _404NotFound()
         {
             InitializeComponent();
         }

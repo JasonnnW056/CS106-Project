@@ -7,21 +7,72 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel x:Name="LoginContainer" Background="White"  >
-            <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Margin="0 30 0 15"></Label>
-
-            <Label Content="Email" HorizontalAlignment="Left" Margin="25 10 0 0" FontSize="20"></Label>
-            <TextBox x:Name="EmailInput"  VerticalContentAlignment="Center"  Height="40" Margin="30 10 25 0" FontSize="18"></TextBox>
-
-            <Label Content="Password" HorizontalAlignment="Left" Margin="25 10 0 0" FontSize="20"></Label>
-            <PasswordBox x:Name="PasswordInput"  VerticalContentAlignment="Center"  Margin="30 10 25 0" Height="40" FontSize="18"></PasswordBox>
-
-            <TextBlock x:Name="MessageText" Visibility="Collapsed" TextWrapping="Wrap" Foreground="Red" Text="" HorizontalAlignment="Left" Margin="30 10 0 0" FontSize="18"></TextBlock>
-            <Button x:Name="LoginButton" Content="Login" FontSize="18"  Height="40"  Margin="30 30 25 0" Click="OnLogin" ></Button>
-
-            <TextBlock Margin="30 10 0 0" HorizontalAlignment="Left" FontSize="18" MouseLeftButtonDown="OnSwitchingToSignUp">
-                <Underline >Do not have an account yet?</Underline>
-            </TextBlock>
+        <StackPanel x:Name="LoginContainer" Background="Transparent" Margin="0,20,0,0">
+            
+            <!-- Header Section -->
+            <Border Background="{StaticResource SoftPink}" CornerRadius="12" Padding="30,20" Margin="0,0,0,30">
+                <StackPanel>
+                    <TextBlock Text="Welcome Back" Style="{StaticResource HeroTitleStyle}" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+                    <TextBlock Text="Please sign in to your account" 
+                               Style="{StaticResource HeroSubtitleStyle}" 
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+            
+            <!-- Form Fields -->
+            <StackPanel Margin="0,0,0,20">
+                <!-- Email Field -->
+                <TextBlock Text="Email Address" Style="{StaticResource FormLabelStyle}"/>
+                <TextBox x:Name="EmailInput" Style="{StaticResource FormInputStyle}" 
+                         Tag="Enter your email address"/>
+                
+                <!-- Password Field -->
+                <TextBlock Text="Password" Style="{StaticResource FormLabelStyle}"/>
+                <PasswordBox x:Name="PasswordInput" 
+                             Height="45"
+                             Style="{StaticResource PasswordBoxStyle}"
+                             BorderBrush="{StaticResource LightGray}"
+                             BorderThickness="2"
+                             Background="White"
+                             Margin="0,0,0,15"
+                             Padding="15,0"
+                             VerticalContentAlignment="Center"
+                             FontSize="16"
+                             FontFamily="Segoe UI"
+                             Foreground="{StaticResource CharcoalText}">
+                    
+                </PasswordBox>
+                
+                <!-- Error Message -->
+                <Label x:Name="MessageText" 
+                       Visibility="Collapsed" 
+                       Style="{StaticResource ErrorLabelStyle}"
+                       Content=""/>
+            </StackPanel>
+            
+            <!-- Login Button -->
+            <Button x:Name="LoginButton" 
+                    Content="Sign In" 
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,10,0,30"
+                    Click="OnLogin"/>
+            
+            <!-- Switch to Sign Up -->
+            <Border Background="{StaticResource OffWhite}" 
+                    CornerRadius="8" 
+                    Padding="20,15" 
+                    HorizontalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" 
+                           FontSize="16" 
+                           FontFamily="Segoe UI"
+                           MouseLeftButtonDown="OnSwitchingToSignUp"
+                           Cursor="Hand">
+                    <Run Text="Don't have an account? " Foreground="{StaticResource MediumGray}"/>
+                    <Run Text="Sign up here" Foreground="{StaticResource MedicalCrimson}" FontWeight="SemiBold" TextDecorations="Underline"/>
+                </TextBlock>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

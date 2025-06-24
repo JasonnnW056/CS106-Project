@@ -69,12 +69,12 @@ namespace CS106_Project.Pages
             //Default Value
             var Filter = Builders<Doctors>.Filter.Empty;
 
-            if (category == "Name")
+            if (category.ToLower() == "name")
             {
                Filter = Builders<Doctors>.Filter.Regex(d=>d.Name, new BsonRegularExpression(keyword, "i"));
             }
 
-            if (category == "Specialty")
+            if (category.ToLower() == "specialty")
             {
                Filter = Builders<Doctors>.Filter.Regex(d => d.Specialty, new BsonRegularExpression(keyword, "i"));
             }

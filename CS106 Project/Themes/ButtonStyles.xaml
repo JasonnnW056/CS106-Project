@@ -38,43 +38,24 @@
 
     <!-- Navigation Button Style -->
     <Style x:Key="NavButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Padding" Value="20,12"/>
-        <Setter Property="Margin" Value="15,0"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="FontSize" Value="16"/>
-        <Setter Property="FontFamily" Value="Segoe UI"/>
-        <Setter Property="FontWeight" Value="Medium"/>
-        <Setter Property="Foreground" Value="{StaticResource CharcoalText}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="border" 
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="8"
-                                Padding="{TemplateBinding Padding}">
-                        <ContentPresenter HorizontalAlignment="Center" 
-                                            VerticalAlignment="Center"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#FFE8ED"/>
-                            <Setter Property="Foreground" Value="{StaticResource MedicalCrimson}"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource MedicalCrimson}"/>
-                            <Setter Property="Foreground" Value="White"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{StaticResource MediumGray}"/>
-                            <Setter Property="Opacity" Value="0.6"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="45,0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="{StaticResource CharcoalText}"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{StaticResource MedicalCrimson}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="{StaticResource MediumGray}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
     <!-- Login Button Style -->
     <Style x:Key="LoginButtonStyle" TargetType="Button">

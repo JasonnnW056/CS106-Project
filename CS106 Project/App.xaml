@@ -11,6 +11,10 @@
                 <ResourceDictionary Source="/Themes/CardStyles.xaml"/>
                 <ResourceDictionary Source="/Themes/SearchBarStyles.xaml"/>
                 <ResourceDictionary Source="/Themes/BookingPageTheme.xaml"/>
+                <ResourceDictionary Source="/Themes/ProfilePageStyles.xaml"/>
+                <ResourceDictionary Source="/Themes/LoginPageStyles.xaml"/>
+                <ResourceDictionary Source="/Themes/ListCardStyles.xaml"/>
+                <ResourceDictionary Source="/Themes/DataGridStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

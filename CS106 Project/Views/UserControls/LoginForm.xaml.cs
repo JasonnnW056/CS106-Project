@@ -40,53 +40,46 @@ namespace CS106_Project.Views.UserControls
             string Email = EmailInput.Text.Trim();
             string Password = PasswordInput.Password;
 
-            //Resetting Error Text Visibility
+            // Resetting Error Text Visibility  
             MessageText.Visibility = Visibility.Collapsed;
 
-
-
-            //To check if its email or not
+            // To check if it's email or not  
             if (!Validations.EmailValidation(Email))
             {
                 MessageText.Visibility = Visibility.Visible;
-                MessageText.Text = "Invalid email or password!";
+                MessageText.Content = "Invalid email or password!"; // Fix: Use 'Content' instead of 'Text'  
                 EmailInput.Clear();
                 PasswordInput.Clear();
-                EmailInput.Focus(); //Rework this
+                EmailInput.Focus();
                 return;
             }
 
-            
-
-
-            //Checking Login Details
-
+            // Checking Login Details  
             var EmailFilter = Builders<Users>.Filter.Regex(user => user.Email, new BsonRegularExpression(Email, "i"));
             var PasswordFilter = Builders<Users>.Filter.Eq(user => user.Password, Password);
 
             var EmailPasswordFilter = Builders<Users>.Filter.And(EmailFilter, PasswordFilter);
             var LoginValidation = Collection.Find(EmailPasswordFilter).ToList();
 
-            //To check if the email is existed
+            // To check if the email exists  
             var EmailChecker = Collection.Find(EmailFilter).ToList();
-
 
             if (EmailChecker.Any())
             {
                 foreach (var item in EmailChecker)
                 {
-                    //Checking user's password input with the hashed password in database
+                    // Checking user's password input with the hashed password in the database  
                     bool PasswordChecker = BCrypt.Net.BCrypt.EnhancedVerify(Password, item.Password);
 
                     if (PasswordChecker)
                     {
                         MessageText.Visibility = Visibility.Visible;
-                        MessageText.Text = "Login Successfully!";
+                        MessageText.Content = "Login Successfully!"; // Fix: Use 'Content' instead of 'Text'  
                         LoginManager.Login(item.Username, item.Id);
                         MessageBox.Show(LoginManager.CurrentUser);
                         MessageBox.Show(LoginManager.UserID);
 
-                        //Check ini naviagtion
+                        // Navigation  
                         var mainWindow = Application.Current.MainWindow;
                         var mainFrame = mainWindow.FindName("MainFrame") as Frame;
 
@@ -98,28 +91,15 @@ namespace CS106_Project.Views.UserControls
                     else
                     {
                         MessageText.Visibility = Visibility.Visible;
-                        MessageText.Text = "Invalid login details!";
+                        MessageText.Content = "Invalid login details!"; // Fix: Use 'Content' instead of 'Text'  
                     }
                 }
             }
             else
             {
                 MessageText.Visibility = Visibility.Visible;
-                MessageText.Text = "Email does not exist!";
+                MessageText.Content = "Email does not exist!"; // Fix: Use 'Content' instead of 'Text'  
             }
-
-
-            /*   if (LoginValidation.Any())
-               {
-                   MessageText.Visibility= Visibility.Visible;
-                   MessageText.Text = "Login Successfully!";
-               }
-               else
-               {
-                   MessageText.Visibility = Visibility.Visible;
-                   MessageText.Text = "Invalid login details!";
-               }*/
-
         }
         /*private bool EmailValidation(string Email)
         {

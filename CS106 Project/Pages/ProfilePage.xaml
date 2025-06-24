@@ -10,57 +10,99 @@
       Title="ProfilePage">
 
     <Grid>
+
+        <!-- Medical Theme Gradient Background -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#FFF5F5" Offset="0"/>
+                <GradientStop Color="#FEE8E8" Offset="0.4"/>
+                <GradientStop Color="#FAD4D4" Offset="0.8"/>
+                <GradientStop Color="#F0D2D8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
-            
+
         </Grid.RowDefinitions>
 
         <components:HeaderMenu Grid.Row="0"/>
 
-        <!--<Canvas>
-           <Image Source="/Images/EditIcon.png" Width="50" Canvas.Right="500" Margin="0"></Image> 
-        </Canvas>-->
+
         <ScrollViewer Grid.Row="1">
-             <StackPanel Background="LightBlue" Width="400" Height="Auto" >
-                <Image  Source="/Images/UserProfile.png" Width="150" Margin="0 30 0 0"/>
-                <TextBlock Text="{Binding Username}" HorizontalAlignment="Center" FontSize="24" FontWeight="SemiBold" Margin="0 10 0 0"/>
-                <TextBlock Text="Patient" HorizontalAlignment="Center" FontSize="18" FontWeight="Light" Margin="0 0 0 0" Background="Transparent"/>
+            <StackPanel Background="#FFFFFF" Width="400" Height="Auto" 
+                       Margin="0,20,0,20">
+                <Border CornerRadius="10" 
+                        Background="White" 
+                        BorderBrush="#E8F4FD" 
+                        BorderThickness="1"
+                        Margin="0,0,0,20">
+                    <StackPanel>
+                        <Border Style="{StaticResource ProfileImageBorderStyle}">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Images/UserProfile.png" Stretch="UniformToFill"/>
+                            </Border.Background>
+                        </Border>
+                        <!-- Username -->
+                        <TextBlock Text="{Binding Username}" 
+                                  HorizontalAlignment="Center" 
+                                  Style="{StaticResource DoctorNameStyle}" 
+                                  Margin="0,20,0,0"/>
 
-                <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <!-- Role -->
+                        <TextBlock Text="Patient" 
+                                  HorizontalAlignment="Center" 
+                                  Style="{StaticResource SpecialtyStyle}" 
+                                  Margin="0,5,0,20"/>
+                    </StackPanel>
+                </Border>
 
-                    <Border Background="LightGray" BorderThickness="1" BorderBrush="Black" Padding="20,5" CornerRadius="16" Margin="0,0,10,0">
-                        <Button BorderThickness="0" x:Name="EditButton" Background="Transparent"  Content="Edit Profile" FontSize="16" Width="130" Click="OnEditProfile"></Button>
+                <StackPanel Margin="0,20,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Border Style="{StaticResource ActionButtonBorderStyle}" Margin="0,0,15,0">
+                        <Button x:Name="EditButton" 
+                                Style="{StaticResource ActionButtonStyle}"
+                                Content="Edit Profile" 
+                                Click="OnEditProfile"/>
                     </Border>
 
-                    <Border Background="LightGray" BorderThickness="1" BorderBrush="Black" Padding="20,5" CornerRadius="16">
-                        <Button BorderThickness="0" Background="Transparent" Content="Reset Password" FontSize="16" Width="130"></Button>
+                    <Border Style="{StaticResource ActionButtonBorderStyle}">
+                        <Button Style="{StaticResource ActionButtonStyle}"
+                                Content="Reset Password"/>
                     </Border>
-                
                 </StackPanel>
 
-                <Border Background="LightGray" Margin="20,20" CornerRadius="16">
-                    <StackPanel  >
-                        <TextBlock Text="Email" HorizontalAlignment="Left" FontSize="16" FontWeight="Light" Margin="15 10 0 0"/>
-                        <TextBox x:Name="EmailBox" Text="{Binding Email}" HorizontalAlignment="Left" FontSize="20" FontWeight="SemiBold" Margin="15 5 0 10" 
-                             BorderThickness="0" Background="Transparent" IsReadOnly="True"/>
+                <!-- Email Field -->
+                <Border Style="{StaticResource InfoCardBorderStyle}" Margin="25,30,25,0">
+                    <StackPanel Margin="20,15">
+                        <TextBlock Text="Email Address" Style="{StaticResource FieldLabelStyle}"/>
+                        <TextBox x:Name="EmailBox" 
+                                Text="{Binding Email}" 
+                                Style="{StaticResource FieldValueStyle}"/>
                     </StackPanel>
                 </Border>
 
-                <Border Background="LightGray" Margin="20,0" CornerRadius="16">
-                    <StackPanel>
-                        <TextBlock Text="Phone" HorizontalAlignment="Left" FontSize="16" FontWeight="Light" Margin="15 10 0 0"/>
-                        <TextBox x:Name="PhoneBox" Text="{Binding PhoneNumber}" HorizontalAlignment="Left" FontSize="20" FontWeight="SemiBold" Margin="15 5 0 10"
-                             BorderThickness="0" Background="Transparent" IsReadOnly="True"/>
+                <!-- Phone Field -->
+                <Border Style="{StaticResource InfoCardBorderStyle}" Margin="25,15,25,0">
+                    <StackPanel Margin="20,15">
+                        <TextBlock Text="Phone Number" Style="{StaticResource FieldLabelStyle}"/>
+                        <TextBox x:Name="PhoneBox" 
+                                Text="{Binding PhoneNumber}" 
+                                Style="{StaticResource FieldValueStyle}"/>
                     </StackPanel>
                 </Border>
 
-                <Border x:Name="LogoutButtonBackground" Background="Red" Margin="20 40 20 30" CornerRadius="16">
-                    <Button x:Name="LogoutButton" Content="Logout"  FontSize="16" FontWeight="Bold" Foreground="Black" Padding="20,10" Background="Transparent" BorderThickness="0" Click="OnSaveOrLogout"/> 
+                <Border x:Name="LogoutButtonBackground" 
+                        Style="{StaticResource LogoutButtonBorderStyle}"
+                        Margin="25,40,25,30" Padding="20,10">
+                    <Button x:Name="LogoutButton" 
+                            Style="{StaticResource LogoutButtonStyle}"
+                            Content="Logout" 
+                            Click="OnSaveOrLogout" />
                 </Border>
-            
-        </StackPanel>
+
+            </StackPanel>
         </ScrollViewer>
-        
+
     </Grid>
 </Page>

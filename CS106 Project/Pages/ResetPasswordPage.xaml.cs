@@ -39,13 +39,13 @@ namespace CS106_Project.Pages
             if (!Validations.PasswordValidation(NewPassword))
             {
                 ErrorMessage.Visibility = Visibility.Visible;
-                ErrorMessage.Text = "Password should contain at least 8 characters, 1 uppercase, 1 lowercase, 1 digit!";
+                ErrorMessage.Content = "Password should contain at least 8 characters, 1 uppercase, 1 lowercase, 1 digit!";
                 return;
             }
             if (ConfirmationPassword != NewPassword)
             {
                 ErrorMessage.Visibility = Visibility.Visible;
-                ErrorMessage.Text = "Your new password does not match with the confirmation password!";
+                ErrorMessage.Content = "Your new password does not match with the confirmation password!";
                 return;
             }
 

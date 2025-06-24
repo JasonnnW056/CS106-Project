@@ -9,38 +9,57 @@
       d:DesignHeight="720" d:DesignWidth="1280"    
       Title="LoginPage">
 
-    
-    <Grid Background="White">
+
+    <Grid Background="{StaticResource PageBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
-
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <components:HeaderMenu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  ></components:HeaderMenu>
+        <components:HeaderMenu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></components:HeaderMenu>
 
-        <Rectangle Grid.Row="1" Fill="Red"></Rectangle>
-        <StackPanel x:Name="LoginText" Grid.Row="1" Visibility="Visible" VerticalAlignment="Center" Width="350">
-            
-            <TextBlock Text="Login" HorizontalAlignment="Center"  FontSize="30" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="18" Text="Login to book appointments with our trusted-partnered doctor"></TextBlock>
-           
+        <!-- Left Side Background with Gradient -->
+        <Border Grid.Row="1" Grid.Column="0" Background="{StaticResource RedGradientBrush}">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Direction="0" ShadowDepth="2" Opacity="0.1" BlurRadius="10"/>
+            </Border.Effect>
+        </Border>
+
+        <!-- Login Text Section -->
+        <StackPanel x:Name="LoginText" Grid.Row="1" Grid.Column="0" Visibility="Visible" 
+                VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+            <TextBlock Style="{StaticResource HeroTitleStyle}" Text="Welcome Back" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20" Foreground="White"/>
+            <TextBlock Style="{StaticResource HeroSubtitleStyle}" TextWrapping="Wrap" 
+                   TextAlignment="Center" Foreground="#FFE8ED" LineHeight="28"
+                   Text="Login to book appointments with our trusted healthcare partners and manage your medical care seamlessly."/>
         </StackPanel>
 
-        <StackPanel x:Name="SignUpText" Grid.Row="1" Visibility="Collapsed" VerticalAlignment="Center" Width="350">
-
-            <TextBlock Text="Sign Up" HorizontalAlignment="Center" FontSize="30" Margin="0 -40 0 30" FontWeight="SemiBold"></TextBlock>
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="18" Text="Sign Up to book appointments with our trusted-partnered doctor"></TextBlock>
-
+        <!-- SignUp Text Section -->
+        <StackPanel x:Name="SignUpText" Grid.Row="1" Grid.Column="0" Visibility="Collapsed" 
+                VerticalAlignment="Center" HorizontalAlignment="Center" Width="350">
+            <TextBlock Style="{StaticResource HeroTitleStyle}" Text="Join Us Today" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20" Foreground="White"/>
+            <TextBlock Style="{StaticResource HeroSubtitleStyle}" TextWrapping="Wrap" 
+                   TextAlignment="Center" Foreground="#FFE8ED" LineHeight="28"
+                   Text="Create your account to access our network of trusted healthcare providers and start your wellness journey."/>
         </StackPanel>
 
-        <ScrollViewer Grid.Row ="1" Grid.Column="2">
-            <components:LoginAndSignUp  x:Name="LoginSignUpForm" VerticalAlignment="Top"  Width="500" Margin=" 0 40 0 0"></components:LoginAndSignUp>
-        </ScrollViewer>
-        
+        <!-- Right Side Form Container -->
+        <Border Grid.Row="1" Grid.Column="1" Background="White" Margin="40,0,0,0">
+            <Border.Effect>
+                <DropShadowEffect Color="Gray" Direction="270" ShadowDepth="5" Opacity="0.1" BlurRadius="20"/>
+            </Border.Effect>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <components:LoginAndSignUp x:Name="LoginSignUpForm" 
+                                       VerticalAlignment="Top" 
+                                       Width="500" 
+                                       Margin="40,60,40,40"/>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Page>

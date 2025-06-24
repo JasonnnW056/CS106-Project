@@ -6,8 +6,22 @@
              xmlns:local="clr-namespace:CS106_Project.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border BorderBrush="Gray" BorderThickness="0.5">
-        <Grid ShowGridLines="True" Background="White" Height="Auto">
+    
+
+    <Border BorderBrush="{StaticResource LightGray}" BorderThickness="0,0,0,1" Background="White">
+        <Border.Style>
+            <Style TargetType="Border">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource OffWhite}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource MedicalCrimson}"/>
+                        <Setter Property="BorderThickness" Value="2,0,2,2"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+
+        <Grid ShowGridLines="False" Background="Transparent" Height="Auto" Margin="15,12">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -22,29 +36,65 @@
             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
                         MouseEnter="OnDateStackPanelMouseEnter" MouseLeave="OnDateStackPanelMouseLeave">
                 <Label x:Name="DateText" Content="{Binding Date, StringFormat='yyyy-MM-dd HH:mm'}" 
-                       VerticalAlignment="Center" Background="Transparent"/>
+                       VerticalAlignment="Center" Background="Transparent" Style="{StaticResource DateLabelStyle}"/>
 
                 <!-- Edit Icon (initially hidden) -->
-                <Border x:Name="EditIconBorder" Background="LightBlue" CornerRadius="3" 
-                        Padding="3" Margin="5,0,0,0" Visibility="Collapsed" Cursor="Hand"
+                <Border x:Name="EditIconBorder" Background="{StaticResource SoftPink}" CornerRadius="12" 
+                        Padding="6" Margin="8,0,0,0" Visibility="Collapsed" Cursor="Hand"
                         MouseLeftButtonDown="OnEditIconClicked"
                         ToolTip="Click to reschedule appointment">
-                    <Path x:Name="EditIcon" Fill="DarkBlue" 
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource MedicalCrimson}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Path x:Name="EditIcon" Fill="{StaticResource MedicalCrimson}" 
                           Data="M3,17.25V21h3.75L17.81,9.94l-3.75-3.75L3,17.25z M20.71,7.04c0.39-0.39,0.39-1.02,0-1.41l-2.34-2.34 c-0.39-0.39-1.02-0.39-1.41,0l-1.83,1.83l3.75,3.75L20.71,7.04z"
-                          Width="12" Height="12" Stretch="Uniform"/>
+                          Width="14" Height="14" Stretch="Uniform">
+                        <Path.Style>
+                            <Style TargetType="Path">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True">
+                                        <Setter Property="Fill" Value="White"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Path.Style>
+                    </Path>
                 </Border>
             </StackPanel>
 
-            <Label Grid.Column="1" Content="{Binding DoctorName}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Label Grid.Column="2" Content="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label Grid.Column="1" Content="{Binding DoctorName}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Style="{StaticResource DoctorLabelStyle}"/>
+
+            <Label Grid.Column="2" Content="{Binding Type}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Style="{StaticResource TypeLabelStyle}"/>
+
             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"
                         MouseLeave="OnStackPanelMouseLeave">
+
                 <Label x:Name="BookingStatus" Content="{Binding Status}" 
-                       MouseLeftButtonDown="OnStatusClicked"/>
-                <Border x:Name="CancelButtonBorder" BorderBrush="Gray" BorderThickness="0.5" 
-                        Padding="4 2 4 2" CornerRadius="8" Background="Red" Visibility="Collapsed">
+                       MouseLeftButtonDown="OnStatusClicked" Style="{StaticResource StatusLabelStyle}"/>
+
+                <Border x:Name="CancelButtonBorder" BorderBrush="{StaticResource MedicalCrimson}" BorderThickness="1" 
+                        Padding="12,6" CornerRadius="15" Background="{StaticResource RedGradientBrush}" 
+                        Visibility="Collapsed" Margin="8,0,0,0">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource RedHoverGradientBrush}"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
                     <Button x:Name="CancelButton" Content="CANCEL" BorderThickness="0" 
-                            Background="Transparent" FontWeight="SemiBold" Click="OnCancelButtonClicked"/>
+                            Background="Transparent" FontWeight="SemiBold" Click="OnCancelButtonClicked"
+                            Foreground="White" FontFamily="Segoe UI" FontSize="10" Cursor="Hand"/>
                 </Border>
             </StackPanel>
         </Grid>

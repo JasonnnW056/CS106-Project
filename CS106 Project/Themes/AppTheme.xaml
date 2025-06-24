@@ -54,4 +54,143 @@
         <Setter Property="Foreground" Value="{StaticResource MedicalCrimson}"/>
     </Style>
 
+
+
+    
+    <!-- Custom ComboBox Style to match NavButton -->
+    <Style x:Key="NavComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="20,10"/>
+        <Setter Property="Margin" Value="0,0"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="{StaticResource CharcoalText}"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton x:Name="ToggleButton"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Focusable="false"
+                                IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                ClickMode="Press">
+                            <ToggleButton.Template>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <Border x:Name="ButtonBorder" 
+                                        Background="{TemplateBinding Background}" 
+                                        Padding="20,10">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Content area that shows the selected item -->
+                                            <ContentPresenter Grid.Column="0" 
+                                                        x:Name="ContentPresenter"
+                                                        Content="{Binding SelectionBoxItem, RelativeSource={RelativeSource AncestorType=ComboBox}}"
+                                                        ContentTemplate="{Binding SelectionBoxItemTemplate, RelativeSource={RelativeSource AncestorType=ComboBox}}"
+                                                        HorizontalAlignment="Left" 
+                                                        VerticalAlignment="Center"
+                                                        TextBlock.Foreground="{StaticResource CharcoalText}"
+                                                        TextBlock.FontSize="18"
+                                                        TextBlock.FontFamily="Segoe UI"
+                                                        TextBlock.FontWeight="Medium"/>
+
+                                            <!-- Dropdown arrow -->
+                                            <Path Grid.Column="1" 
+                                              x:Name="DropDownArrow"
+                                              Width="12" Height="8"
+                                              Margin="8,0,0,0"
+                                              Fill="{StaticResource MedicalCrimson}"
+                                              Data="M 0 0 L 4 4 L 8 0 Z"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <!-- Hover effect to match NavButton -->
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="ContentPresenter" Property="TextBlock.Foreground" Value="{StaticResource MedicalCrimson}"/>
+                                            <Setter TargetName="DropDownArrow" Property="Fill" Value="{StaticResource DeepBurgundy}"/>
+                                        </Trigger>
+                                        <!-- Arrow rotation when dropdown is open -->
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="DropDownArrow" Property="RenderTransform">
+                                                <Setter.Value>
+                                                    <RotateTransform Angle="180" CenterX="6" CenterY="4"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </ToggleButton.Template>
+                        </ToggleButton>
+
+                        <!-- Popup for dropdown items -->
+                        <Popup x:Name="Popup"
+                           Placement="Bottom"
+                           IsOpen="{TemplateBinding IsDropDownOpen}"
+                           AllowsTransparency="True"
+                           Focusable="False"
+                           PopupAnimation="Slide">
+                            <Grid x:Name="DropDown"
+                              SnapsToDevicePixels="True"
+                              MinWidth="{TemplateBinding ActualWidth}"
+                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border x:Name="DropDownBorder"
+                                    Background="White"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource LightGray}"
+                                    CornerRadius="8"
+                                    Margin="0,4,0,0">
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.15" ShadowDepth="4" BlurRadius="12"/>
+                                    </Border.Effect>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ComboBox Item Style -->
+    <Style x:Key="NavComboBoxItemStyle" TargetType="ComboBoxItem">
+        <Setter Property="Padding" Value="16,8"/>
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{StaticResource CharcoalText}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBoxItem">
+                    <Border x:Name="ItemBorder" 
+                                Background="Transparent" 
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="4"
+                                Margin="4,1">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter TargetName="ItemBorder" Property="Background" Value="{StaticResource SoftPink}"/>
+                            <Setter Property="Foreground" Value="{StaticResource MedicalCrimson}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource MediumGray}"/>
+                            <Setter Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

@@ -80,7 +80,7 @@ namespace CS106_Project.Views.UserControls
             if (Errors.Any())
             {
                 ErrorText.Visibility = Visibility.Visible;
-                ErrorText.Text = $"{string.Join("\n", Errors)}";
+                ErrorText.Content = $"{string.Join("\n", Errors)}";
                 return;
             }
 
@@ -92,13 +92,13 @@ namespace CS106_Project.Views.UserControls
             if (EmailChecker.Any())
             {
                 ErrorText.Visibility = Visibility.Visible;
-                ErrorText.Text = "Email has already existed!";
+                ErrorText.Content = "Email has already existed!";
             }
             else
             {
                 Collection.InsertOne(new Users(Username, Phone, Email, Password));
                 ErrorText.Visibility = Visibility.Visible;
-                ErrorText.Text = "Sign Up Successfully";
+                ErrorText.Content = "Sign Up Successfully";
                 await Task.Delay(2000);
                 SwitchToLogin?.Invoke(this, EventArgs.Empty);
             }
