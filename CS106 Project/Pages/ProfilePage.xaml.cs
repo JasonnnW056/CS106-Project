@@ -24,24 +24,24 @@ namespace CS106_Project.Pages
     public partial class ProfilePage : Page
     {
         private bool isEditMode = false;
-        public IMongoCollection<Users> Collection;
+        private string? UserID = LoginManager.UserID;
         public ProfilePage()
         {
             InitializeComponent();
 
-            string? objectID = LoginManager.UserID;
+            var Filter = Builders<Users>.Filter.Eq(U=>U.Id, UserID);
 
-            new Connection(); //Can remove for all page just need to load at the mainwindow
-
-            Collection = Connection.DB.GetCollection<Users>("patients");
-
-            var Filter = Builders<Users>.Filter.Eq(U=>U.Id, objectID);
-
-            var Result = Collection.Find(Filter).ToList();
+            var Result = Connection.UsersCollection.Find(Filter).ToList();
 
             foreach (var item in Result)
             {
                 this.DataContext = item;
+            }
+
+            //Check if admin login
+            if (LoginManager.IsAdmin)
+            {
+                UserCategoryLabel.Text = "Admin";
             }
         }
 
@@ -62,8 +62,6 @@ namespace CS106_Project.Pages
         {
             if (isEditMode)
             {
-                // 🔄 Save to MongoDB
-                string userId = "6850e8e17b1f64e977350bdf"; // however you're tracking the logged-in user
                 string NewEmail = EmailBox.Text.Trim();
                 string NewPhone = PhoneBox.Text.Trim();
 
@@ -79,12 +77,12 @@ namespace CS106_Project.Pages
                     return;
                 }
 
-                var Filter = Builders<Users>.Filter.Eq(u => u.Id, userId);
+                var Filter = Builders<Users>.Filter.Eq(u => u.Id, UserID);
                 var Update = Builders<Users>.Update
                     .Set(u => u.Email, NewEmail.ToLower())
                     .Set(u => u.PhoneNumber, NewPhone);
 
-                var Result = Collection.UpdateOne(Filter, Update);
+                var Result = Connection.UsersCollection.UpdateOne(Filter, Update);
 
                 if (Result.ModifiedCount > 0)
                 {
@@ -100,9 +98,11 @@ namespace CS106_Project.Pages
             }
             else
             {
-                // 🚪 Actual logout logic here
-                MessageBox.Show("Logging out...");
-                
+                //Logout Functionality
+                LoginManager.Logout();
+                var Navigation = NavigationService.GetNavigationService(this);
+                var LoginPage = new LoginPage();
+                Navigation.Navigate(LoginPage);
             }
         }
 

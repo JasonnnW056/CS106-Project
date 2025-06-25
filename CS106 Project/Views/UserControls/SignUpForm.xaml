@@ -41,9 +41,6 @@
                 <TextBlock Text="Password" Style="{StaticResource FormLabelStyle}"/>
                 <PasswordBox x:Name="PasswordInput" Style="{StaticResource PasswordBoxStyle}"/>
 
-
-
-
                 <!-- Error Message -->
                 <Label x:Name="ErrorText" 
                        Visibility="Collapsed" 

@@ -28,13 +28,12 @@ namespace CS106_Project.Views.UserControls
     public partial class LoginForm : UserControl
     {
         public event EventHandler? SwitchToSignup;
-        private readonly IMongoCollection<Users> Collection;
+        /*private readonly IMongoCollection<Users> Collection;*/
         public LoginForm()
         {
             InitializeComponent();
-            new Connection();
-
-            Collection = Connection.DB.GetCollection<Users>("patients");
+            
+            /*Collection = Connection.DB.GetCollection<Users>("users");*/
         }
         private void OnLogin(object sender, RoutedEventArgs e)
         {
@@ -48,7 +47,7 @@ namespace CS106_Project.Views.UserControls
             if (!Validations.EmailValidation(Email))
             {
                 MessageText.Visibility = Visibility.Visible;
-                MessageText.Content = "Invalid email or password!"; // Fix: Use 'Content' instead of 'Text'  
+                MessageText.Content = "Invalid email or password!";
                 EmailInput.Clear();
                 PasswordInput.Clear();
                 EmailInput.Focus();
@@ -60,10 +59,10 @@ namespace CS106_Project.Views.UserControls
             var PasswordFilter = Builders<Users>.Filter.Eq(user => user.Password, Password);
 
             var EmailPasswordFilter = Builders<Users>.Filter.And(EmailFilter, PasswordFilter);
-            var LoginValidation = Collection.Find(EmailPasswordFilter).ToList();
+            var LoginValidation = Connection.UsersCollection.Find(EmailPasswordFilter).ToList();
 
             // To check if the email exists  
-            var EmailChecker = Collection.Find(EmailFilter).ToList();
+            var EmailChecker = Connection.UsersCollection.Find(EmailFilter).ToList();
 
             if (EmailChecker.Any())
             {
@@ -87,22 +86,15 @@ namespace CS106_Project.Views.UserControls
                             //Admin Login
                             LoginManager.Login(item.Username, item.Id, true);
                             mainFrame?.Navigate(new AdminUserListPage());
-                            MessageBox.Show("Admin Login");
+                            
                         }
                         else
                         {
                             //User Login
                             LoginManager.Login(item.Username, item.Id, false);
                             mainFrame?.Navigate(new DoctorList());
-                            MessageBox.Show("User Login");
                             
-                           
                         }
-                           
-
-                        
-
-                        
                     }
                     else
                     {
@@ -114,7 +106,7 @@ namespace CS106_Project.Views.UserControls
             else
             {
                 MessageText.Visibility = Visibility.Visible;
-                MessageText.Content = "Email does not exist!"; // Fix: Use 'Content' instead of 'Text'  
+                MessageText.Content = "Email does not exist!"; 
             }
         }
 

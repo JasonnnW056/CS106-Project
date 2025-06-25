@@ -35,7 +35,7 @@ namespace CS106_Project.Pages.AdminPages
 
             
 
-            Collection = Connection.DB.GetCollection<Users>("patients");
+            Collection = Connection.DB.GetCollection<Users>("users");
             var Filter = Builders<Users>.Filter.Empty;
             var Result = Collection.Find(Filter).ToList();
 
@@ -55,7 +55,7 @@ namespace CS106_Project.Pages.AdminPages
             InitializeComponent();
             new Connection();
 
-            Collection = Connection.DB.GetCollection<Users>("patients");
+            Collection = Connection.DB.GetCollection<Users>("users");
             var Filter = Builders<Users>.Filter.Regex(u => u.Username, new BsonRegularExpression(UserInput, "i"));
             var Result = Collection.Find(Filter).ToList();
 

@@ -27,14 +27,10 @@ namespace CS106_Project.Views.UserControls
     public partial class SignUpForm : UserControl
     {
         public event EventHandler? SwitchToLogin;
-        private readonly IMongoCollection<Users> Collection;
 
         public SignUpForm()
         {
             InitializeComponent();
-            new Connection();
-
-            Collection = Connection.DB.GetCollection<Users>("patients");
         }
 
         private async void OnSignUp(object sender, RoutedEventArgs e)
@@ -47,34 +43,35 @@ namespace CS106_Project.Views.UserControls
             //Resetting Error Text Visibility
             ErrorText.Visibility = Visibility.Collapsed;
 
+            //List of Errors
             List<string> Errors = new List<string>();
 
             if (!Validations.UserNameValidation(Username))
             {
                 Errors.Add("* Username must be 3-20 characters, letters, numbers, and underscores only!");
                 UsernameInput.Clear();
-                UsernameInput.Focus(); //Rework this
+                UsernameInput.Focus();
             }
 
             if (!Validations.PhoneNumberValidation(Phone))
             {
                 Errors.Add("* Phone Number should only contain number!");
                 EmailInput.Clear();
-                EmailInput.Focus(); //Rework this
+                EmailInput.Focus(); 
             }
 
             if (!Validations.EmailValidation(Email))
             {
                 Errors.Add("* Invalid email format!");
                 EmailInput.Clear();
-                EmailInput.Focus(); //Rework this
+                EmailInput.Focus();
             }
 
             if (!Validations.PasswordValidation(Password))
             {
                 Errors.Add("* Password should have at least 8 characters, 1 uppercase, 1 lowercase, 1 digit!");
                 PasswordInput.Clear();
-                PasswordInput.Focus(); //Rework this
+                PasswordInput.Focus(); 
             }
 
             if (Errors.Any())
@@ -87,7 +84,7 @@ namespace CS106_Project.Views.UserControls
 
             //Checking if email existed (case insensitive)
             var EmailFilter = Builders<Users>.Filter.Regex(user => user.Email, new BsonRegularExpression(Email, "i"));
-            var EmailChecker = Collection.Find(EmailFilter).ToList();
+            var EmailChecker = Connection.UsersCollection.Find(EmailFilter).ToList();
 
             if (EmailChecker.Any())
             {
@@ -96,7 +93,7 @@ namespace CS106_Project.Views.UserControls
             }
             else
             {
-                Collection.InsertOne(new Users(Username, Phone, Email, Password));
+                Connection.UsersCollection.InsertOne(new Users(Username, Phone, Email, Password));
                 ErrorText.Visibility = Visibility.Visible;
                 ErrorText.Content = "Sign Up Successfully";
                 await Task.Delay(2000);
@@ -104,46 +101,6 @@ namespace CS106_Project.Views.UserControls
             }
 
         }
-
-        /*private bool UserNameValidation(string Username)
-        {
-            // 3-20 characters, letters, numbers, and underscores only
-            string UsernamePattern = @"^[a-zA-Z0-9_]{3,20}$";
-
-            if (string.IsNullOrWhiteSpace(Username))
-            {
-                return false;
-            }
-
-            return Regex.IsMatch(Username, UsernamePattern);
-        }
-
-        private bool EmailValidation(string Email)
-        {
-            //Must contain '@'
-            string EmailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-
-
-            if (string.IsNullOrWhiteSpace(Email))
-            {
-                return false;
-            }
-
-            return Regex.IsMatch(Email, EmailPattern);
-        }
-
-        private bool PasswordValidation(string Password)
-        {
-            // At least 8 characters, 1 uppercase, 1 lowercase, 1 digit
-            string PasswordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@$!%*?&]{8,}$";
-
-            if (string.IsNullOrWhiteSpace(Password))
-            {
-                return false;
-            }
-
-            return Regex.IsMatch(Password, PasswordPattern);
-        }*/
 
         private void OnSwitchingToLogin(object sender, MouseButtonEventArgs e)
         {

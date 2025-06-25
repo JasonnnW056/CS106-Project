@@ -23,12 +23,10 @@ namespace CS106_Project.Pages
     /// </summary>
     public partial class ResetPasswordPage : Page
     {
-        public IMongoCollection<Users> Collection;
+        
         public ResetPasswordPage()
         {
-            new Connection();
             InitializeComponent();
-            Collection = Connection.DB.GetCollection<Users>("patients");
         }
 
         private void OnReset(object sender, RoutedEventArgs e)
@@ -50,15 +48,16 @@ namespace CS106_Project.Pages
             }
 
             NewPassword = BCrypt.Net.BCrypt.EnhancedHashPassword(NewPassword);
+            string? UserID = LoginManager.UserID;
 
-            var Filter = Builders<Users>.Filter.Eq(u => u.Id, "6850e8e17b1f64e977350bdf");
+            var Filter = Builders<Users>.Filter.Eq(u => u.Id, UserID);
             var UpdateBuilder = Builders<Users>.Update.Set(u => u.Password, NewPassword);
 
-            var Result = Collection.UpdateOne(Filter, UpdateBuilder);
+            var Result = Connection.UsersCollection.UpdateOne(Filter, UpdateBuilder);
 
             if (Result.ModifiedCount > 0)
             {
-                MessageBox.Show("Profile updated!");
+                MessageBox.Show("Password updated!");
             }
         }
 

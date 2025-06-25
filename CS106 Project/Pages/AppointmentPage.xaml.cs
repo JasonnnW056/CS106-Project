@@ -20,23 +20,17 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CS106_Project.Pages
 {
-    /// <summary>
-    /// Interaction logic for AppointmentPage.xaml
-    /// </summary>
     public partial class AppointmentPage : Page
     {
-        public IMongoCollection<AppointmentDetails> Collection;
         public AppointmentPage()
         {
             InitializeComponent();
 
-            new Connection();
-
             string? objectId = LoginManager.UserID;
 
-            Collection = Connection.DB.GetCollection<AppointmentDetails>("appointments");
+            
             var Filter = Builders<AppointmentDetails>.Filter.Eq(a => a.UserId, objectId);
-            var Result = Collection.Find(Filter).ToList();
+            var Result = Connection.AppointmentsCollection.Find(Filter).ToList();
 
 
             if (!Result.Any())
@@ -44,7 +38,6 @@ namespace CS106_Project.Pages
                 NotFoundPage.Visibility = Visibility.Visible;
                 return;
             }
-
 
 
             var FirstTable = new AppointmentListCard();
@@ -82,7 +75,7 @@ namespace CS106_Project.Pages
                 var IdFilter = Builders<AppointmentDetails>.Filter.Eq(a=>a.Id, AppointmentId);
                
                 var Update = Builders<AppointmentDetails>.Update.Set(a=>a.Status, "CANCELLED");
-                var UpdateResult = Collection.UpdateOne(IdFilter, Update);
+                var UpdateResult = Connection.AppointmentsCollection.UpdateOne(IdFilter, Update);
 
                 
             }

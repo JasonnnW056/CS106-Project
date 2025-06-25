@@ -29,14 +29,9 @@ namespace CS106_Project.Pages
         {
             InitializeComponent();
 
-
-            new Connection();
-
-            var Collection = Connection.DB.GetCollection<Doctors>("doctors");
-
             var Filter = Builders<Doctors>.Filter.Empty;
 
-            var Result = Collection.Find(Filter).ToList();
+            var Result = Connection.DoctorsCollection.Find(Filter).ToList();
 
             if (!Result.Any())
             {
@@ -45,23 +40,12 @@ namespace CS106_Project.Pages
             }
 
             AddCard(Result);
-            //foreach (var item in Result)
-            //{
-            //    Card DoctorCard = new Card();
-            //    var doctor = new Doctors(item.Name, item.Specialty, item.Availability.StartTime, item.Availability.EndTime);
-
-            //    DoctorCard.DataContext = doctor;
-            //    DoctorCard.Margin = new Thickness(20);
-            //    CardWrapper.Children.Add(DoctorCard);
-            //}
+           
         }
 
         public DoctorList(string category, string keyword)
         {
             InitializeComponent();
-
-            new Connection();
-            var Collection = Connection.DB.GetCollection<Doctors>("doctors");
 
             //Default Value
             var Filter = Builders<Doctors>.Filter.Empty;
@@ -76,13 +60,14 @@ namespace CS106_Project.Pages
                Filter = Builders<Doctors>.Filter.Regex(d => d.Specialty, new BsonRegularExpression(keyword, "i"));
             }
 
-            var Result = Collection.Find(Filter).ToList();
+            var Result = Connection.DoctorsCollection.Find(Filter).ToList();
 
             if (!Result.Any())
             {
                 NotFoundPage.Visibility = Visibility.Visible;
                 return;
             }
+
             AddCard(Result);
         }
 

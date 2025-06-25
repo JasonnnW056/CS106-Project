@@ -27,8 +27,6 @@ namespace CS106_Project.Views.UserControls
         public BookingForm()
         {
             InitializeComponent();
-
-            
         }
 
         private void OnBooking(object sender, RoutedEventArgs e)
@@ -62,7 +60,10 @@ namespace CS106_Project.Views.UserControls
                 return;
             }
 
-            if (!Validations.EmailValidation(email)) { return; }
+            if (!Validations.EmailValidation(email)) 
+            { 
+                return; 
+            }
 
             
            
@@ -75,16 +76,12 @@ namespace CS106_Project.Views.UserControls
                 MessageBox.Show("Date is null");
                 return; // Exit the method if bookingDate is invalid  
 
-
-                //change into bool checking for error
             }
 
             // Might be empty  
             string illnessDescription = IllnessBox.Text;
 
             var UserData = new UserBookingData(firstName, lastName, phoneNumber, email, type, appointmentDate, illnessDescription);
-
-            MessageBox.Show(UserData.Date.ToString());
 
             DataSent?.Invoke(this, UserData);
         }

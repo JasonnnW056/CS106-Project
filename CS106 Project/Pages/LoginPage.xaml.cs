@@ -25,7 +25,6 @@ namespace CS106_Project.Pages
         {
             InitializeComponent();
 
-            
             LoginSignUpForm.SwitchToLoginOccurred += OnSwitchToLogin;
             LoginSignUpForm.SwitchToSignupOccurred += OnSwitchToSignup;
 

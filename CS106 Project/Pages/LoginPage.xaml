@@ -20,9 +20,10 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
+        <!--Header Menu-->
         <components:HeaderMenu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></components:HeaderMenu>
 
-        <!-- Left Side Background with Gradient -->
+        <!-- Left Side Content Background -->
         <Border Grid.Row="1" Grid.Column="0" Background="{StaticResource RedGradientBrush}">
             <Border.Effect>
                 <DropShadowEffect Color="Black" Direction="0" ShadowDepth="2" Opacity="0.1" BlurRadius="10"/>

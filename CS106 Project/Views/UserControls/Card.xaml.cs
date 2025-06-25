@@ -18,12 +18,9 @@ using CS106_Project.Pages;
 
 namespace CS106_Project.Views.UserControls
 {
-    /// <summary>  
-    /// Interaction logic for Card.xaml  
-    /// </summary>  
+    
     public partial class Card : UserControl
     {
-        //public EventHandler<Doctors>? DoctorDataSent;
         public Card()
         {
             InitializeComponent();
