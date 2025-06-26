@@ -65,7 +65,7 @@
                           Style="{StaticResource NavComboBoxStyle}"
                           ItemContainerStyle="{StaticResource NavComboBoxItemStyle}"
                           SelectedIndex="0" SelectionChanged="OnSelectSpecialty">
-                    <ComboBoxItem IsEnabled="False" IsSelected="True">Our Doctors' Specialties</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">Our Doctors' Specialties</ComboBoxItem>
                     <ComboBoxItem>Cardiology</ComboBoxItem>
                     <ComboBoxItem>Dermatology</ComboBoxItem>
                     <ComboBoxItem>Pediatrics</ComboBoxItem>

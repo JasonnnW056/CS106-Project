@@ -54,7 +54,7 @@ namespace CS106_Project.Pages
 
             
             LogoutButton.Content =  "Save Profile";
-            LogoutButtonBackground.Background = Brushes.LightGray;
+            LogoutButtonBackground.Background = Brushes.Green;
             
         }
 
@@ -105,7 +105,7 @@ namespace CS106_Project.Pages
                 Navigation.Navigate(LoginPage);
             }
         }
-
+        
         private void OnResetClick(object sender, RoutedEventArgs e)
         {
             var Navigation = NavigationService.GetNavigationService(this);

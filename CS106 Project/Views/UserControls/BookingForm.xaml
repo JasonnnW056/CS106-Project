@@ -49,18 +49,21 @@
                 <StackPanel Margin="0,0,0,20">
                     <TextBlock Text="Last Name*" Style="{StaticResource FormLabelStyle}"/>
                     <TextBox x:Name="LastNameBox" Style="{StaticResource FormInputStyle}"/>
+                    <Label x:Name="LastNameError" Content="" Style="{StaticResource ErrorLabelStyle}" Visibility="Collapsed"/>
                 </StackPanel>
 
                 <!-- Phone Number -->
                 <StackPanel Margin="0,0,0,20">
                     <TextBlock Text="Phone Number*" Style="{StaticResource FormLabelStyle}"/>
                     <TextBox x:Name="PhoneNumberBox" Style="{StaticResource FormInputStyle}"/>
+                    <Label x:Name="PhoneNumberError" Content="" Style="{StaticResource ErrorLabelStyle}" Visibility="Collapsed"/>
                 </StackPanel>
 
                 <!-- Email -->
                 <StackPanel Margin="0,0,0,20">
                     <TextBlock Text="Email Address*" Style="{StaticResource FormLabelStyle}"/>
                     <TextBox x:Name="EmailBox" Style="{StaticResource FormInputStyle}"/>
+                    <Label x:Name="EmailError" Content="" Style="{StaticResource ErrorLabelStyle}" Visibility="Collapsed"/>
                 </StackPanel>
 
                 <!-- Type of Appointment -->
@@ -71,15 +74,17 @@
                         <ComboBoxItem Content="Follow Up" FontFamily="Segoe UI" FontSize="16"/>
                         <ComboBoxItem Content="Procedure" FontFamily="Segoe UI" FontSize="16"/>
                     </ComboBox>
+                    <Label x:Name="TypeError" Content="" Style="{StaticResource ErrorLabelStyle}" Visibility="Collapsed"/>
                 </StackPanel>
 
 
                 <local:BookingTimePicker  x:Name="TimeBox" Margin="0,0,0,20"/>
+                <Label x:Name="TimeError" Content="" Style="{StaticResource ErrorLabelStyle}" Visibility="Collapsed"/>
                     
 
                 <!-- Illness Description -->
                 <StackPanel Margin="0,0,0,20">
-                    <TextBlock Text="IllnessDecription" Style="{StaticResource FormLabelStyle}"/>
+                    <TextBlock Text="Illness Decription" Style="{StaticResource FormLabelStyle}"/>
                     <TextBox x:Name="IllnessBox" 
                             Style="{StaticResource FormInputStyle}" Height="100" TextWrapping="Wrap"
                             VerticalContentAlignment="Top" Padding="5,5"

@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CS106_Project.Models;
 using CS106_Project.Classes;
+using System.Runtime.InteropServices;
+using CS106_Project.Pages;
 
 namespace CS106_Project.Views.UserControls
 {
@@ -37,53 +39,96 @@ namespace CS106_Project.Views.UserControls
             string email = EmailBox.Text.Trim();
             string type = TypeBox.Text;
 
-        
-            DateTime appointmentDate = DateTime.MinValue;
-            DateTime? appointmentDateNullable = TimeBox.CombineDate();
+            bool AnyError = false;
 
             if (!Validations.NameValidation(firstName))
             {
-                FirstNameBox.Visibility = Visibility.Visible;
-                FirstNameBox.Text = "Invalid name";
+                FirstNameError.Visibility = Visibility.Visible;
+                FirstNameError.Content = "Invalid name format!";
+                AnyError = true;
             }
             else
             {
-                FirstNameBox.Visibility = Visibility.Collapsed;
+                FirstNameError.Visibility = Visibility.Collapsed;
             }
 
             if (!Validations.NameValidation(lastName))
             {
-                return;
-            }
-            if (!Validations.PhoneNumberValidation(phoneNumber))
-            {
-                return;
-            }
-
-            if (!Validations.EmailValidation(email)) 
-            { 
-                return; 
-            }
-
-            
-           
-            if (appointmentDateNullable != null)
-            {
-                appointmentDate = appointmentDateNullable.Value;
+                LastNameError.Visibility = Visibility.Visible;
+                LastNameError.Content = "Invalid name format!";
+                AnyError = true;
             }
             else
             {
-                MessageBox.Show("Date is null");
-                return; // Exit the method if bookingDate is invalid  
+                LastNameError.Visibility = Visibility.Collapsed;
+            }
+
+            if (!Validations.PhoneNumberValidation(phoneNumber))
+            {
+                PhoneNumberError.Visibility = Visibility.Visible;
+                PhoneNumberError.Content = "Invalid phone number format!";
+                AnyError = true;
+            }
+            else
+            {
+                PhoneNumberError.Visibility = Visibility.Collapsed;
+            }
+
+            if (!Validations.EmailValidation(email)) 
+            {
+                EmailError.Visibility = Visibility.Visible;
+                EmailError.Content = "Invalid email format!";
+                AnyError = true;
+            }
+            else
+            {
+                EmailError.Visibility = Visibility.Collapsed;
+            }
+
+            if (TypeBox.SelectedItem == null) 
+            {
+                TypeError.Visibility = Visibility.Visible;
+                TypeError.Content = "Please choose the type of appointment!";
+                AnyError = true;
+            }
+            else
+            {
+                TypeError.Visibility = Visibility.Collapsed;
+            }
+
+
+            DateTime appointmentDate = DateTime.MinValue;
+            DateTime? appointmentDateNullable = TimeBox.CombineDate();
+            if (appointmentDateNullable != null)
+            {
+                appointmentDate = appointmentDateNullable.Value;
+                TimeError.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                TimeError.Visibility = Visibility.Visible;
+                TimeError.Content = "Please choose the appointment date and time!";
+                AnyError = true;
 
             }
 
             // Might be empty  
             string illnessDescription = IllnessBox.Text;
 
+            if (AnyError)
+            {
+                return;
+            }
+
             var UserData = new UserBookingData(firstName, lastName, phoneNumber, email, type, appointmentDate, illnessDescription);
 
             DataSent?.Invoke(this, UserData);
+
+            //Move to Appointments Page
+            var Navigation = NavigationService.GetNavigationService(this);
+            var AppointmentsPage = new AppointmentPage();
+
+            Navigation.Navigate(AppointmentsPage);
         }
     }
 }

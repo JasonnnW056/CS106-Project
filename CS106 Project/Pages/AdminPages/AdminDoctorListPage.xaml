@@ -19,60 +19,61 @@
 
         <!--If not found-->
         <components:_404NotFound Grid.Row="1" x:Name="NotFoundPage" Panel.ZIndex="100" Visibility="Collapsed"/>
-        
+
         <!--Main Content-->
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" >
-            
-        
-        <DataGrid
+
+
+            <DataGrid
                   x:Name="DoctorContainer" 
                   Style="{StaticResource ModernDataGridStyle}"
                   ColumnHeaderStyle="{StaticResource DataGridHeaderStyle}"
                   CellStyle="{StaticResource DataGridCellStyle}">
-            <DataGrid.Columns>
-                <!-- Doctor ID Column -->
-                <DataGridTemplateColumn Header="Doctor ID" Width="250">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Id}" 
+                <DataGrid.Columns>
+                    <!-- Doctor ID Column -->
+                    <DataGridTemplateColumn Header="Doctor ID" Width="250">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Id}" 
                                      Style="{StaticResource IDTextStyle}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                <!-- Doctor Name Column -->
-                <DataGridTemplateColumn Header="Doctor Name" Width="*" MinWidth="200">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}" 
+                    <!-- Doctor Name Column -->
+                    <DataGridTemplateColumn Header="Doctor Name" Width="*" MinWidth="200">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" 
                                      Style="{StaticResource IDTextStyle}" FontSize="16"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                <!-- Doctor Specialty Column -->
-                <DataGridTemplateColumn Header="Specialty" Width="200">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Specialty}" 
+                    <!-- Doctor Specialty Column -->
+                    <DataGridTemplateColumn Header="Specialty" Width="200">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Specialty}" 
                                      Style="{StaticResource IDTextStyle}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                <!-- Actions Column -->
-                <DataGridTemplateColumn Header="Actions" Width="120">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Delete" 
-                                  Style="{StaticResource DeleteButtonStyle}"
-                                  
-                                  Tag="{Binding Id}" Click="OnDeleteDoctors" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                    <!-- Actions Column -->
+                    <!-- Actions Column -->
+                    <DataGridTemplateColumn Header="Actions" Width="120">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" 
+                                    Style="{StaticResource DeleteButtonStyle}"
+          
+                                    Tag="{Binding Id}" Click="OnDeleteDoctors"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </ScrollViewer>
     </Grid>
 </Page>

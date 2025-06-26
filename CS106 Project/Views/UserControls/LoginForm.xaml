@@ -36,7 +36,7 @@
                              BorderThickness="2"
                              Background="White"
                              Margin="0,0,0,15"
-                             Padding="15,0"
+                             Padding="5,0"
                              VerticalContentAlignment="Center"
                              FontSize="16"
                              FontFamily="Segoe UI"

@@ -40,12 +40,6 @@ namespace CS106_Project.Pages
             var Filter = Builders<AppointmentDetails>.Filter.Empty;
             var Result = Connection.AppointmentsCollection.Find(Filter).ToList();
 
-            if (!Result.Any())
-            {
-                NotFoundPage.Visibility = Visibility.Visible;
-                return;
-            }
-
 
             LoadBookedDoctorData();
 
@@ -55,18 +49,23 @@ namespace CS106_Project.Pages
 
         private void LoadBookedDoctorData()
         {
-            DoctorName = DoctorData.Name;
-            DoctorSpecialty = DoctorData.Specialty;
-           
+            if (DoctorData != null)
+            {
+                DoctorName = DoctorData.Name;
+                DoctorSpecialty = DoctorData.Specialty;
+            }
         }
         private void InsertDBBookingInformation(object? sender, UserBookingData e)
         {
-            Connection.AppointmentsCollection.InsertOne(
+            if (LoginManager.UserID != null)
+            {
+                Connection.AppointmentsCollection.InsertOne(
 
-                new AppointmentDetails(LoginManager.UserID ,e.FirstName, e.LastName, e.PhoneNumber,
-                                        e.Email, DoctorName, DoctorSpecialty, e.Type, e.Date, e.IllnessDescription)
+                    new AppointmentDetails(LoginManager.UserID, e.FirstName, e.LastName, e.PhoneNumber,
+                                            e.Email, DoctorName, DoctorSpecialty, e.Type, e.Date, e.IllnessDescription)
 
-            );
+                );
+            }
         }
     }
 }

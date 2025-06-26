@@ -80,7 +80,7 @@ namespace CS106_Project.Pages.AdminPages
                 Doctors? doctor = Button?.DataContext as Doctors;
                 if (doctor != null)
                 {
-                    var Filter = Builders<Doctors>.Filter.Eq(d => d.Id, doctor.Id);
+                    var Filter = Builders<Doctors>.Filter.Eq(d => d.Id, doctor?.Id);
 
 
                     var Result = Collection?.DeleteOne(Filter);

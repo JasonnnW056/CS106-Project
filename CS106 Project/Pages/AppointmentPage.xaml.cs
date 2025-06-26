@@ -16,7 +16,6 @@ using CS106_Project.Classes;
 using CS106_Project.Models;
 using CS106_Project.Views.UserControls;
 using MongoDB.Driver;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CS106_Project.Pages
 {

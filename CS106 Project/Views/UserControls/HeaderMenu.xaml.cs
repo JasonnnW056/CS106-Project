@@ -111,7 +111,7 @@ namespace CS106_Project.Views.UserControls
                     string? specialty = selectedItem.Content?.ToString();
                     if (specialty != null && specialty != "Our Doctors' Specialties")
                     {
-                        MessageBox.Show(specialty);
+                        
                         var DoctorPage = new DoctorList("specialty",specialty);
 
                         var Navigation = NavigationService.GetNavigationService(this);

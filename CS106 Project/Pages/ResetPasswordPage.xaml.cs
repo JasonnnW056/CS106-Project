@@ -58,7 +58,13 @@ namespace CS106_Project.Pages
             if (Result.ModifiedCount > 0)
             {
                 MessageBox.Show("Password updated!");
+
             }
+
+            var Navigation = NavigationService.GetNavigationService(this);
+            var ProfilePage = new ProfilePage();
+
+            Navigation.Navigate(ProfilePage);
         }
 
         private void OnCancelReset(object sender, RoutedEventArgs e)

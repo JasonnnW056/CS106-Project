@@ -83,7 +83,7 @@ namespace CS106_Project.Views.UserControls
                     {
                         if (LoginManager.IsAdmin)
                         {
-                            MessageBox.Show(Value);
+                           
                             //Admin Login
                             if (Value == "User")
                             {

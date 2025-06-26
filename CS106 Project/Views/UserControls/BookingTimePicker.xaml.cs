@@ -45,10 +45,6 @@ namespace CS106_Project.Views.UserControls
             string startTimeText = d.Availability.StartTime;
             string endTimeText = d.Availability.EndTime;
 
-            MessageBox.Show(startTimeText);
-            MessageBox.Show(endTimeText);
-
-
             TimeSpan startTime = TimeSpan.Parse(startTimeText);
             TimeSpan endTime = TimeSpan.Parse(endTimeText);
 

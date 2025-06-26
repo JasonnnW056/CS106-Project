@@ -68,14 +68,14 @@
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Right" 
                     Margin="0,0,20,0"
-                    Cursor="Hand"
+                    Cursor="Hand" MouseLeftButtonDown="OnSearch"
                     >
                 <Border.Effect>
                     <DropShadowEffect Color="#C41E3A" Opacity="0.3" ShadowDepth="2" BlurRadius="6"/>
                 </Border.Effect>
 
                 <Path Data="M21.707,20.293l-5.655-5.655c1.237-1.527,1.993-3.459,1.993-5.564c0-4.963-4.037-9-9-9s-9,4.037-9,9s4.037,9,9,9c2.105,0,4.037-0.756,5.564-1.993l5.655,5.655c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293C22.098,21.317,22.098,20.683,21.707,20.293z M3,9c0-3.309,2.691-6,6-6s6,2.691,6,6s-2.691,6-6,6S3,12.309,3,9z"
-                      Fill="White" MouseLeftButtonDown="OnSearch"
+                      Fill="White" 
                       Width="20" Height="20"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Center"/>
