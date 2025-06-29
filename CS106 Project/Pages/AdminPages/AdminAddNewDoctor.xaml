@@ -68,13 +68,13 @@
 
 
                             <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="Start Time" Style="{StaticResource FormLabelStyle}"/>
+                                <TextBlock Text="Start Time (hh:mm)" Style="{StaticResource FormLabelStyle}"/>
                                 <TextBox x:Name="StartTimeBox"
                                      Style="{StaticResource FormInputStyle}"/>
                             </StackPanel>
 
                             <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="End Time" Style="{StaticResource FormLabelStyle}"/>
+                                <TextBlock Text="End Time (hh:mm)" Style="{StaticResource FormLabelStyle}"/>
                                 <TextBox x:Name="EndTimeBox"
          Style="{StaticResource FormInputStyle}"/>
 
