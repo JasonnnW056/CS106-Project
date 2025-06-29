@@ -30,26 +30,7 @@ namespace CS106_Project
             Connection.DoctorsCollection = Connection.DB.GetCollection<Doctors>("doctors");
             Connection.AppointmentsCollection = Connection.DB.GetCollection<AppointmentDetails>("appointments");
             MainFrame.Navigate(new Pages.LoginPage());
-           /* var Collection = Connection.DB.GetCollection<Doctors>("doctors");
-
-            var Filter = Builders<AppointmentDetails>.Filter.Empty;
-
-            var Result = Connection.AppointmentsCollection.Find(Filter).ToList();
-
-            if (Result.Count() > 0)
-            {
-                MessageBox.Show("Connected");
-            }
-            else
-            {
-                MessageBox.Show("lala");
-            }
-            
-            */
-
-            
-
-
+          
         }
 
     }

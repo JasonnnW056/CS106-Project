@@ -83,5 +83,14 @@ namespace CS106_Project.Classes
         {
             return text.All(char.IsDigit);
         }
+        public static bool TimeFormatValidation(string timeString)
+        {
+            if (string.IsNullOrWhiteSpace(timeString))
+            {
+                return false;
+            }
+            string pattern = @"^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$";
+            return Regex.IsMatch(timeString, pattern);
+        }
     }
 }

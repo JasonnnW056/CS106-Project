@@ -21,23 +21,19 @@ using MongoDB.Bson;
 
 namespace CS106_Project.Pages.AdminPages
 {
-    /// <summary>
-    /// Interaction logic for AdminDoctorListPage.xaml
-    /// </summary>
-    public partial class AdminDoctorListPage : Page
+    /// <summary>  
+    /// Interaction logic for AdminDoctorListPage.xaml  
+    /// </summary>  
+    public partial class AdminDoctorListPage : Page 
     {
-        public IMongoCollection<Doctors>? Collection;
         public ObservableCollection<Doctors>? DoctorsCollection { get; set; }
 
         public AdminDoctorListPage()
         {
             InitializeComponent();
-            new Connection();
 
-            Collection = Connection.DB.GetCollection<Doctors>("doctors");
             var Filter = Builders<Doctors>.Filter.Empty;
-            var Result = Collection.Find(Filter).ToList();
-
+            var Result = Connection.DoctorsCollection.Find(Filter).ToList();
 
             if (!Result.Any())
             {
@@ -47,18 +43,14 @@ namespace CS106_Project.Pages.AdminPages
 
             DoctorsCollection = new ObservableCollection<Doctors>(Result);
             DoctorContainer.ItemsSource = DoctorsCollection;
-            
         }
 
         public AdminDoctorListPage(string UserInput)
         {
             InitializeComponent();
-            new Connection();
-
-            Collection = Connection.DB.GetCollection<Doctors>("doctors");
-            var Filter = Builders<Doctors>.Filter.Regex(d=>d.Name, new BsonRegularExpression(UserInput,"i"));
-            var Result = Collection.Find(Filter).ToList();
-
+           
+            var Filter = Builders<Doctors>.Filter.Regex(d => d.Name, new BsonRegularExpression(UserInput, "i"));
+            var Result = Connection.DoctorsCollection.Find(Filter).ToList();
 
             if (!Result.Any())
             {
@@ -68,8 +60,9 @@ namespace CS106_Project.Pages.AdminPages
 
             DoctorsCollection = new ObservableCollection<Doctors>(Result);
             DoctorContainer.ItemsSource = DoctorsCollection;
-
         }
+
+        
 
         private void OnDeleteDoctors(object sender, RoutedEventArgs e)
         {
@@ -82,14 +75,21 @@ namespace CS106_Project.Pages.AdminPages
                 {
                     var Filter = Builders<Doctors>.Filter.Eq(d => d.Id, doctor?.Id);
 
-
-                    var Result = Collection?.DeleteOne(Filter);
+                    var Result = Connection.DoctorsCollection?.DeleteOne(Filter);
                     if (Result?.DeletedCount > 0)
                     {
                         MessageBox.Show("Deleted");
                     }
                 }
             }
+        }
+
+        private void OnClickAddDoctor(object sender, RoutedEventArgs e)
+        {
+            var Navigation = NavigationService.GetNavigationService(this);
+            var Page = new AdminAddNewDoctor();
+
+            NavigationService.Navigate(Page);
         }
     }
 }

@@ -98,19 +98,26 @@ namespace CS106_Project.Views.UserControls
                 ErrorText.Content = "Sign Up Successfully";
                 await Task.Delay(2000);
                 SwitchToLogin?.Invoke(this, EventArgs.Empty);
+
+                ClearInputs();
             }
 
         }
 
         private void OnSwitchingToLogin(object sender, MouseButtonEventArgs e)
         {
+            ClearInputs();
+
+            SwitchToLogin?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void ClearInputs()
+        {
             UsernameInput.Clear();
             PhoneInput.Clear();
             EmailInput.Clear();
             PasswordInput.Clear();
-
             ErrorText.Visibility = Visibility.Collapsed;
-            SwitchToLogin?.Invoke(this, EventArgs.Empty);
         }
     }
 }

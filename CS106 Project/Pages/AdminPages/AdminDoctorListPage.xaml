@@ -12,6 +12,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -21,7 +22,17 @@
         <components:_404NotFound Grid.Row="1" x:Name="NotFoundPage" Panel.ZIndex="100" Visibility="Collapsed"/>
 
         <!--Main Content-->
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" >
+
+        <StackPanel Grid.Row="1" Margin="0 10 0 0" Background="{StaticResource OffWhite}">
+            <Button Grid.Row="2" 
+                Content="Add Doctor"  
+                Style="{StaticResource BookAppointmentButtonStyle}"
+                Padding="25,12" Width="200" Height="45"
+                HorizontalAlignment="Right"
+                Margin="0,10,50,10"
+                Click="OnClickAddDoctor"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" >
 
 
             <DataGrid
@@ -74,6 +85,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        </ScrollViewer>
+        </ScrollViewer>  
     </Grid>
 </Page>
